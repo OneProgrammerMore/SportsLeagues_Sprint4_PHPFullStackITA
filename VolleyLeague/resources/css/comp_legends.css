@@ -1,0 +1,17 @@
+@tailwind components;
+@tailwind utilities;
+
+
+.legends-section{
+	@apply bg-slate-300;
+	@apply flex flex-wrap flex-col justify-items-center content-center items-center;
+	@apply my-4 py-16;
+	@apply w-full;
+}
+.legends-title{
+	@apply text-xl font-bold;
+
+}
+.legend-list{
+
+}

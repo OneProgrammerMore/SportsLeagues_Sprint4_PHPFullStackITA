@@ -1,0 +1,58 @@
+@tailwind components;
+@tailwind utilities;
+
+
+.ranking-table-section{
+
+	@apply flex flex-wrap flex-col justify-items-center content-center items-center;
+	@apply my-4;
+	@apply w-full;
+	@apply bg-slate-300;
+}
+
+.ranking-table-title{
+	@apply w-full;
+	@apply bg-black text-white text-center text-2xl;
+}
+
+.ranking-table{
+	@apply table-auto;
+	@apply w-full;
+}
+
+.ranking-table tr:nth-child(odd){
+	@apply bg-slate-100;
+}
+
+.ranking-table tr:nth-child(even){
+	@apply bg-slate-500;
+}
+
+.ranking-table  tr:nth-child(1){
+	@apply bg-slate-900;
+	@apply text-white;
+}
+
+
+.ranking-table-row > td{
+	@apply text-center m-auto;
+}
+
+.team-name-table-data{
+	@apply flex flex-row flex-wrap justify-center content-center text-center items-center;
+	@apply my-auto;
+}
+
+.team-name-table-data > img{
+	@apply mx-3;
+}
+
+.ranking-team-img{
+	width: 30px;
+	height: auto;
+}
+
+.ranking-actions-icon-img{
+	width: 50px;
+	height: auto;
+}

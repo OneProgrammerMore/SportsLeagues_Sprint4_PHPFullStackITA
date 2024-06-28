@@ -1,0 +1,42 @@
+services:
+    sports_leagues_sprint04:
+        depends_on:
+            - mysql
+        container_name: sports_leagues-backend
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "81:80"
+        volumes:
+            - ./VolleyLeague/:/var/www/html
+        command: >
+            bash -c "cd /var/www/html/ 
+            &&  a2enmod rewrite
+            && composer update && composer install 
+            && php artisan migrate && php artisan db:seed 
+            && php artisan key:generate
+            && chmod -R a+w /var/www/html/storage/
+            && npm install 
+            && npm run build
+            && /usr/sbin/apachectl -D FOREGROUND"
+        networks:
+            - sprint04_network
+
+    mysql:
+        container_name: sprint04-mysql
+        image: mysql:8.0.37-debian
+        environment:
+            MYSQL_DATABASE: sports_leagues_database
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: root_password
+        volumes:
+            - ./docker/mysql-data:/var/lib/mysql
+            - ./docker/config/mysql_ini:/docker-entrypoint-initdb.d
+            - ./docker/config/mysql/my.cnf:/etc/my.cnf
+        networks:
+            - sprint04_network
+
+networks:
+    sprint04_network:

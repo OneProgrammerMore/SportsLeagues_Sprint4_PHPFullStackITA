@@ -1,0 +1,983 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+	@apply w-full h-full;
+}
+
+body{
+	@apply w-full bg-slate-100 m-auto;
+}
+
+#navBar{
+	@apply flex flex-row flex-wrap bg-slate-400 w-full;
+	@apply justify-between;
+
+}
+#webName{
+	@apply ml-5 mr-5;
+	@apply text-2xl font-bold;
+}
+
+#webID, #navSections{
+	@apply flex flex-row flex-wrap;
+	@apply justify-center items-center;
+	@apply p-2;
+}
+
+.itemNav{
+	@apply mx-10;
+}
+
+#webLogoImg{
+	height: 30px;
+	width: auto;
+	/*@apply mx-5 my-5;*/
+
+}
+#webLogo{
+	
+}
+
+#navBar, main{
+	@apply w-11/12 m-auto;
+}
+	
+main{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+}
+
+
+
+
+
+#leagues-container, #leagues-inner-container{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+	
+}
+
+#leagues-container, #leagues-inner-container, .league-info{
+	@apply w-full;
+}
+
+.league-info-container{
+	@apply w-full;
+	@apply flex flex-wrap flex-col;
+}
+.league-container, .league-container-show{
+	@apply w-full;
+	/*@apply rounded-md border-2 border-solid border-black;*/
+}
+
+.league-container:nth-child(odd){
+	@apply bg-slate-300;
+}
+
+.league-container:nth-child(even){
+	@apply bg-slate-200;
+}
+
+
+.league-container{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+	@apply mt-5;
+}
+
+.league-info-container-show{
+	@apply w-full flex flex-wrap flex-col justify-items-center content-center;
+}
+
+.league-container-show{
+	@apply w-full flex flex-wrap flex-col justify-items-center content-center;
+	@apply mt-5;
+}
+
+.league-info, .league-links, .league-actions{
+	@apply px-5;
+}
+
+.league-info{
+	@apply flex flex-wrap flex-row justify-items-center content-center;
+	@apply justify-start;
+	@apply m-4;
+
+}
+.league-info-show{
+	@apply flex flex-wrap flex-row justify-items-center content-center;
+	@apply justify-center;
+	@apply m-4;
+}
+
+.league-img, .league-data, .league-img-show{
+	@apply m-5;
+}
+
+.league-img-show{
+	@apply self-center;
+}
+
+.league-img-show > img{
+	width: 250px;
+	height: auto;
+}
+
+.league-data{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+}
+
+
+
+.league-name{
+	@apply text-3xl font-bold;
+}
+
+.league-type{
+	@apply text-base italic;
+}
+
+.league-imgs-index{
+	width: 200px;
+	height: auto;
+	@apply self-center;
+}
+.title-bold{
+	@apply font-bold;
+}
+
+.league-links{
+	@apply flex flex-wrap flex-row justify-items-center content-center;
+	@apply text-center justify-start;
+	@apply mx-6;
+	width: auto;
+}
+.league-actions{
+	@apply flex flex-wrap flex-row justify-items-center content-center;
+	@apply justify-end;
+	width: auto;
+
+}
+.league-actions > form{
+	@apply flex flex-wrap flex-row justify-items-center content-center;
+	
+
+}
+.actions-row{
+	@apply flex flex-wrap flex-row justify-items-center content-center justify-center;
+}
+
+.actions-row > *{
+	@apply mx-4;
+}
+.form-actions{
+	@apply flex flex-wrap flex-row justify-items-center content-center justify-between;
+}
+
+
+.league-interactions-all{
+	@apply flex flex-wrap flex-row justify-items-center content-center justify-around;
+	@apply mt-1 mb-4;
+}
+
+/*
+.league-links > div {
+	@apply rounded-md border-2 border-solid border-black;
+	@apply py-2 px-4;
+	@apply mx-4;
+}*/
+
+
+
+#leagueCreatorEmptyState{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+	@apply p-7 my-7;
+	@apply bg-slate-300 w-full;
+	/*@apply rounded-md border-2 border-solid border-black;*/
+
+}
+#leagueCreatorEmptyState > h2, .creator-empty-state > h2, .creator-normal > h2{
+	@apply text-center text-2xl p-4;
+}
+
+#leagueCreatorNormal{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+	@apply p-7 my-7;
+	@apply bg-slate-300 w-full;
+	/*@apply rounded-md border-2 border-solid border-black;*/
+
+}
+#leagueCreatorNormal > h2{
+	@apply text-center text-3xl pb-7;;
+}
+
+/* FOR SHOW LEAGUE */
+
+.league-header{
+	@apply mt-2 font-bold text-xl;
+}
+
+.league-data-field{
+	@apply text-xl;
+}
+
+
+
+
+.btn-container{
+	@apply flex content-center justify-center;
+	@apply my-2;
+}
+
+.creator-empty-state, .creator-normal{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+	@apply p-7 my-7;
+	@apply bg-slate-300 w-full;
+	/*@apply rounded-md border-2 border-solid border-black;*/
+}
+.creator-empty-state > h2, .creator-normal >h2{
+	@apply text-center;
+}
+
+
+
+
+
+
+.section-form-group, .form-group-main{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+	
+	@apply my-4;
+	
+	/*@apply rounded-md border-2 border-solid border-black;*/
+	
+}
+.form-group-main > .form-group{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+}
+
+.form-group-main{
+	@apply bg-red-300;
+}
+.form-group-hidden{
+	display: none;
+}
+
+.form-group > input, .form-group > textarea, .form-group > label, .form-group{
+	@apply w-full px-4 mt-1 mb-2;
+	@apply h-auto;
+}
+.form-group-match  input, .form-group-match  textarea, .form-group-match  label{
+	@apply w-auto px-4;
+	@apply h-auto;
+	margin-top: 4px;
+	margin-bottom: 2px;
+}
+
+.form-group-match{
+	@apply w-full;
+	@apply my-4 py-4;
+}
+
+.form-group > input, .form-group > textarea, .form-group-match > input, .form-group-match > textarea {
+	@apply mx-1 mb-1 px-2;
+	@apply bg-white;
+} 
+.form-group > label, .form-group-match > label{
+	@apply mx-2;
+	@apply text-xl font-bold;
+}
+
+.form-group-main > h3, .section-form-group >h3{
+	@apply text-center;
+}
+
+input, textarea{
+	
+}
+
+
+/* FOR CREATE LEAGUE */
+
+.create-league-container{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+	@apply p-4 my-4;
+	@apply w-full;
+	/*@apply rounded-md border-2 border-solid border-black;*/
+}
+
+/*color for form sections*/
+.create-league-inner-container > h3, .create-league-inner-container > form {
+	@apply bg-slate-300;
+	@apply py-2 my-3;
+}
+
+
+.create-league-inner-container > h3, .match-edit-form > h3 {
+	@apply text-3xl font-bold text-center;
+	
+}
+.match-edit-form > h3 {
+	@apply w-full;
+	@apply bg-slate-300;
+	@apply py-2 my-3;
+}
+
+.create-league-form:hover, .edit-league-form:hover{
+	border-left: 5px solid purple;
+	transition: border-color 200ms;
+}
+.create-league-form, .edit-league-form{
+	border-left: 5px solid blue;
+	transition: border-color 200ms;
+}
+
+
+.create-league-inner-container > form > .form-group > h3, .create-league-inner-container > form > .form-group > label{
+	@apply m-0 p-0;
+}
+
+.create-league-inner-container > form > .form-group > select{
+	@apply rounded-md border border-solid border-black;
+}
+
+/* FOR EDIT LEAGUE */
+
+.edit-league-container{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+	@apply p-4 my-4;
+	@apply w-full;
+	/*@apply rounded-md border-2 border-solid border-black;*/
+}
+
+.edit-league-inner-container > h3 {
+	@apply text-3xl font-bold text-center;
+}
+
+.edit-league-inner-container > h3, .edit-league-inner-container > form{
+	@apply bg-slate-300;
+	@apply py-2 my-3;
+}
+
+
+.edit-league-inner-container > form > .form-group > h3, .edit-league-inner-container > form > .form-group > label{
+	@apply m-0 p-0;
+}
+
+.edit-league-inner-container > form > .form-group > select{
+	@apply rounded-md border border-solid border-black;
+}
+
+/* TEAMS VIEW INDEX */
+
+#teams-container, #teams-inner-container, .team-container{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+	@apply w-full;
+	
+}
+.team-container{
+	@apply p-7 my-7;
+	@apply bg-slate-300 w-full;
+	/*@apply rounded-md border-2 border-solid border-black;*/
+}
+
+.team-info, .team-actions{
+	@apply w-full;
+}
+
+.team-info{
+	@apply flex flex-wrap flex-row justify-items-center content-center;
+}
+.team-actions{
+	@apply flex flex-wrap flex-row justify-items-center content-center justify-end;
+}
+
+.team-data {
+	@apply flex flex-wrap flex-col justify-items-center content-center justify-start;
+}
+
+.team-data > h3{
+	@apply flex flex-wrap flex-row justify-items-center content-center justify-start;
+	@apply mx-4 my-1;
+}
+
+.team-data-img{
+	@apply mx-4;
+	height: 20px;
+	width: auto;
+}
+
+.team-img{
+	@apply h-auto w-48;
+}
+.team-name{
+	@apply text-3xl font-bold;
+}
+
+/* TEAM SHOW */
+.team-info-container{
+	@apply w-full;
+}
+
+.team-main-container{
+	@apply p-7 my-7;
+	@apply bg-slate-300 w-full;
+	
+	@apply flex flex-wrap flex-row justify-items-center content-center justify-center;
+	/*@apply rounded-md border-2 border-solid border-black;*/
+}
+.team-info-main{
+	@apply w-auto;
+}
+.title-section{
+	@apply font-bold text-lg;
+}
+.team-info-name{
+	@apply w-full;
+	@apply flex flex-wrap flex-row justify-center content-center justify-items-center items-center;
+	@apply my-3;
+}
+.team-info-name > .team-img, .team-info-name > .team-name{
+	@apply mx-6;
+}
+
+
+/* TEAM CREATE create.team.blade */
+
+.create-team-container{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+	@apply p-4 my-4;
+	@apply w-full;
+	/*@apply rounded-md border-2 border-solid border-black;*/
+}
+
+.create-team-form{
+	@apply flex flex-wrap flex-col justify-items-center content-center w-full;
+}
+
+/*Color form create team*/
+.create-team-inner-container > h3{
+	@apply bg-slate-300;
+	@apply py-4;
+	@apply my-4;
+}
+
+.create-team-inner-container > h3 {
+	@apply text-3xl font-bold text-center;
+}
+.create-team-inner-container > form > .form-group-main > h3, .create-team-inner-container > form > .form-group-main > label{
+	@apply m-0 p-0;
+}
+
+.create-team-inner-container > form > .form-group-main > select{
+	@apply rounded-md border border-solid border-black;
+}
+.section-form-group{
+	@apply  flex flex-wrap flex-col justify-items-center content-center;
+	@apply w-full;
+}
+.section-form-group > h3{
+	@apply text-xl font-bold text-left;
+}
+.section-form-group:focus-within{
+	border-left: 5px solid purple;
+	transition: border-color 200ms;
+}
+.section-form-group{
+	border-left: 5px solid blue;
+	transition: border-color 200ms;
+}
+
+.section-form-group-match:focus-within{
+	border-left: 5px solid purple;
+	transition: border-color 200ms;
+}
+.section-form-group-match{
+	border-left: 5px solid blue;
+	transition: border-color 200ms;
+}
+
+.form-group > input, .form-group > textarea{
+	@apply w-full m-0 p-0 px-4;;
+}
+/* VIEW MATCHES */
+
+.moreInfoIcon{
+	height: 50px;
+	width: auto;
+}
+
+.team-img-matches{
+	height: 40px;
+	width: auto;
+	max-width: 60px;
+}
+.match-main-info-table{
+	@apply table-auto;
+	/*@apply flex flex-wrap flex-row justify-center;*/
+}
+
+.match-main-info-table > tr{
+	/*@apply flex flex-wrap flex-row justify-center;*/
+}
+
+.match-main-info-table td, .match-main-info-table img {
+	/*@apply flex flex-wrap flex-row justify-center;*/
+
+	
+	
+}
+.match-table-row > td, .match-table-row > td > img{
+	@apply text-center m-auto;
+}
+
+.match-table-row-address{
+	@apply  flex-wrap flex-row justify-items-center content-center text-center;
+	display: none;
+}
+
+/* EDIT TEAM team.edit.team.php */
+
+.edit-team-container{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
+	@apply p-4 my-4;
+	@apply w-full;
+	/*@apply rounded-md border-2 border-solid border-black;*/
+}
+
+.edit-team-form{
+	@apply flex flex-wrap flex-col justify-items-center content-center w-full;
+}
+
+.edit-team-inner-container > h3 {
+	@apply text-3xl font-bold text-center;
+	@apply my-3 py-4;
+}
+.edit-team-inner-container > form > .form-group-main > h3, .edit-team-inner-container > form > .form-group-main > label{
+	@apply m-0 p-0;
+}
+
+.edit-team-inner-container > form > .form-group-main > select{
+	@apply rounded-md border border-solid border-black;
+}
+
+.edit-team-inner-container > h3 {
+	@apply bg-slate-300;
+}
+
+
+/* SHOW MATCHES VIEW */
+
+.match-main-container{
+	@apply w-full flex flex-wrap flex-col justify-center content-center;
+	@apply p-7 my-7;
+	/*@apply rounded-md border-2 border-solid border-black;*/
+}
+
+.match-main-container > *{
+	@apply w-full flex flex-wrap flex-row justify-center content-center;
+}
+.match-team-name, .match-team-name-vs{
+	@apply font-bold;
+	
+}
+.match-team-name{
+	@apply text-4xl w-80;
+}
+
+.match-team-name:nth-child(1){
+	@apply flex flex-wrap flex-row-reverse;
+}
+.match-team-name:nth-child(2){
+	@apply flex flex-wrap flex-row;
+}
+.match-team-name-vs{
+	@apply w-auto text-xl;
+}
+
+.container-match-date, .match-team-names, .container-match-results{
+	@apply text-center;
+	@apply flex flex-wrap justify-center content-center items-center justify-items-center;
+}
+
+.match-team-name, .match-team-name-vs{
+	@apply m-4;
+}
+
+.container-match-points{
+	@apply w-full flex flex-wrap flex-row justify-center content-center;
+}
+
+.container-match-points > h3{
+	@apply text-3xl font-bold m-5;
+}
+
+.container-team-logo{
+	@apply m-auto;
+}
+
+.container-team-logo > img{
+	
+	width: 75px;
+	height: auto;
+
+}
+.match-actions{
+	@apply w-full flex flex-wrap flex-row justify-end content-center;
+}
+
+/* MATCHES INDE matches.index.blade.php */
+
+
+
+
+.match-table-row > td{
+	@apply px-5;
+}
+.match-table-row-week{
+	@apply w-full text-center py-3 text-xl self-center;
+}
+
+
+
+
+/* FOR MATCH CREATION*/
+/* match.create.blade.php */
+
+.create-team-inner-container{
+	@apply w-4/6;
+}
+.create-match-form{
+	@apply w-full flex flex-wrap flex-col justify-center content-center;
+}
+.create-match-form > * {
+	@apply p-0;
+}
+.create-match-form > .section-form-group >.form-group > label{
+	@apply text-xl font-bold;
+}
+
+/* FOR MATCH EDIT */
+/*.match-main-container > form > *{
+	@apply w-full flex flex-wrap flex-row justify-center content-center;
+}*/
+.match-teams-names, .container-match-info, .match-actions{
+	@apply w-full flex flex-wrap flex-row justify-center content-center items-center;
+}
+.container-match-points > h3 > input{
+	max-width: 150px;
+
+}
+.container-match-date{
+	@apply w-full flex flex-wrap flex-col justify-center content-center;
+}
+.container-match-date > *, .contaier-match-status > *, .match-number-container > *{
+	@apply text-xl font-bold m-1;
+}
+
+.match-number-container, .match-number-container > *{
+	@apply w-auto flex flex-wrap flex-col justify-center content-center;
+	@apply text-center;
+}
+
+/* COMMON ELEMENTS */
+
+/* BUTTONS */
+
+.btn-create, .btn-delete, .btn-info, .btn-edit, .league-link, .btn-cancel{
+	@apply rounded-full;
+	@apply px-4;
+	@apply text-center;
+	@apply mx-2;
+}
+
+.btn-create, .btn-delete , .btn-info, .btn-edit, .league-link >*, .btn-cancel{
+	@apply text-xl;
+	@apply py-2 px-4;
+	
+	@apply text-slate-200 font-bold;
+	@apply min-w-40;
+}
+.btn-create, .btn-cancel{
+	@apply w-56 h-16;
+}
+.btn-delete , .btn-edit, .btn-info, .league-link >*{
+	@apply w-auto;
+}
+
+/*Buttons colors*/
+.section-form-group{
+	@apply bg-slate-300;
+}
+.section-form-group-match{
+	@apply bg-slate-300;
+}
+
+.league-links > div:nth-child(odd){
+	@apply bg-slate-500;
+}
+
+.league-links > div:nth-child(even){
+	@apply bg-slate-700;
+}
+
+.btn-create{
+	@apply bg-emerald-800;
+}
+
+.btn-edit{
+	@apply bg-green-800;
+}
+
+.btn-info{
+	@apply bg-sky-800;
+}
+
+
+.btn-delete{
+	@apply bg-red-800;
+}
+
+.btn-cancel{
+	@apply bg-red-800;
+}
+
+.league-actions > form, .team-actions > form{
+	@apply py-2 px-4;
+}
+
+.link-info, .btn-edit, .btn-delete, .btn-create, .btn-cancel{
+	@apply flex flex-wrap flex-row justify-center content-center text-center content-center items-center;
+}
+
+.btn-img{
+	height: 35px;
+	width: auto;
+	@apply pr-3;
+}
+
+.league-actions > form > button, .team-actions > form > button {
+	@apply flex flex-wrap flex-row justify-center content-center text-center content-center items-center;
+}	
+
+.btn-create, .btn-cancel{
+	@apply flex flex-wrap flex-row justify-center content-center text-center content-center items-center;
+	align-self: center;
+}
+
+/*MATCH INDEX matches.index.blade.php */
+
+.match-main-info-table{
+	@apply w-full;
+}
+	
+.matches-calender-title{
+	@apply flex flex-wrap flex-row content-center justify-center items-center;
+	@apply h-8 w-full p-3;
+	@apply bg-black;
+	@apply text-2xl text-white;
+	
+
+}
+
+.match-table-row-week{
+	@apply bg-slate-700;
+	@apply text-xl text-white;
+}
+
+/*
+.match-main-info-table > tr:nth-of-type(odd), .match-main-info-table > tr:nth-of-type(odd) + .match-table-row-address{
+	@apply bg-slate-100;
+}
+.match-main-info-table > tr:nth-of-type(even), .match-main-info-table > tr:nth-of-type(even) + .match-table-row-address{
+	@apply bg-slate-300;
+}
+*/
+
+/*
+.match-main-info-table:nth-child(odd), .match-main-info-table:nth-child(odd) + .match-table-row-address{
+	@apply bg-slate-100;
+}
+
+.match-main-info-table:nth-child(even), .match-main-info-table:nth-child(even) + .match-table-row-address{
+	@apply bg-slate-300;
+}
+* 
+* */
+
+/*
+.match-main-info-table  div:nth-of-type(odd){
+	@apply bg-slate-100;
+}
+.match-main-info-table  div:nth-of-type(even){
+	@apply bg-slate-300;
+}*/
+
+.match-table-row{
+	@apply border-t border-black;
+}
+
+
+#leagues-container{
+	@apply mt-14;
+}
+
+/*Table Troubleshooting*/
+/*table, th, td { border: 1px solid gray; }*/
+
+
+
+/* TOOL BAR */
+
+#tool-bar-complete{
+	@apply w-full fixed;
+	@apply flex flex-wrap flex-col justify-center content-center items-center;
+	@apply bg-slate-200;
+	@apply border-black border;
+}
+
+#tool-bar{
+	@apply w-full;
+	@apply bg-slate-200;
+	height: 55px;
+	@apply flex flex-wrap flex-row;
+	/*@apply border-y-4 border-black border-4;*/
+}
+
+#tool-bar-container{
+	@apply w-11/12 m-auto;
+	@apply flex flex-wrap flex-col justify-end;
+	@apply my-1;
+}
+
+#tool-bar-tools{
+	@apply w-11/12 m-auto;
+	@apply flex flex-wrap flex-row justify-end;
+	@apply my-1;
+}
+
+.toolbar-switch{
+	@apply flex flex-wrap flex-row justify-center content-center items-center;
+	@apply mx-4;
+}
+.toolbar-switch > *{
+	@apply mx-2;
+}
+
+#search-tool-hidden-form{
+	
+}
+
+#search-tool-hidden-form, .search-tool, #search-week, .search-tool-form{
+	@apply w-full;
+}
+
+#search-tool-hidden-form{
+	/*@apply flex flex-wrap flex-col justify-center content-center items-center;*/
+	display: none;
+}
+
+.search-tool > *{
+	@apply m-4;
+}
+
+.tool-group, .btn-container-tool{
+	@apply flex flex-wrap flex-row justify-center content-center items-center;
+}
+.tool-group{
+	@apply m-4;
+}
+.tool-group > label, .tool-group > select {
+	@apply ml-4;
+}
+.tool-bar-img{
+	height: 35px;
+	width: auto;
+	@apply px-3;
+
+}
+
+.btn-img-tool{
+	@apply h-8 w-auto;
+	
+}
+
+/* Tool Bar Switch CSS*/
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* FLOATING LABEL FOR FORMS:*/
+
+/*
+input{
+	@apply block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer;
+}
+label{
+	@applyabsolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto;
+}*/
+
+
+/*Form Required Field*/
+.required {
+  color: orange;
+}
