@@ -19,6 +19,7 @@ services:
             && chmod -R a+w /var/www/html/storage/
             && npm install 
             && npm run build
+            && ln -rs ./storage/app/  ./public/storage
             && /usr/sbin/apachectl -D FOREGROUND"
         networks:
             - sprint04_network

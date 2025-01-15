@@ -1,0 +1,90 @@
+To Do Sprint 4 - Leagues Web
+
+- [ ] Web Design / CSS
+	- [ ] Change All Buttons Size (Decrease Size)
+	- [ ] Buttons Hover To Change Color to Similar
+	- [ ] Buttons OnClick To Change Color to Similar
+	- [ ] Buttons Leagues Home To Left and Right
+	- [ ] Footer always in the bottom (No Leagues Check)
+	- [ ] Footer Sections Buttons Hover To White Text Color
+	- [ ] Nav Sections Buttons Hover To White Text Color (But Name Web)
+	- [ ] Icon In Tab Show
+	- [ ] Decrease Size Images (Leagues & Teams & Players)
+	- [ ] Teams:
+		- [ ] Team info text center vertically
+		- [ ] Decrease padding section each team
+		- [ ] Teams Show Increase Size Team Logo
+		- [ ] Team Information And Team Responsible Sections Show Difference
+	- [ ] Add Player Form
+		- [ ] League ID Field Hide
+		- [ ] League Name Field Hide
+		- [ ] Team ID Field Hide
+		- [ ] MUST Fields Mark And Start With them
+			- [ ] PLAYER TEAM INFO
+				- [ ] Player Image (Optional)
+				- [ ] Player Name
+				- [ ] Player 1st Surname
+				- [ ] Player 2nd Surname (Optional)
+				- [ ] Player Sex
+				- [ ] Player Birth Date
+				- [ ] Player Number
+			- [ ] PLAYER CONTACT DATA
+				- [ ] Email
+				- [ ] Phone (Optional)
+		- [ ] OPTIONAL Fields in different "Section"
+			- [ ] OTHER DATA SECTION
+				- [ ] Player Origin Country
+				- [ ] Player Height
+				- [ ] Player Weight
+	- [ ] Team Info - Team Info Section
+		- [ ] Buttons standard for edit and delete
+			- [ ] Add Icon
+			- [ ] Standard CSS Buttons
+		- [ ] Team Image Increase Size to Standard Web
+	- [ ] Teams Info - Players Section
+		- [ ] Buttons each player centered left
+	- [ ] Player Info
+		- [ ] Height & Weight Same Style as E-Mail and Phone
+		- [ ] Buttons Centered Left with NO Padding between buttons
+		- [ ] 
+
+	- [ ] Forms (League & Team & Player)
+		- [ ] Same design for all
+			- [ ] Same width
+			- [ ] Same Colors
+			- [ ] Simplify CSS
+			- [ ] Improve Design
+			- [ ] Mark Persuatory Fields
+			- [ ] Mark Optional Fields
+	- [ ] Matches Calendar
+		- [ ] Nav and Tool Fixed
+		- [ ] Results Team Image/Logo Centered
+		- [ ] Results 2nd Line Different Color
+		- [ ] Create Match Section Decrease Size
+		- [ ] Create Match Section Button Decrease Size, Hover and Onclick effects
+		- [ ] MoreInfo Button Transition To Text Size
+		- [ ] MoreInfo Does not affect if there is no text to show
+		- [ ] Decrease Size of Icons Right (Eye and Edit)
+		- [ ] SearchWeeks Feature
+			- [ ] Improve Form
+			- [ ] Solve Error "The POST method is not supported for route leagues/1/matches. Supported methods: GET, HEAD."
+
+	- [ ] Responsive Website
+		- [ ] For Iphone SE (Phone)
+			- [ ] Button For Menu and Register/Login Option Top Right
+			- [ ] Buttons Decrease Size to fit in one line
+				- [ ] Leagues
+				- [ ] Teams
+				- [ ] Matches
+				- [ ] Players
+			- [ ] Image Team in Center Div
+			- [ ] Image Team Decrease Size
+			- [ ] Image League in Center Div
+			- [ ] Image League Decrease Size
+			- [ ] Footer Decrease Size Sections To Fit One Line
+		- [ ] For IPad Mini (Tablet)
+
+- [ ] Forms
+	- [ ] Image Crop/Exapand to same size for all Images
+	- [ ] Team Edit MUST Redirect to SAME Team Show
+	- [ ] 
