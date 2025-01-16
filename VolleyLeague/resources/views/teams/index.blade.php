@@ -4,12 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link href={{ URL::asset('css/app.css') }} rel="stylesheet" >
 	<title>CupApp</title>
-	@vite('resources/css/comp_footer.css')
 	@vite('resources/css/app.css')
-	
-	
+	<link rel="stylesheet" href="{{ asset('css/iconStyles.css') }}">
 </head>
 
 
@@ -32,21 +29,21 @@
 				<div class="team-container">
 					<div class="team-info">
 						<div class="team-img">
-							<img class="team-img" src="{{ asset( $team->team_img_name ? 'storage/'.$team->team_img_name : 'img/team.png' )}}" alt="Web Logo - The image of a Tournament Cup">
+							<img class="team-img" src="{{ asset( $team->team_img_name ? 'storage/public/'.$team->team_img_name : 'img/team.png' )}}" alt="Web Logo - The image of a Tournament Cup">
 						</div>
 						<div class="team-data">
 							<h3 class="team-name">
 								
 								{{ $team->team_name }}</h3>
 							<h3 class="team-email">
-								<img class="team-data-img" src="{{ asset( 'img/email.png' )}}" alt="Email Icon">
+								<span class="icon icon-league-link icon-mail team-data-img"></span>
 								{{ $team->team_email }}</h3>
 							<h3 class="team-phone"> 
-								<img class="team-data-img" src="{{ asset( 'img/phone.png' )}}" alt="Email Icon">
+								<span class="icon icon-league-link icon-phone team-data-img"></span>
 								{{ $team->team_phone }} </h3>
 								
 							<h3 class="team-address"> 
-								<img class="team-data-img" src="{{ asset( 'img/address.png' )}}" alt="Address Icon">
+								<span class="icon icon-league-link icon-address team-data-img"></span>
 								{{$team->address_street ?? ""}} {{$team->address_number ?? ""}} <br>
 								{{$team->address_floor ? $team->address_floor . " Floor" :""}}  {{$team->address_door ?  $team->address_door  . " Door": ""}} <br>
 								{{$team->address_city ?? ""}} {{$team->address_postalcode ?? ""}} <br>
@@ -65,27 +62,27 @@
 						
 						
 
-						<form action="{{ route('teams.show', ['league'=> $league->league_id, 'team' => $team->team_id]) }}" method="post">
+						<form class="league-info-link league-link" action="{{ route('teams.show', ['league'=> $league->league_id, 'team' => $team->team_id]) }}" method="post">
 							@csrf
 							@method('GET')
 							<button type="submit" class="btn-info">
-								<img class="btn-img" src="{{ asset('img/info.png') }}"> 
+								<span class="icon icon-league-link icon-info"></span> 
 								Show</button>
 						</form>
 						
-						<form action="{{ route('teams.edit', ['league'=> $league->league_id, 'team' => $team->team_id]) }}" method="post">
+						<form class="league-info-link league-link" action="{{ route('teams.edit', ['league'=> $league->league_id, 'team' => $team->team_id]) }}" method="post">
 							@csrf
 							@method('GET')
 							<button type="submit" class="btn-edit">
-								<img class="btn-img" src="{{ asset('img/edit.png') }}"> 
+								<span class="icon icon-league-link icon-pencil"></span> 
 								Edit</button>
 						</form>
 						
-						<form action="{{ route('teams.destroy', ['league'=> $league->league_id, 'team' => $team->team_id]) }}" method="post">
+						<form class="league-info-link league-link" action="{{ route('teams.destroy', ['league'=> $league->league_id, 'team' => $team->team_id]) }}" method="post">
 							@csrf
 							@method('DELETE')
 							<button type="submit" class="btn-delete">
-								<img class="btn-img" src="{{ asset('img/delete.png') }}"> 
+								<span class="icon icon-league-link icon-trash"></span> 
 								Delete</button>
 						</form>
 						
@@ -110,7 +107,7 @@
 			Try creating a new team!
 		</h2>
 		<a class="btn-create" href="{{ route('teams.create', $league->league_id) }}">
-		<img class="btn-img" src="{{ asset('img/create.png') }}"> 
+		<span class="icon icon-league-link icon-create"></span>  
 		Create team</a>
 	</div>
 
@@ -122,7 +119,7 @@
 			In order to create another team click the button!
 		</h2>
 			<a class="btn-create" href="{{ route('teams.create', $league->league_id) }}">
-			<img class="btn-img" src="{{ asset('img/create.png') }}"> 
+			<span class="icon icon-league-link icon-create"></span> 
 			Create team</a>
 	</div>
 	

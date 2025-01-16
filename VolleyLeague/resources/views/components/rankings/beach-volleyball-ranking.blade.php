@@ -1,13 +1,6 @@
-
-
-@vite('resources/css/comp_ranking.css')
 <div class="ranking-table-section">
     <!-- Results Table For Beach Volley -->
-    
-    
-    
-    
-    
+
     <div class="ranking-table-title">
 		Beach Volleyball Ranking
 	</div>
@@ -36,11 +29,9 @@
 			
 			<tr class="ranking-table-row" >
 				
-
-				
 				<th>{{ $team->ranking_position ?? ""}}</th>
 				<th>
-					<img class="ranking-team-img" src="{{ asset('storage/'.$team->team_img_name)}}" alt="Team Logo Image">
+					<img class="ranking-team-img" src="{{ asset('storage/public/'.$team->team_img_name)}}" alt="Team Logo Image">
 				</th>
 				<th>{{ $team->team_name ?? ""}}</th>
 				
@@ -58,12 +49,9 @@
 				<th>{{ $team->ranking_pf ?? ""}}</th>
 				<th>{{ $team->ranking_pc ?? ""}}</th>
 				<th>{{ $team->ranking_sanc ?? ""}}</th> <!-- 15 rows -->
-				
-			
-			</tr>		
-			
 
-			
+			</tr>		
+
 		@endforeach	
 		
 		</table>

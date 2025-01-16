@@ -8,23 +8,36 @@
 
 	<div id="navSections" class="flex flex-row">
 		<div class="itemNav">
-			<a class="btn btn-sm btn-success" href={{ route('leagues.index') }}>Home - Leagues</a>
+			<a class="link-nav link-nav-section" href={{ route('leagues.index') }}>
+				<span class="icon icon-league-link icon-cup"></span>
+				Home - Leagues</a>
 		</div>
 
 	
 	
 	@if (Route::has('login'))
-		<div class="itemNav">
+			
 			@auth
-				<a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-			@else
-				<a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-
-				@if (Route::has('register'))
-					<a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-				@endif
-			@endauth
+			<div class="itemNav">
+				<a href="{{ url('/dashboard') }}" class="link-nav">
+					Dashboard</a>
+			</div>
+	@else
+		<div class="itemNav">
+			<a class="link-nav link-nav-section" href="{{ route('login') }}" class="link-nav">
+				<span class="icon icon-league-link icon-login"></span> 
+				Log in</a>
 		</div>
+
+		@if (Route::has('register'))
+			<div class="itemNav">
+				<a class="link-nav link-nav-section" href="{{ route('register') }}" class="link-nav">
+					<span class="icon icon-league-link icon-register"></span> 
+					Register</a>
+			</div>
+		@endif
+		@endauth
+		
 	@endif
 	
 	

@@ -1,12 +1,5 @@
-
-
-@vite('resources/css/comp_results_table.css')
 <div class="results-table-section">
     <!-- Results Table For Beach Volley -->
-    
-    
-    
-    
     
     <div class="results-table-title">
 		Beach Volleyball Matches Results
@@ -35,11 +28,11 @@
 			<tr class="results-table-row" >
 				<td>{{ $result->match_number ?? ""}}</td>
 				<td class="team-name-table-data"> 
-					<img class="results-team-img" src="{{ asset('storage/'.$result->host_img)}}" alt="Host Team Image">
+					<img class="results-team-img" src="{{ asset('storage/public/'.$result->host_img)}}" alt="Host Team Image">
 					{{ $result->host_team_name ?? ""}}</td>
 				<td>vs</td>
 				<td class="team-name-table-data">
-					<img class="results-team-img" src="{{ asset('storage/'.$result->guest_img)}}" alt="Guest Team Image">
+					<img class="results-team-img" src="{{ asset('storage/public/'.$result->guest_img)}}" alt="Guest Team Image">
 					{{ $result->guest_team_name ?? ""}}</td>
 				
 				<td>{{ $result->only_date ?? ""}} <br> {{ $result->only_time ?? ""}}</td>
@@ -54,7 +47,7 @@
 				<td>
 					<a href="{{ route('matches.show', ['league'=> $result->league_id, 'match' =>$result->match_id ]) }}">
 					<i class="results-team-img-container">
-						<img class="results-actions-icon-img" src="{{ asset('img/eye_info.png')}}" alt="More Info About The Match">
+						<span class="icon icon-league-link icon-info"></span>
 					</i>
 					</a>
 				</td>
@@ -62,19 +55,10 @@
 				<td>
 					<a href="{{ route('matches.edit', ['league'=> $result->league_id, 'match' =>$result->match_id ]) }}">
 					<i class="results-team-img-container">
-						<img class="results-actions-icon-img" src="{{ asset('img/edit.png')}}" alt="Edit About The Match">
+						<span class="icon icon-league-link icon-pencil"></span>
 					</i>
 					</a>
-				</td>
-				
-				
-				
-				
-				
-				
-				
-				
-				
+				</td>	
 				
 			</tr>
 			

@@ -74,7 +74,7 @@ class LeagueController extends Controller
 			
 			$nameImgToStore = $imgLeagueFile->hashName();
 			
-			$pathImgStored = $request->file('league_img')->storeAs('league_imgs',
+			$pathImgStored = $request->file('league_img')->storeAs('public/league_imgs',
 				$nameImgToStore);
 			
 			$request->request->add(['league_img_name' => $pathImgStored]);
@@ -152,10 +152,10 @@ class LeagueController extends Controller
 			//Create a unique file name for the image, in order to store it
 			$nameImgToStore = $imgLeagueFile->hashName();
 			//Store the image in the 'league_imgs' folder with the hashed name:
-			$pathImgStored = $request->file('league_img')->storeAs('league_imgs',
+			$pathImgStored = $request->file('league_img')->storeAs('public/league_imgs',
 				$nameImgToStore);
 			//Delete the old image:
-			$oldImgNamePath = public_path() ."/storage/". $league->league_img_name;
+			$oldImgNamePath = public_path() ."/storage/public/". $league->league_img_name;
 			if(File::exists($oldImgNamePath)){
 				//unlink($oldImgNamePath);
 				File::delete($oldImgNamePath);
@@ -191,7 +191,7 @@ class LeagueController extends Controller
         $league = League::find($id);
 
         //Delete the old image:
-		$oldImgNamePath = public_path() ."/storage/". $league->league_img_name;
+		$oldImgNamePath = public_path() ."/storage/public/". $league->league_img_name;
 		if(File::exists($oldImgNamePath)){
 			File::delete($oldImgNamePath);
 		}

@@ -4,10 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link href={{ URL::asset('css/app.css') }} rel="stylesheet" >
 	<title>CupApp</title>
-	@vite('resources/css/forms_design.css')
 	@vite('resources/css/app.css')
+	<link rel="stylesheet" href="{{ asset('css/iconStyles.css') }}">
 </head>
 
 
@@ -23,10 +22,10 @@
 	<main>
 		
 		
-		<div class="create-team-container">
-			<div class="create-team-inner-container">
+		<div class="create-league-container">
+			<div class="create-league-inner-container">
 				<h3>Create a new team</h3>
-				<form class="create-team-form" action="{{ route('teams.store', $league->league_id) }}" method="post" enctype="multipart/form-data">
+				<form class="create-league-form" action="{{ route('teams.store', $league->league_id) }}" method="post" enctype="multipart/form-data">
 					@csrf
 					@method('POST')
 					<!--TEAM NUMBER -->
@@ -192,12 +191,12 @@
 					<div class="actions-row">
 						<div class="btn-container">
 							<button type="submit" class="btn-create">
-								<img class="btn-img" src="{{ asset('img/create.png') }}"> 
+								<span class="icon icon-league-link icon-create"></span> 
 								Create team</button>
 						</div>
 
 						<a href="{{ route('matches.index', [ 'league'=>$league->league_id ]) }}" class="btn-cancel">
-						<img class="btn-img" src="{{ asset('img/cancel.png') }}"> 
+							<span class="icon icon-league-link icon-cancel"></span> 
 						Cancel
 						</a>
 

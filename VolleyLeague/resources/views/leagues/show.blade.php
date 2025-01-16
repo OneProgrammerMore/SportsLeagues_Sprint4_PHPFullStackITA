@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link href={{ URL::asset('css/app.css') }} rel="stylesheet" >
 	<title>CupApp</title>
 	@vite('resources/css/app.css')
+	<link rel="stylesheet" href="{{ asset('css/iconStyles.css') }}">
 </head>
 
 
@@ -29,7 +29,7 @@
 			<div class="league-container-show">
 					<div class="league-info-show">
 						<div class="league-img-show">
-							<img  src="{{ asset($league->league_img_name ? 'storage/'.$league->league_img_name : 'img/league.png' )}}" alt="Web Logo - The image of a Tournament Cup">
+							<img  src="{{ asset($league->league_img_name ? 'storage/public/'.$league->league_img_name : 'img/league.png' )}}" alt="Web Logo - The image of a Tournament Cup">
 						</div>
 						<div class="league-data">
 							
@@ -109,19 +109,24 @@
 						</div>
 					
 					</div>
-					<div class="league-actions">
+					<div class="league-actions-show">
 						
-						<form action="{{ route('leagues.edit', $league->league_id) }}" method="post">
+						<form class="league-info-link league-link" action="{{ route('leagues.edit', $league->league_id) }}" method="post">
 							@csrf
 							@method('GET')
-							<button type="submit" class="btn-edit">Edit</button>
+							<button type="submit" class="btn-edit">
+							<span class="icon icon-league-link icon-pencil"></span>	
+							Edit</button>
 						</form>
 						
 						
-						<form action="{{ route('leagues.destroy', $league->league_id) }}" method="post">
+						<form class="league-info-link league-link" action="{{ route('leagues.destroy', $league->league_id) }}" method="post">
 							@csrf
 							@method('DELETE')
-							<button type="submit" class="btn-delete">Delete</button>
+							
+							<button type="submit" class="btn-delete">
+							<span class="icon icon-league-link icon-trash"></span>	
+							Delete</button>
 						</form>
 					
 					</div>

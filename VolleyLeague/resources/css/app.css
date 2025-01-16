@@ -1,6 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+    --icon-color: white;
+    --submit-button-color: rgb(22 101 52);
+    --cancel-button-color: rgb(153 27 27);
+    --button-hover-color: white;
+    --info-icon-color-hover: blue;
+    --edit-icon-color-hover: #C232B1
+}
 
 html{
 	@apply w-full h-full;
@@ -10,11 +18,29 @@ body{
 	@apply w-full bg-slate-100 m-auto;
 }
 
+.icon-league-link{
+	font-size: 24px;
+	@apply mx-0.5 my-0.5;
+}
+
+
 #navBar{
 	@apply flex flex-row flex-wrap bg-slate-400 w-full;
 	@apply justify-between;
 
 }
+.link-nav{
+	@apply ml-4 font-semibold text-gray-600;
+}
+.link-nav-section{
+	@apply text-black;
+	@apply flex flex-row flex-wrap justify-center items-center;
+}
+
+.link-nav{
+	@apply hover:text-white;
+}
+
 #webName{
 	@apply ml-5 mr-5;
 	@apply text-2xl font-bold;
@@ -93,20 +119,20 @@ main{
 	@apply mt-5;
 }
 
-.league-info, .league-links, .league-actions{
-	@apply px-5;
-}
-
 .league-info{
 	@apply flex flex-wrap flex-row justify-items-center content-center;
 	@apply justify-start;
-	@apply m-4;
-
 }
 .league-info-show{
 	@apply flex flex-wrap flex-row justify-items-center content-center;
 	@apply justify-center;
 	@apply m-4;
+}
+
+.league-img{
+	@apply flex flex-wrap flex-row justify-items-center content-center;
+	@apply justify-center;
+	@apply min-w-52;
 }
 
 .league-img, .league-data, .league-img-show{
@@ -137,8 +163,8 @@ main{
 }
 
 .league-imgs-index{
-	width: 200px;
-	height: auto;
+	max-width: 200px;
+    max-height: 200px;
 	@apply self-center;
 }
 .title-bold{
@@ -155,7 +181,12 @@ main{
 	@apply flex flex-wrap flex-row justify-items-center content-center;
 	@apply justify-end;
 	width: auto;
-
+}
+.league-actions-show{
+	@apply flex flex-wrap flex-row justify-items-center content-center;
+	@apply justify-center;
+	width: auto;
+	@apply my-2;
 }
 .league-actions > form{
 	@apply flex flex-wrap flex-row justify-items-center content-center;
@@ -173,18 +204,16 @@ main{
 	@apply flex flex-wrap flex-row justify-items-center content-center justify-between;
 }
 
+.form-actions-players{
+	@apply flex flex-wrap flex-row justify-items-center content-center justify-end w-full my-2;
+}
+
 
 .league-interactions-all{
-	@apply flex flex-wrap flex-row justify-items-center content-center justify-around;
+	@apply flex flex-wrap flex-row justify-items-center content-center justify-between;
 	@apply mt-1 mb-4;
 }
 
-/*
-.league-links > div {
-	@apply rounded-md border-2 border-solid border-black;
-	@apply py-2 px-4;
-	@apply mx-4;
-}*/
 
 
 
@@ -238,18 +267,9 @@ main{
 	@apply text-center;
 }
 
-
-
-
-
-
 .section-form-group, .form-group-main{
 	@apply flex flex-wrap flex-col justify-items-center content-center;
-	
 	@apply my-4;
-	
-	/*@apply rounded-md border-2 border-solid border-black;*/
-	
 }
 .form-group-main > .form-group{
 	@apply flex flex-wrap flex-col justify-items-center content-center;
@@ -296,23 +316,7 @@ input, textarea{
 }
 
 
-/* FOR CREATE LEAGUE */
-
-.create-league-container{
-	@apply flex flex-wrap flex-col justify-items-center content-center;
-	@apply p-4 my-4;
-	@apply w-full;
-	/*@apply rounded-md border-2 border-solid border-black;*/
-}
-
-/*color for form sections*/
-.create-league-inner-container > h3, .create-league-inner-container > form {
-	@apply bg-slate-300;
-	@apply py-2 my-3;
-}
-
-
-.create-league-inner-container > h3, .match-edit-form > h3 {
+.match-edit-form > h3 {
 	@apply text-3xl font-bold text-center;
 	
 }
@@ -320,24 +324,6 @@ input, textarea{
 	@apply w-full;
 	@apply bg-slate-300;
 	@apply py-2 my-3;
-}
-
-.create-league-form:hover, .edit-league-form:hover{
-	border-left: 5px solid purple;
-	transition: border-color 200ms;
-}
-.create-league-form, .edit-league-form{
-	border-left: 5px solid blue;
-	transition: border-color 200ms;
-}
-
-
-.create-league-inner-container > form > .form-group > h3, .create-league-inner-container > form > .form-group > label{
-	@apply m-0 p-0;
-}
-
-.create-league-inner-container > form > .form-group > select{
-	@apply rounded-md border border-solid border-black;
 }
 
 /* FOR EDIT LEAGUE */
@@ -353,8 +339,11 @@ input, textarea{
 	@apply text-3xl font-bold text-center;
 }
 
-.edit-league-inner-container > h3, .edit-league-inner-container > form{
+.edit-league-inner-container > h3{
 	@apply bg-slate-300;
+}
+
+.edit-league-inner-container > h3, .edit-league-inner-container > form{
 	@apply py-2 my-3;
 }
 
@@ -443,28 +432,29 @@ input, textarea{
 
 /* TEAM CREATE create.team.blade */
 
-.create-team-container{
+.create-league-container{
 	@apply flex flex-wrap flex-col justify-items-center content-center;
 	@apply p-4 my-4;
 	@apply w-full;
-	/*@apply rounded-md border-2 border-solid border-black;*/
 }
 
-.create-team-form{
+.create-league-inner-container{
+	width: 700px;
+}
+
+.create-league-form{
 	@apply flex flex-wrap flex-col justify-items-center content-center w-full;
 }
-
-/*Color form create team*/
-.create-team-inner-container > h3{
+.create-league-inner-container > h3{
 	@apply bg-slate-300;
 	@apply py-4;
 	@apply my-4;
 }
 
-.create-team-inner-container > h3 {
+.create-league-inner-container > h3 {
 	@apply text-3xl font-bold text-center;
 }
-.create-team-inner-container > form > .form-group-main > h3, .create-team-inner-container > form > .form-group-main > label{
+.create-league-inner-container > form > .form-group-main > h3, .create-league-inner-container > form > .form-group-main > label{
 	@apply m-0 p-0;
 }
 
@@ -497,7 +487,7 @@ input, textarea{
 }
 
 .form-group > input, .form-group > textarea{
-	@apply w-full m-0 p-0 px-4;;
+	@apply w-full m-0 p-0 px-4;
 }
 /* VIEW MATCHES */
 
@@ -544,8 +534,9 @@ input, textarea{
 	/*@apply rounded-md border-2 border-solid border-black;*/
 }
 
-.edit-team-form{
+.edit-league-form{
 	@apply flex flex-wrap flex-col justify-items-center content-center w-full;
+	background-color: none;
 }
 
 .edit-team-inner-container > h3 {
@@ -617,7 +608,7 @@ input, textarea{
 
 .container-team-logo > img{
 	
-	width: 75px;
+	width: 12em;
 	height: auto;
 
 }
@@ -683,9 +674,15 @@ input, textarea{
 
 /* BUTTONS */
 
+.league-link:hover a, .league-link:hover a span, .league-link:hover button, .league-link:hover span{
+	color: var(--button-hover-color);
+}
+.btn-create:hover, .btn-create:hover span, .btn-cancel:hover, .btn-cancel:hover span{
+	color: var(--button-hover-color);
+}
+
 .btn-create, .btn-delete, .btn-info, .btn-edit, .league-link, .btn-cancel{
 	@apply rounded-full;
-	@apply px-4;
 	@apply text-center;
 	@apply mx-2;
 }
@@ -697,10 +694,8 @@ input, textarea{
 	@apply text-slate-200 font-bold;
 	@apply min-w-40;
 }
-.btn-create, .btn-cancel{
-	@apply w-56 h-16;
-}
-.btn-delete , .btn-edit, .btn-info, .league-link >*{
+
+.btn-create, .btn-delete , .btn-edit, .btn-info, .league-link >*{
 	@apply w-auto;
 }
 
@@ -742,11 +737,11 @@ input, textarea{
 }
 
 .league-actions > form, .team-actions > form{
-	@apply py-2 px-4;
+	@apply py-1;
 }
 
-.link-info, .btn-edit, .btn-delete, .btn-create, .btn-cancel{
-	@apply flex flex-wrap flex-row justify-center content-center text-center content-center items-center;
+.link-info, .btn-edit, .btn-delete, .btn-create, .btn-cancel, .button-container{
+	@apply flex flex-wrap flex-row justify-center content-center text-center content-center items-center align-middle;
 }
 
 .btn-img{
@@ -981,3 +976,331 @@ label{
 .required {
   color: orange;
 }
+
+
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  display: block;
+  width: 100%;
+  /*height: 100%;*/
+  height: auto;
+  border: none;
+  font-size: 17px;
+  border-bottom: 2px solid black;
+}
+
+
+
+.form-group select {
+
+  /* styling */
+  background-color: white;
+  border: thin solid blue;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+
+  /* reset */
+
+  margin: 0;      
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+.form-group select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+}
+.form-group select:focus {
+  background-image:
+    linear-gradient(45deg, green 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, green 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 15px) 1em,
+    calc(100% - 20px) 1em,
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+  border-color: green;
+  outline: 0;
+}
+
+.check-link{
+	background-color: var(--submit-button-color);
+}
+
+.cancel-link{
+	background-color: var(--cancel-button-color);
+}
+
+
+/*Footer*/
+footer{
+	@apply bg-slate-500;
+	@apply flex flex-wrap flex-col justify-items-center content-center items-center;
+	@apply my-4 py-16;
+}
+
+.footer-link-container{
+	@apply flex flex-wrap flex-row justify-items-center content-center;
+}
+
+.link-footer{
+	@apply flex flex-wrap flex-row justify-items-center content-center items-center;
+	@apply mx-4;
+	@apply text-center;
+}
+
+.link-footer:hover, .link-footer:hover snap{
+	color: var(--button-hover-color);
+}
+
+.footer-img{
+	@apply mr-4;
+	height: 30px;
+	width: auto;
+}
+
+
+/* Comp Players */
+.players-all-container{
+	@apply flex flex-col flex-wrap justify-center content-center text-center items-center;
+	@apply w-full;
+}
+
+.player-container{
+	@apply flex flex-col flex-wrap justify-between content-center text-center items-center;
+	@apply w-full;
+	@apply my-4;
+}
+
+.players-container-title{
+	@apply bg-black text-white;
+	@apply w-full;
+	@apply py-4 my-4;
+	@apply text-2xl font-bold;
+}
+
+.player-container:nth-child(even){
+	@apply bg-slate-300;
+}
+.player-container:nth-child(odd){
+	@apply bg-slate-500;
+}
+
+.player-info{
+	@apply flex flex-row flex-wrap justify-start content-center text-center items-center;
+	@apply w-full;
+	@apply mt-3;
+	
+}
+
+.player-photo{
+	@apply ml-7;
+}
+
+.player-img{
+	width: 200px;
+	height: auto;
+}
+
+
+.player-team-info{
+	@apply text-3xl font-bold;
+}
+
+.player-data-col{
+	@apply ml-4;
+	@apply flex flex-col flex-wrap justify-start content-start text-center items-start;
+	
+}
+.player-data-all-container{
+	@apply ml-4;
+}
+
+.player-data-all-container * {
+	@apply text-start;
+}
+.player-name{
+	@apply text-2xl font-bold;
+}
+.player-data{
+	@apply flex flex-row flex-wrap justify-start content-center text-center items-center;
+}
+.player-body{
+	@apply flex flex-row flex-wrap justify-center content-center text-start items-center;
+}
+.player-data > h3{
+	@apply font-bold text-xl;
+}
+.player-data > h2{
+	@apply text-xl;
+	@apply mx-4;
+}
+
+
+.player-actions{
+	@apply flex flex-row flex-wrap justify-around content-center text-center items-center;
+	@apply w-full;
+	@apply my-4;
+}
+
+.btn-players-action{
+	@apply flex flex-row flex-wrap justify-start content-center text-center items-center;
+	@apply w-28;
+}
+
+/*RANKINGs*/
+
+
+.ranking-table-section{
+
+	@apply flex flex-wrap flex-col justify-items-center content-center items-center;
+	@apply my-4;
+	@apply w-full;
+	@apply bg-slate-300;
+}
+
+.ranking-table-title{
+	@apply w-full;
+	@apply bg-black text-white text-center text-2xl;
+}
+
+.ranking-table{
+	@apply table-auto;
+	@apply w-full;
+}
+
+.ranking-table tr:nth-child(odd){
+	@apply bg-slate-100;
+}
+
+.ranking-table tr:nth-child(even){
+	@apply bg-slate-500;
+}
+
+.ranking-table  tr:nth-child(1){
+	@apply bg-slate-900;
+	@apply text-white;
+}
+
+
+.ranking-table-row > td{
+	@apply text-center m-auto;
+}
+
+.team-name-table-data{
+	@apply flex flex-row flex-wrap justify-center content-center text-center items-center;
+	@apply my-auto;
+}
+
+.team-name-table-data > img{
+	@apply mx-3;
+}
+
+.ranking-team-img{
+	width: 30px;
+	height: auto;
+}
+
+.ranking-actions-icon-img{
+	width: 50px;
+	height: auto;
+}
+
+/*RESULTS TABLE*/
+
+.results-table-section{
+
+	@apply flex flex-wrap flex-col justify-items-center content-center items-center;
+	@apply my-4;
+	@apply w-full;
+	@apply bg-slate-300;
+}
+
+.results-table-title{
+	@apply w-full;
+	@apply bg-black text-white text-center text-2xl;
+}
+
+.results-table{
+	@apply table-auto;
+	@apply w-full;
+}
+
+.results-table tr:nth-child(odd){
+	@apply bg-slate-100;
+}
+
+.results-table tr:nth-child(even){
+	@apply bg-slate-500;
+}
+
+.results-table  tr:nth-child(1){
+	@apply bg-slate-900;
+	@apply text-white;
+}
+
+
+.results-table-row > td{
+	@apply text-center m-auto;
+}
+
+.team-name-table-data{
+	@apply flex flex-row flex-wrap justify-center content-center text-center items-center;
+	@apply my-auto;
+}
+
+.team-name-table-data > img{
+	@apply mx-3;
+}
+
+.results-team-img{
+	width: 30px;
+	height: auto;
+}
+
+.results-actions-icon-img{
+	width: 50px;
+	height: auto;
+}
+
+
+/*RESULTS TABLE AND RANKING ICONS */
+
+.results-table .icon-info, .match-main-info-table .icon-info{
+	@apply text-4xl;
+}
+
+.results-table .icon-info:hover, .match-main-info-table .icon-info:hover{
+	color: var(--info-icon-color-hover);
+}
+
+.results-table .icon-pencil:hover, .match-main-info-table .icon-pencil:hover{
+	color: var(--edit-icon-color-hover);
+}
+
+ 

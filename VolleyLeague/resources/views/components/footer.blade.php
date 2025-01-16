@@ -1,30 +1,25 @@
 <footer>
-    @vite('resources/css/comp_footer.css')
     <div class="footer-link-container">
 		
 		<a class="link-footer" href={{ route('footer.home') }}>
-			<img class="footer-img" src="{{ asset('img/home.png') }}"> 
+			<span class="icon icon-league-link icon-home"></span>
 			Home
 		</a>
 		
 		<a class="link-footer" href={{ route('footer.about-us') }}>
-			<img class="footer-img" src="{{ asset('img/about-us.png') }}">
+			<span class="icon icon-league-link icon-info"></span>
 			About Us
 		</a>
 		
 		<a class="link-footer" href={{ route('footer.contact') }}>
-			<img class="footer-img" src="{{ asset('img/contact.png') }}">
+			<span class="icon icon-league-link icon-contact"></span>
 			Contact
 		</a>
 		
 		<a class="link-footer" href={{ route('footer.legal') }}>
-			<img class="footer-img" src="{{ asset('img/legal.png') }}">
+			<span class="icon icon-league-link icon-legal"></span>
 			Legal
 		</a>
 		
-		
     </div>
-    
-    
-    
 </footer>

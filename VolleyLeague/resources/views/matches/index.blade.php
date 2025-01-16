@@ -4,10 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link href={{ URL::asset('css/app.css') }} rel="stylesheet" >
 	<script src="{{ asset('js/index_matches.js')}}"></script>
 	<title>CupApp</title>
 	@vite('resources/css/app.css')
+	<link rel="stylesheet" href="{{ asset('css/iconStyles.css') }}">
 </head>
 
 
@@ -38,10 +38,8 @@
 					</div>
 					</form>
 					
-					
-					
 					<button onclick="openSelectWeeksForm()">
-						<img class="tool-bar-img" src="{{ asset('img/search.png') }}" alt="Search!"> 
+						<span class="icon icon-league-link icon-search"></span> 
 						</button>
 				</div>
 						
@@ -54,12 +52,7 @@
 			
 			<div class="search-tool">
 				<div id="search-week">
-					
-					
-					
-					
-					
-					
+
 					<form class="search-tool-form" action="{{ route('matches.index', $league->league_id) }}" method="post" >
 						
 						@csrf
@@ -88,7 +81,7 @@
 						
 						<div class="btn-container-tool">
 							<button type="submit" class="btn-create">
-								<img class="btn-img-tool" src="{{ asset('img/search.png') }}"> 
+								<span class="icon icon-league-link icon-search"></span> 
 								Search weeks!</button>
 						</div>
 						
@@ -97,9 +90,6 @@
 			</div>
 			
 		</div>
-	
-	
-	
 	
 	</div>
 	
@@ -152,19 +142,19 @@
 						<td>{{ $match->only_date ?? ""}} <br> {{ $match->only_time ?? ""}}</td>
 						<td>{{ $match->host_name ?? ""}}</td>
 						<td>
-							<img class="team-img-matches" src="{{ asset('storage/'.$match->host_img)}}" alt="Host Team Image">
+							<img class="team-img-matches" src="{{ asset('storage/public/'.$match->host_img)}}" alt="Host Team Image">
 						</td>
 						<td>{{ $match->host_points ?? "0"}}</td>
 						<td>-</td>
 						<td>{{ $match->guest_points ?? "0"}}</td>
 						<td>
-							<img class="team-img-matches" src="{{ asset('storage/'.$match->guest_img)}}" alt=">Guest Team Image">
+							<img class="team-img-matches" src="{{ asset('storage/public/'.$match->guest_img)}}" alt=">Guest Team Image">
 						</td>
 						<td>{{ $match->guest_name ?? ""}}</td>
 						<td>
 							<a href="{{ route('matches.show', ['league'=> $league->league_id, 'match' =>$match->match_id ]) }}">
 							<i class="infoIcon">
-								<img class="moreInfoIcon" src="{{ asset('img/eye_info.png')}}" alt="More Info About The Match">
+								<span class="icon icon-league-link icon-info"></span> 
 							</i>
 							</a>
 						</td>
@@ -172,7 +162,7 @@
 						<td>
 							<a href="{{ route('matches.edit', ['league'=> $league->league_id, 'match' =>$match->match_id ]) }}">
 							<i class="infoIcon">
-								<img class="moreInfoIcon" src="{{ asset('img/edit.png')}}" alt="Edit About The Match">
+								<span class="icon icon-league-link icon-pencil"></span> 
 							</i>
 							</a>
 						</td>
@@ -207,7 +197,7 @@
 			Try creating a new Match!
 		</h2>
 		<a class="btn-create" href="{{ route('matches.create', [ 'league'=>$league->league_id ] ) }}"> 
-		<img class="btn-img" src="{{ asset('img/create.png') }}">
+		<span class="icon icon-league-link icon-create"></span> 
 		Create Match </a>
 	</div>
 
@@ -219,7 +209,7 @@
 			In order to create another Match click the button!
 		</h2>
 			<a class="btn-create" href="{{ route('matches.create', [ 'league'=>$league->league_id ] ) }}"> 
-			<img class="btn-img" src="{{ asset('img/create.png') }}">
+			<span class="icon icon-league-link icon-create"></span> 
 			Create Match </a>
 	</div>
 	
@@ -232,7 +222,7 @@
 	@endphp
 	
 	@if(isset($league_type) and $league_type == "Beach Volleyball")
-		<x-results.beachVolleyballResults :leagueId="$leagueId" />
+		<x-results.beachVolleyballResults :leagueId="$leagueId" /> 
 		<x-rankings.beachVolleyballRanking :leagueId="$leagueId"/>
 		<x-legends.beachVolleyballLegend/>
 	@elseif($league_type == "Basketball 3vs3 Simple")

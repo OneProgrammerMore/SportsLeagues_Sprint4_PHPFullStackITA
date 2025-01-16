@@ -15,7 +15,7 @@ function openSelectWeeksForm(){
 	
 }
 
-function showMoreInfoMatches(){
+function showMoreInfoMatchesOld(){
 	
 	coll = document.getElementsByClassName("match-table-row-address");
 	
@@ -25,6 +25,19 @@ function showMoreInfoMatches(){
 	}else{
 		changeStyle(coll, "display", "table-row");
 	}
+}
+
+function showMoreInfoMatches(){
+	
+	let elements = document.querySelectorAll(".match-table-row-address"); // Select elements by class
+
+    elements.forEach(element => {
+		if(element.style.display == "table-row"){
+			element.style.display = "none"; // Change display to table-row if text exists
+		}else if(element.textContent.trim() !== ""){
+			element.style.display = "table-row"; // Change display to table-row if text exists
+		}
+    });
 }
 
 function changeStyle(coll, styleProperty, styleChange){
@@ -50,13 +63,7 @@ function addColorStyleToTableByRowClass(rowClassName){
     }
 	
 }
-/*
-addColorStyleToTableByRowClass("match-table-row");
-addColorStyleToTableByRowClass("match-table-row-address");
 
-window.addColorStyleToTableByRowClass("match-table-row");
-window.addColorStyleToTableByRowClass("match-table-row-address");
-*/
 document.addEventListener('DOMContentLoaded', function(){
 	addColorStyleToTableByRowClass("match-table-row");
 	addColorStyleToTableByRowClass("match-table-row-address");

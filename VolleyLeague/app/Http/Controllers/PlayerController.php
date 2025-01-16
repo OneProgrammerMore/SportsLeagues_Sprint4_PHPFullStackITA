@@ -78,12 +78,11 @@ class PlayerController extends Controller
 			//Create an unique name in order to store the image using it
 			$nameImgToStore = $imgPlayerFile->hashName();
 			//Store the image in the public /team_imgs/ folder
-			$pathImgStored = $request->file('player_img')->storeAs('player_imgs',
+			$pathImgStored = $request->file('player_img')->storeAs('public/player_imgs',
 				$nameImgToStore);
 			//Add the final name of the image to the request (the name within it has been stored)	
 		}else{
 			//If there is no image store an empty string
-			//$request->request->add(['team_img_name' => ""]);
 			$pathImgStored = "";
 		}
 
@@ -192,7 +191,7 @@ class PlayerController extends Controller
 			//Create a unique file name for the image, in order to store it
 			$nameImgToStore = $imgPlayerFile->hashName();
 			//Store the image in the 'league_imgs' folder with the hashed name:
-			$pathImgStored = $request->file('player_img')->storeAs('player_imgs',
+			$pathImgStored = $request->file('player_img')->storeAs('public/player_imgs',
 				$nameImgToStore);
 			//Delete the old image:
 			$oldImgNamePath = public_path() ."/storage/". $player->player_img_name;
@@ -200,9 +199,6 @@ class PlayerController extends Controller
 				//unlink($oldImgNamePath);
 				File::delete($oldImgNamePath);
 			}
-			
-			//$request->request->add(['player_img_name' => $pathImgStored]);
-			//$request->request->add(['player_img_name' => $pathImgStored]);
 			$playerData += array('player_img_name' => $pathImgStored);
 		}
 		

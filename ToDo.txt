@@ -46,7 +46,7 @@ To Do Sprint 4 - Leagues Web
 	- [ ] Player Info
 		- [ ] Height & Weight Same Style as E-Mail and Phone
 		- [ ] Buttons Centered Left with NO Padding between buttons
-		- [ ] 
+		- [ ] FIX - Phone has and ending "s"
 
 	- [ ] Forms (League & Team & Player)
 		- [ ] Same design for all

@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link href={{ URL::asset('css/app.css') }} rel="stylesheet" >
 	<title>CupApp</title>
 	@vite('resources/css/app.css')
+	<link rel="stylesheet" href="{{ asset('css/iconStyles.css') }}">
 </head>
 
 
@@ -41,7 +41,7 @@
 			
 			<div class="container-match-info">
 				<div class="container-team-logo">
-					<img class="team-img-match" src="{{ asset('storage/'.$host_team->team_img_name)}}" alt="Host Team Image">
+					<img class="team-img-match" src="{{ asset('storage/public/'.$host_team->team_img_name)}}" alt="Host Team Image">
 				</div>
 				
 				
@@ -67,27 +67,27 @@
 				</div>
 				
 				<div class="container-team-logo">
-					<img class="team-img-match" src="{{ asset('storage/'.$guest_team->team_img_name)}}" alt="Host Team Image">
+					<img class="team-img-match" src="{{ asset('storage/public/'.$guest_team->team_img_name)}}" alt="Host Team Image">
 				</div>
 				
 				
 			
 			</div>
 			<div class="match-actions">
-				<form action="{{ route('matches.edit',[ 'league'=>$league->league_id, 'match'=>$match->match_id]) }}" method="post">
+				<form class="league-info-link league-link" action="{{ route('matches.edit',[ 'league'=>$league->league_id, 'match'=>$match->match_id]) }}" method="post">
 					@csrf
 					@method('GET')
 					<button type="submit" class="btn-edit">
-						<img class="btn-img" src="{{ asset('img/edit.png') }}"> 
+						<span class="icon icon-league-link icon-pencil"></span> 
 						Edit</button>
 				</form>
 						
 						
-				<form action="{{ route('matches.destroy',[ 'league'=>$league->league_id, 'match'=>$match->match_id]) }}" method="post">
+				<form class="league-info-link league-link" action="{{ route('matches.destroy',[ 'league'=>$league->league_id, 'match'=>$match->match_id]) }}" method="post">
 					@csrf
 					@method('DELETE')
 					<button type="submit" class="btn-delete">
-						<img class="btn-img" src="{{ asset('img/delete.png') }}"> 
+						<span class="icon icon-league-link icon-trash"></span> 
 						Delete</button>
 				</form>
 			</div>

@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link href={{ URL::asset('css/app.css') }} rel="stylesheet" >
 	<title>CupApp</title>
-	@vite('resources/css/comp_footer.css')
 	@vite('resources/css/app.css')
 	@vite('resources/css/legal.css')
+	<link rel="stylesheet" href="{{ asset('css/iconStyles.css') }}">
 	
 </head>
 

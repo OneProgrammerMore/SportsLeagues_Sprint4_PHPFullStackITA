@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link href={{ URL::asset('css/app.css') }} rel="stylesheet" >
 	<title>CupApp</title>
 	@vite('resources/css/app.css')
+	<link rel="stylesheet" href="{{ asset('css/iconStyles.css') }}">
 </head>
 
 
@@ -26,11 +26,12 @@
 		<!-- League Results -->
 		<!-- League Next Matches -->
 		
-		<div class="team-info-container">
-			<div class="team-main-container">
+		<div class="league-info-container-show">
+			<div class="league-container-show">
+				<div class="league-info-show">
 					<div class="team-info-name">
 						<div class="team-img">
-							<img id="webLogoImg" src="{{ asset( $team->team_img_name ? 'storage/'.$team->team_img_name : 'img/team.png' )}}" alt="Image of the team">
+							<img class="league-imgs-index" src="{{ asset( $team->team_img_name ? 'storage/public/'.$team->team_img_name : 'img/team.png' )}}" alt="Image of the team">
 						</div>
 						<h3 class="team-name">{{ $team->team_name }}</h3>
 					</div>
@@ -72,24 +73,26 @@
 							</h3>
 						</div>
 					</div>
+				</div>
+				<div class="league-actions-show">
+						
+					<form class="league-info-link league-link" action="{{ route('teams.edit', ['league' => $league->league_id, 'team'=> $team->team_id]) }}" method="post">
+						@csrf
+						@method('GET')
+						<button type="submit" class="btn-edit">
+							<span class="icon icon-league-link icon-pencil"></span>
+						Edit</button>
+					</form>
 					
 					
-					<div class="team-actions">
-						
-						<form action="{{ route('teams.edit', ['league' => $league->league_id, 'team'=> $team->team_id]) }}" method="post">
-							@csrf
-							@method('GET')
-							<button type="submit" class="btn-edit">Edit</button>
-						</form>
-						
-						
-						<form action="{{ route('teams.destroy', ['league' => $league->league_id, 'team'=> $team->team_id]) }}" method="post">
-							@csrf
-							@method('DELETE')
-							<button type="submit" class="btn-delete">Delete</button>
-						</form>
-					
-					</div>
+					<form class="league-info-link league-link" action="{{ route('teams.destroy', ['league' => $league->league_id, 'team'=> $team->team_id]) }}" method="post">
+						@csrf
+						@method('DELETE')
+						<button type="submit" class="btn-delete">
+							<span class="icon icon-league-link icon-trash"></span>
+						Delete</button>
+					</form>
+				
 				</div>
 		</div>
 		
@@ -115,7 +118,7 @@
 				Try creating a new player!
 			</h2>
 			<a class="btn-create" href="{{ route('players.create', ['league' => $league->league_id, 'team' => $team->team_id] ) }}">
-			<img class="btn-img" src="{{ asset('img/create.png') }}"> 
+			<span class="icon icon-league-link icon-create"></span> 
 			Create PLayer</a>
 		</div>
 
@@ -127,7 +130,7 @@
 				In order to create another player click the button!
 			</h2>
 				<a class="btn-create" href="{{ route('players.create', ['league' => $league->league_id, 'team' => $team->team_id] ) }}">
-				<img class="btn-img" src="{{ asset('img/create.png') }}"> 
+				<span class="icon icon-league-link icon-create"></span> 
 				Create player</a>
 		</div>
 		
