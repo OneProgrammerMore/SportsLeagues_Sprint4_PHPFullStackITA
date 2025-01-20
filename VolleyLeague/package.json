@@ -6,13 +6,15 @@
         "devo": "vite --host",
         "build": "vite build",
         "build2": "vite build && vite build --ssr",
-        "build-css": "tailwindcss build src/styles.css -o public/styles.css"
+        "build-css": "tailwindcss build src/styles.css -o public/styles.css",
+        "format:blade": "blade-formatter --sort-html-attributes --no-multiple-empty-lines  --write \"resources/views/**/*.blade.php\""
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
         "alpinejs": "^3.4.2",
         "autoprefixer": "^10.4.19",
         "axios": "^1.6.4",
+        "blade-formatter": "^1.42.0",
         "laravel-vite-plugin": "^1.0.0",
         "postcss": "^8.4.38",
         "postcss-preset-env": "^10.1.3",

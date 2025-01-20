@@ -1,8 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" {{ $attributes }}
-     viewBox="0 0 640 640">
-  <path id="Imported Path"
-        fill="black" stroke="black" stroke-width="1"
-        d="M 109.00,2.50
+<svg xmlns="http://www.w3.org/2000/svg" {{ $attributes }} viewBox="0 0 640 640">
+    <path id="Imported Path" fill="black" stroke="black" stroke-width="1" d="M 109.00,2.50
            C 101.38,7.12 100.00,11.12 100.00,29.00
              100.00,29.00 100.00,44.88 100.00,44.88
              100.00,44.88 56.62,45.25 56.62,45.25
