@@ -1,10 +1,11 @@
-<?php 
+<?php
+
 namespace App\Enum;
 
-enum MatchStatusEnum:string
+enum MatchStatusEnum: string
 {
-	case PENDING = 'Pending';
-	case ONGOING = 'Ongoing';
-	case FINISHED = 'Finished';
-	case CANCELED = 'Canceled';
+    case PENDING = 'Pending';
+    case ONGOING = 'Ongoing';
+    case FINISHED = 'Finished';
+    case CANCELED = 'Canceled';
 }

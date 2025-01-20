@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LeagueTypes extends Model
 {
     use HasFactory;
-    
-    //Define the name of the primary key in order to locate the correct row with the function Model::find($id);
+
+    // Define the name of the primary key in order to locate the correct row with the function Model::find($id);
     protected $primaryKey = 'league_type_id';
-    
 }

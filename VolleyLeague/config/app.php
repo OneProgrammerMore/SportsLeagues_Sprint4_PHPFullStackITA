@@ -168,13 +168,13 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        
-        //Own Importations in providers MGG:
+
+        // Own Importations in providers MGG:
         Spatie\Html\HtmlServiceProvider::class,
-        //Spatie\Html\Elements\Element:class,
-        //Next Class deferred
-        //Spatie\Html\Elements\Form::class,
-        
+        // Spatie\Html\Elements\Element:class,
+        // Next Class deferred
+        // Spatie\Html\Elements\Form::class,
+
     ])->toArray(),
 
     /*

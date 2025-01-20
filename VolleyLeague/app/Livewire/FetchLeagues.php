@@ -2,35 +2,35 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-
 use App\Models\League;
 use Illuminate\Pagination\Cursor;
 use Illuminate\Support\Collection;
+use Livewire\Component;
 
 class FetchLeagues extends Component
 {
-	/*
+    /*
     public function render()
     {
         return view('livewire.fetch-leagues');
     }*/
-    
-    
-    public $posts;  //TODO - Change variable name to leagues
+
+    public $posts;  // TODO - Change variable name to leagues
+
     public $nextCursor;
+
     public $hasMorePages;
 
     public function mount()
     {
-        $this->posts = new Collection();
+        $this->posts = new Collection;
 
         $this->loadLeagues();
     }
 
     public function loadLeagues()
     {
-        if ($this->hasMorePages !== null  && ! $this->hasMorePages) {
+        if ($this->hasMorePages !== null && ! $this->hasMorePages) {
             return;
         }
 
@@ -45,11 +45,8 @@ class FetchLeagues extends Component
 
     public function render()
     {
-        //return view('livewire.infinite-post-listing')->layout('layouts.base');
-        //return view('livewire.fetch-leagues')->layout('layouts.base');
+        // return view('livewire.infinite-post-listing')->layout('layouts.base');
+        // return view('livewire.fetch-leagues')->layout('layouts.base');
         return view('livewire.fetch-leagues')->layout('layouts.mylayout');
     }
-    
-    
-    
 }

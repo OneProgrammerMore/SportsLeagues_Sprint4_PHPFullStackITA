@@ -1,9 +1,10 @@
-<?php 
+<?php
+
 namespace App\Enum;
 
-enum SexEnum:string
+enum SexEnum: string
 {
-	case MALE = 'Male';
-	case FEMALE = 'Female';
-	case OTHER = 'Other';
+    case MALE = 'Male';
+    case FEMALE = 'Female';
+    case OTHER = 'Other';
 }

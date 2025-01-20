@@ -2,16 +2,15 @@
 
 namespace App\View\Components\Web;
 
+use App\Models\League;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-use App\Models\League;
-
 class Header extends Component
 {
-	
-	public  $leagueId;
+    public $leagueId;
+
     /**
      * Create a new component instance.
      */
@@ -26,14 +25,13 @@ class Header extends Component
      */
     public function render(): View|Closure|string
     {
-        if($this->leagueId == null){
-			 return view('components.web.header-home');
-		}else{
-			$league = League::find($this->leagueId);
-			return view('components.web.header', ['league' => $league]);
-		}
-        
-        
-       
+        if ($this->leagueId == null) {
+            return view('components.web.header-home');
+        } else {
+            $league = League::find($this->leagueId);
+
+            return view('components.web.header', ['league' => $league]);
+        }
+
     }
 }
