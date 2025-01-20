@@ -27,6 +27,21 @@
 
 
 
+.icon-menu:before {
+  content: "\e9bd";
+}
+.icon-pencil:before {
+  content: "\e90c";
+}
+.icon-search:before {
+  content: "\e986";
+}
+.icon-cancel:before {
+  content: "\ea0d";
+}
+.icon-checkmark:before {
+  content: "\ea10";
+}
 .icon-phone:before {
   content: "\e900";
 }
@@ -71,16 +86,4 @@
 }
 .icon-login:before {
   content: "\e90f";
-}
-.icon-pencil:before {
-  content: "\e90c";
-}
-.icon-search:before {
-  content: "\e986";
-}
-.icon-cancel:before {
-  content: "\ea0d";
-}
-.icon-checkmark:before {
-  content: "\ea10";
 }

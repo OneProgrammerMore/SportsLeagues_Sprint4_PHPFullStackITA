@@ -44,21 +44,21 @@
 								<a class="link-info" href="{{ route('matches.index',$league->league_id) }}"> 
 								<span class="icon icon-league-link icon-matches"></span>
 								<!-- <img class="btn-img" src="{{ asset('img/match.png') }}"> -->
-								Matches...</a>
+								Matches</a>
 							</div>
 							
 							<div class="league-teams-link league-link">
 								<a class="link-info" href="{{ route('teams.index', $league->league_id) }}">
 								<!-- <img class="btn-img" src="{{ asset('img/teams.png') }}"> -->
 								<span class="icon icon-league-link icon-teams"></span>
-								Teams...</a>
+								Teams</a>
 							</div>
 							
 							<div class="league-info-link league-link">
 								<a class="link-info" href="{{ route('leagues.show', $league->league_id) }}">
 								<!-- <img class="btn-img" src="{{ asset('img/info.png') }}"> -->
 								<span class="icon icon-league-link icon-info"></span>
-								More Info...</a>
+								Info</a>
 							</div>
 						</div>
 						

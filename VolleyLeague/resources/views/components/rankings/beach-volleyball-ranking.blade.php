@@ -9,11 +9,11 @@
 	@if (isset($teams))
 		<table class="ranking-table" border="1">
 			<tr class="ranking-table-header-row" >
-				<th>Raanking <br> Position</th>
-				<th>Team <br> Logo</th>
-				<th>Team <br> Name</th>
-				<th>Points</th>
-				<th>Games <br> Played</th>
+				<th>Nº</th>
+				<th>Logo</th>
+				<th>Name</th>
+				<th>Pts</th>
+				<th>Nº Games</th>
 				<th>G3</th>
 				<th>G2</th>
 				<th>P1</th>
@@ -29,26 +29,26 @@
 			
 			<tr class="ranking-table-row" >
 				
-				<th>{{ $team->ranking_position ?? ""}}</th>
-				<th>
+				<td>{{ $team->ranking_position ?? ""}}</td>
+				<td>
 					<img class="ranking-team-img" src="{{ asset('storage/public/'.$team->team_img_name)}}" alt="Team Logo Image">
-				</th>
-				<th>{{ $team->team_name ?? ""}}</th>
+				</td>
+				<td>{{ $team->team_name ?? ""}}</td>
 				
 				
-				<th>{{ $team->ranking_points ?? ""}}</th>
-				<th>{{ $team->ranking_games_played ?? ""}}</th>
+				<td>{{ $team->ranking_points ?? ""}}</td>
+				<td>{{ $team->ranking_games_played ?? ""}}</td>
 				
-				<th>{{ $team->ranking_g3 ?? ""}}</th>
-				<th>{{ $team->ranking_g2 ?? ""}}</th>
-				<th>{{ $team->ranking_p1 ?? ""}}</th>
-				<th>{{ $team->ranking_p0 ?? ""}}</th>
-				<th>{{ $team->ranking_pg ?? ""}}</th>
-				<th>{{ $team->ranking_sf ?? ""}}</th>
-				<th>{{ $team->ranking_sc ?? ""}}</th>
-				<th>{{ $team->ranking_pf ?? ""}}</th>
-				<th>{{ $team->ranking_pc ?? ""}}</th>
-				<th>{{ $team->ranking_sanc ?? ""}}</th> <!-- 15 rows -->
+				<td>{{ $team->ranking_g3 ?? ""}}</td>
+				<td>{{ $team->ranking_g2 ?? ""}}</td>
+				<td>{{ $team->ranking_p1 ?? ""}}</td>
+				<td>{{ $team->ranking_p0 ?? ""}}</td>
+				<td>{{ $team->ranking_pg ?? ""}}</td>
+				<td>{{ $team->ranking_sf ?? ""}}</td>
+				<td>{{ $team->ranking_sc ?? ""}}</td>
+				<td>{{ $team->ranking_pf ?? ""}}</td>
+				<td>{{ $team->ranking_pc ?? ""}}</td>
+				<td>{{ $team->ranking_sanc ?? ""}}</td> <!-- 15 rows -->
 
 			</tr>		
 

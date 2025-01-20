@@ -10,20 +10,29 @@
     --edit-icon-color-hover: #C232B1
 }
 
+/*
+*/
+html, button{
+	all: unset;
+}
 html{
+	@apply flex flex-row flex-wrap justify-center items-center m-0 p-0;
 	@apply w-full h-full;
 }
-
+html * {
+	font-family: sans-serif;
+}
 body{
 	@apply w-full bg-slate-100 m-auto;
+	@apply flex flex-col;
+	@apply w-full h-full;
+	@apply justify-between;
 }
 
 .icon-league-link{
 	font-size: 24px;
 	@apply mx-0.5 my-0.5;
 }
-
-
 #navBar{
 	@apply flex flex-row flex-wrap bg-slate-400 w-full;
 	@apply justify-between;
@@ -67,16 +76,15 @@ body{
 }
 
 #navBar, main{
-	@apply w-11/12 m-auto;
+	@apply w-11/12 mx-auto;
+}
+#navBar{
+	@apply my-6;
 }
 	
 main{
 	@apply flex flex-wrap flex-col justify-items-center content-center;
 }
-
-
-
-
 
 #leagues-container, #leagues-inner-container{
 	@apply flex flex-wrap flex-col justify-items-center content-center;
@@ -171,11 +179,15 @@ main{
 	@apply font-bold;
 }
 
-.league-links{
+.league-links, .form-actions{
 	@apply flex flex-wrap flex-row justify-items-center content-center;
 	@apply text-center justify-start;
-	@apply mx-6;
+	@apply mx-2;
 	width: auto;
+}
+.league-link{
+	@apply flex flex-wrap flex-row justify-items-center content-center;
+	@apply p-0 m-0;
 }
 .league-actions{
 	@apply flex flex-wrap flex-row justify-items-center content-center;
@@ -196,13 +208,19 @@ main{
 .actions-row{
 	@apply flex flex-wrap flex-row justify-items-center content-center justify-center;
 }
-
-.actions-row > *{
-	@apply mx-4;
+.actions-row div{
+	@apply flex flex-wrap flex-row justify-items-center content-center justify-center;
+	@apply mx-4;	
 }
+
+button.btn-create, a.btn-cancel{
+	width: 150px !important;
+}
+
+/*
 .form-actions{
 	@apply flex flex-wrap flex-row justify-items-center content-center justify-between;
-}
+}*/
 
 .form-actions-players{
 	@apply flex flex-wrap flex-row justify-items-center content-center justify-end w-full my-2;
@@ -249,9 +267,6 @@ main{
 	@apply text-xl;
 }
 
-
-
-
 .btn-container{
 	@apply flex content-center justify-center;
 	@apply my-2;
@@ -283,17 +298,16 @@ main{
 }
 
 .form-group > input, .form-group > textarea, .form-group > label, .form-group{
-	@apply w-full px-4 mt-1 mb-2;
+	@apply w-full;
 	@apply h-auto;
 }
 .form-group-match  input, .form-group-match  textarea, .form-group-match  label{
-	@apply w-auto px-4;
-	@apply h-auto;
 	margin-top: 4px;
 	margin-bottom: 2px;
 }
 
 .form-group-match{
+	@apply flex flex-wrap flex-col justify-items-center content-center;
 	@apply w-full;
 	@apply my-4 py-4;
 }
@@ -464,6 +478,7 @@ input, textarea{
 .section-form-group{
 	@apply  flex flex-wrap flex-col justify-items-center content-center;
 	@apply w-full;
+	@apply p-4;
 }
 .section-form-group > h3{
 	@apply text-xl font-bold text-left;
@@ -489,6 +504,13 @@ input, textarea{
 .form-group > input, .form-group > textarea{
 	@apply w-full m-0 p-0 px-4;
 }
+/*
+.input-image{
+	
+}*/
+
+
+
 /* VIEW MATCHES */
 
 .moreInfoIcon{
@@ -572,15 +594,21 @@ input, textarea{
 	
 }
 .match-team-name{
-	@apply text-4xl w-80;
+	@apply w-full flex flex-wrap flex-col justify-center content-center;
+	@apply text-4xl w-auto;
 }
-
+/*
 .match-team-name:nth-child(1){
 	@apply flex flex-wrap flex-row-reverse;
 }
 .match-team-name:nth-child(2){
 	@apply flex flex-wrap flex-row;
 }
+
+.match-team-name:nth-child(3){
+	@apply flex flex-wrap flex-row-reverse;
+}
+*/
 .match-team-name-vs{
 	@apply w-auto text-xl;
 }
@@ -598,10 +626,14 @@ input, textarea{
 	@apply w-full flex flex-wrap flex-row justify-center content-center;
 }
 
-.container-match-points > h3{
+.container-team-points{
+	@apply flex flex-wrap flex-col justify-center content-center items-center;
 	@apply text-3xl font-bold m-5;
 }
-
+.container-match-points > h3{
+	@apply flex flex-wrap flex-row justify-center content-center items-center;
+	@apply text-3xl font-bold m-5;
+}
 .container-team-logo{
 	@apply m-auto;
 }
@@ -654,7 +686,7 @@ input, textarea{
 .match-teams-names, .container-match-info, .match-actions{
 	@apply w-full flex flex-wrap flex-row justify-center content-center items-center;
 }
-.container-match-points > h3 > input{
+.container-team-points > input{
 	max-width: 150px;
 
 }
@@ -689,10 +721,9 @@ input, textarea{
 
 .btn-create, .btn-delete , .btn-info, .btn-edit, .league-link >*, .btn-cancel{
 	@apply text-xl;
-	@apply py-2 px-4;
-	
 	@apply text-slate-200 font-bold;
 	@apply min-w-40;
+	@apply py-1.5;
 }
 
 .btn-create, .btn-delete , .btn-edit, .btn-info, .league-link >*{
@@ -757,6 +788,7 @@ input, textarea{
 .btn-create, .btn-cancel{
 	@apply flex flex-wrap flex-row justify-center content-center text-center content-center items-center;
 	align-self: center;
+	@apply px-2;
 }
 
 /*MATCH INDEX matches.index.blade.php */
@@ -770,7 +802,7 @@ input, textarea{
 	@apply h-8 w-full p-3;
 	@apply bg-black;
 	@apply text-2xl text-white;
-	
+	@apply m-auto;
 
 }
 
@@ -808,6 +840,7 @@ input, textarea{
 }*/
 
 .match-table-row{
+	@apply flex flex-wrap flex-row content-center justify-center items-center;
 	@apply border-t border-black;
 }
 
@@ -828,6 +861,7 @@ input, textarea{
 	@apply flex flex-wrap flex-col justify-center content-center items-center;
 	@apply bg-slate-200;
 	@apply border-black border;
+	margin-top: 74px;
 }
 
 #tool-bar{
@@ -848,6 +882,7 @@ input, textarea{
 	@apply w-11/12 m-auto;
 	@apply flex flex-wrap flex-row justify-end;
 	@apply my-1;
+	margin-right: 60px;
 }
 
 .toolbar-switch{
@@ -963,15 +998,6 @@ input:checked + .slider:before {
 
 /* FLOATING LABEL FOR FORMS:*/
 
-/*
-input{
-	@apply block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer;
-}
-label{
-	@applyabsolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto;
-}*/
-
-
 /*Form Required Field*/
 .required {
   color: orange;
@@ -979,9 +1005,7 @@ label{
 
 
 
-.form-group input,
-.form-group textarea,
-.form-group select{
+.form-group input, .form-group textarea, .form-group select{
   display: block;
   width: 100%;
   /*height: 100%;*/
@@ -991,7 +1015,9 @@ label{
   border-bottom: 2px solid black;
 }
 
-
+input[type=file]{
+	@apply m-0 p-0 w-auto;
+}
 
 .form-group select {
 
@@ -1212,18 +1238,24 @@ footer{
 	@apply text-center m-auto;
 }
 
-.team-name-table-data{
+.team-name-table-data, .match-table-row > td {
 	@apply flex flex-row flex-wrap justify-center content-center text-center items-center;
-	@apply my-auto;
+	@apply h-full;
 }
 
-.team-name-table-data > img{
-	@apply mx-3;
+.team-name-table-data > img, .match-table-row > td > img{
+	@apply flex flex-row flex-wrap justify-center content-center text-center items-center;
+}
+
+.team-name-table-data img, .team-name-table-data{
+	display: table-cell;
+	vertical-align: middle;
 }
 
 .ranking-team-img{
 	width: 30px;
 	height: auto;
+	@apply m-auto;
 }
 
 .ranking-actions-icon-img{
@@ -1270,7 +1302,8 @@ footer{
 }
 
 .team-name-table-data{
-	@apply flex flex-row flex-wrap justify-center content-center text-center items-center;
+	@apply flex items-center;
+	@apply h-full;
 	@apply my-auto;
 }
 
@@ -1279,8 +1312,10 @@ footer{
 }
 
 .results-team-img{
-	width: 30px;
-	height: auto;
+	width: auto;
+	height: 35px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 }
 
 .results-actions-icon-img{
@@ -1303,4 +1338,668 @@ footer{
 	color: var(--edit-icon-color-hover);
 }
 
+/* For legends */
+
+
+.legends-section{
+	@apply bg-slate-300;
+	@apply flex flex-wrap flex-col justify-items-center content-center items-center;
+	@apply my-4 py-4;
+	@apply w-full;
+}
+.legends-title{
+	@apply text-xl font-bold text-center;
+
+}
+.legend-list{
+	@apply px-4;
+}
+
+
+/* Component Form Resulst comp_formResults.css*/
+
+
+.form-results-container{
+	@apply w-full;
+}
+
+.form-results{
+	@apply w-full;
+}
+
+.results-form-section{
+	@apply flex flex-wrap flex-row justify-items-center content-center items-start justify-evenly;
+	@apply w-full;
+}
+.form-group-results{
+	width: 40%;
+	@apply flex flex-wrap flex-col justify-items-center content-center items-center justify-evenly;
+}
+
+.form-group-results > h3{
+	@apply text-xl font-bold text-center;
+}
+
+.form-group-results > input, .form-group-results > textarea {
+	@apply mx-1 mb-1 px-2;
+	@apply bg-white;
+	width: 80%;
+} 
+.form-group-results > label{
+	@apply mx-2;
+	@apply text-xl font-bold;
+}
+
+
+/*Menu Responsive*/
+
+
+#menu-icon{
+	position: fixed;
+	right: 10px;
+	top: 10px;
+	display: none;
+}
+#menu-icon *{
+	font-size: 32px;
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) 
+ * @media only screen and (max-width: 935px) {*/
+@media (max-width:900px)  
+{ 
+	
+	main{
+		width: 95%;
+	}
+	
+	
+	/*Menu Navigatior*/
+	#menu-icon{
+		display: inline;
+		z-index: 2;
+	}
+	#navSections{
+		display: inline;
+		position: fixed;
+		@apply flex flex-wrap flex-col justify-items-center content-center items-center;
+		@apply w-full h-full p-0 m-0;
+		left: -100%;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		background-color: grey;
+		overflow-x: hidden;
+		transition: 0.5s;
+		z-index: 1;
+	}
+	.close-i{
+		display: none;
+	}
+	.itemNav{
+		@apply my-2;
+		position: relative;
+		width: 100%;
+	}
+	
+	/*Links - Buttons */
+	.link-info, .link-info *, .btn-edit, .btn-edit * , .btn-delete , .btn-delete *, .btn-info , .btn-info *, .btn-create, .btn-create > a, .btn-create > a > span{
+		@apply text-sm;
+	}
+	.league-links > .league-link, form.league-link{
+		@apply my-0 py-0 mx-1;
+	}
+	.league-link > a{
+		width: 95px;
+		min-width: 0px;
+	}
+	.league-link > button{
+		width: 75px;
+		min-width: 0px;
+	}
+	.league-link{
+		@apply my-0.5;
+	}
+	form.league-link > button{
+		@apply px-0 mx-0;
+	}
+	
+	.link-info, .btn-delete, .btn-edit{
+		@apply py-1;
+	}
+
+	
+	/* Leagues Index Interactions*/
+	.league-interactions-all{
+		@apply flex-col;
+	}
+	.league-links, .form-actions{
+		@apply w-auto my-1;
+	}
+	.league-links{
+		@apply justify-start;
+	}
+	.form-actions{
+		@apply justify-end;
+	}
+	#leagueCreatorNormal > h2{
+		@apply text-sm;
+	}
+	
+	/*Leagues Index */
+	.league-info{
+		@apply justify-center;
+	}
+	
+	
+	/*Matches Index*/
+	.matches-calender-title{
+		font-size: 16px;
+	}
+	.match-table-row-week{
+		font-size: 8px;
+	}
+	.match-table-row * {
+		font-size: 8px !important;
+	}
+	.match-table-row-address{
+		font-size: 8px;
+	}
+	.match-table-row td{
+		@apply p-0;
+	}
+	
+	
+	.ranking-table-title{
+		font-size: 16px;
+	}
+	.ranking-table-header-row{
+		font-size: 8px;
+	}
+	.ranking-table-header-row *{
+	font-size: 8px;
+	}
+	.ranking-table-row *{
+	font-size: 8px !important;
+	}
+	
+	.results-table-title{
+	font-size: 16px;
+	}
+	.results-table-header-row *{
+	font-size: 8px;
+	}
+	.results-table-row *{
+	font-size: 8px !important;
+	}
+	
+	
+	/*Footer*/
+	.link-footer{
+		@apply mx-1;
+	}
+	.link-footer, .link-footer > span{
+		@apply text-sm;
+	}
+	
+	
+	/*Leagues Images*/
+	.league-img-show > img{
+		height: 100px;
+		width: auto;
+	}
+	.league-header{
+		@apply text-lg;
+	}
+	.league-data-field{
+		@apply text-base;
+	}
+	
+	/*Teams Images */
+	div.team-img{
+		@apply w-full flex flex-col flex-wrap justify-center text-center items-center;
+	}
+	.team-img{
+		@apply w-auto;
+		@apply flex flex-col flex-wrap justify-center text-center;
+		max-height: 100px;
+	}
+	.team-data{
+		@apply w-full;
+	}
+	.team-actions{
+		@apply justify-center;
+	}
+	
+	/*Team Show/Info*/
+	.team-name{
+		@apply w-full flex flex-col flex-wrap justify-center text-center items-center;
+		justify-content: center  !important;
+	}
+	.league-info-show > *, .team-data > *{
+		@apply w-full;
+	}
+	.player-team-info{
+		@apply text-lg;
+	}
+	.player-name{
+		@apply text-base;
+	}
+	.form-actions-players{
+		@apply justify-center;
+	}
+	
+	/*Matches Info*/
+	.match-team-name{
+		@apply text-lg text-center;
+		width: 35%;
+	}
+	.match-team-name-vs{
+		@apply text-sm;
+	}
+	.container-team-logo{
+		width: 60px !important;
+	}
+	.container-team-logo > img{
+		width: 45px;
+	}
+	.container-match-results{
+		width: auto;
+		max-width: 50%;
+	}
+	.team-img-match{
+		
+	}
+	.container-team-points {
+		@apply text-base;
+		@apply m-1;
+	}
+	.match-actions{
+		@apply mt-4;
+	}
+	.results-team-img, .ranking-team-img, .team-img-matches{
+		width: auto;
+		height: 20px;
+		padding-top: 2px;
+		padding-bottom: 2px;
+	}
+	
+	/*Match edit/modify*/
+	.match-main-container{
+		@apply p-2;
+	}
+	.match-edit-form{
+	
+	}
+	.form-group-match.section-form-group-match *{
+		@apply text-base;
+	}
+	.form-group-results > h3{
+		@apply text-base;
+	}	
+	
+	.form-group-results > label{
+		@apply text-sm;
+	}
+	.match-team-name label{
+		font-size: 12px !important;
+	}
+	.match-team-name select{
+		font-size: 12px !important;
+		text-overflow: ellipsis;
+		width: 80px;
+	}
+	.match-team-name-vs{
+		width: auto;
+		@apply m-0;
+		font-size: 8px! important;
+	}
+	.form-group-match label{
+		font-size: 12px !important;
+	}
+	.form-group-match select, .form-group-match  textarea, .form-group-match  input{
+		font-size: 10px !important;
+	}
+	.container-match-points div{
+		width: 20%;
+	}
+	.container-team-points > input{
+		width: 30px;
+	}
+	.actions-row *, .btn-container-tool *{
+		@apply text-sm;
+	}
+	.actions-row div{
+		width: 80px
+	}
+	button.btn-create, a.btn-cancel{
+		width: 100px !important;
+		min-width: 100px;
+		max-width: 100px;
+		margin: 0;
+		padding: 4px;
+		@apply text-sm;
+	}
+	a.btn-create{
+		@apply w-auto;
+	}
+	button.btn-create, a.btn-cancel, a.btn-create *{
+		@apply text-sm;
+	}
+	
+	/*Modify Team Forms*/
+	.create-league-inner-container{
+		@apply w-full;
+	}
+	input[type=file] {
+		width: 250px;
+	}
+	
+	/*Teams Show*/
+	.team-img > img{
+		height: 70px;
+	}
+	.team-name{
+		@apply my-2;
+	}
+}
+
+/* smartphones, portrait iPhone, portrait 480x320 phones (Android) 
+ *  @media only screen and (max-width: 450px) {*/ 
+@media only screen and (max-width: 600px) {
+	
+	main{
+		width: 95%;
+	}
+	
+	
+	/*Menu Navigatior*/
+	#menu-icon{
+		display: inline;
+		z-index: 2;
+	}
+	#navSections{
+		display: inline;
+		position: fixed;
+		@apply flex flex-wrap flex-col justify-items-center content-center items-center;
+		@apply w-full h-full p-0 m-0;
+		left: -100%;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		background-color: grey;
+		overflow-x: hidden;
+		transition: 0.5s;
+		z-index: 1;
+	}
+	.close-i{
+		display: none;
+	}
+	.itemNav{
+		@apply my-2;
+		position: relative;
+		width: 100%;
+	}
+	
+	/*Links - Buttons */
+	.link-info, .link-info *, .btn-edit, .btn-edit * , .btn-delete , .btn-delete *, .btn-info , .btn-info *, .btn-create, .btn-create > a, .btn-create > a > span{
+		@apply text-sm;
+	}
+	.league-links > .league-link, form.league-link{
+		@apply my-0 py-0 mx-1;
+	}
+	.league-link > a{
+		width: 95px;
+		min-width: 0px;
+	}
+	.league-link > button{
+		width: 75px;
+		min-width: 0px;
+	}
+	.league-link{
+		@apply my-0.5;
+	}
+	form.league-link > button{
+		@apply px-0 mx-0;
+	}
+	
+	.link-info, .btn-delete, .btn-edit{
+		@apply py-1;
+	}
+
+	
+	/* Leagues Index Interactions*/
+	.league-interactions-all{
+		@apply flex-col;
+	}
+	.league-links, .form-actions{
+		@apply w-auto my-1;
+	}
+	.league-links{
+		@apply justify-start;
+	}
+	.form-actions{
+		@apply justify-end;
+	}
+	#leagueCreatorNormal > h2{
+		@apply text-sm;
+	}
+	
+	/*Leagues Index */
+	.league-info{
+		@apply justify-center;
+	}
+	
+	
+	/*Matches Index*/
+	.matches-calender-title{
+		font-size: 16px;
+	}
+	.match-table-row-week{
+		font-size: 8px;
+	}
+	.match-table-row * {
+		font-size: 8px !important;
+	}
+	.match-table-row-address{
+		font-size: 8px;
+	}
+	.match-table-row td{
+		@apply p-0;
+	}
+	
+	
+	.ranking-table-title{
+		font-size: 16px;
+	}
+	.ranking-table-header-row{
+		font-size: 8px;
+	}
+	.ranking-table-header-row *{
+	font-size: 8px;
+	}
+	.ranking-table-row *{
+	font-size: 8px !important;
+	}
+	
+	.results-table-title{
+	font-size: 16px;
+	}
+	.results-table-header-row *{
+	font-size: 8px;
+	}
+	.results-table-row *{
+	font-size: 8px !important;
+	}
+	
+	
+	/*Footer*/
+	.link-footer{
+		@apply mx-1;
+	}
+	.link-footer, .link-footer > span{
+		@apply text-sm;
+	}
+	
+	
+	/*Leagues Images*/
+	.league-img-show > img{
+		height: 100px;
+		width: auto;
+	}
+	.league-header{
+		@apply text-lg;
+	}
+	.league-data-field{
+		@apply text-base;
+	}
+	
+	/*Teams Images */
+	div.team-img{
+		@apply w-full flex flex-col flex-wrap justify-center text-center items-center;
+	}
+	.team-img{
+		@apply w-auto;
+		@apply flex flex-col flex-wrap justify-center text-center;
+		max-height: 100px;
+	}
+	.team-data{
+		@apply w-full;
+	}
+	.team-actions{
+		@apply justify-center;
+	}
+	
+	/*Team Show/Info*/
+	.team-name{
+		@apply w-full flex flex-col flex-wrap justify-center text-center items-center;
+		justify-content: center  !important;
+	}
+	.league-info-show > *, .team-data > *{
+		@apply w-full;
+	}
+	.player-team-info{
+		@apply text-lg;
+	}
+	.player-name{
+		@apply text-base;
+	}
+	.form-actions-players{
+		@apply justify-center;
+	}
+	
+	/*Matches Info*/
+	.match-team-name{
+		@apply text-lg text-center;
+		width: 35%;
+	}
+	.match-team-name-vs{
+		@apply text-sm;
+	}
+	.container-team-logo{
+		width: 60px !important;
+	}
+	.container-team-logo > img{
+		width: 45px;
+	}
+	.container-match-results{
+		width: auto;
+		max-width: 50%;
+	}
+	.team-img-match{
+		
+	}
+	.container-team-points {
+		@apply text-base;
+		@apply m-1;
+	}
+	.match-actions{
+		@apply mt-4;
+	}
+	.results-team-img, .ranking-team-img, .team-img-matches{
+		width: auto;
+		height: 20px;
+		padding-top: 2px;
+		padding-bottom: 2px;
+	}
+	
+	/*Match edit/modify*/
+	.match-main-container{
+		@apply p-2;
+	}
+	.match-edit-form{
+	
+	}
+	.form-group-match.section-form-group-match *{
+		@apply text-base;
+	}
+	.form-group-results > h3{
+		@apply text-base;
+	}	
+	
+	.form-group-results > label{
+		@apply text-sm;
+	}
+	.match-team-name label{
+		font-size: 12px !important;
+	}
+	.match-team-name select{
+		font-size: 12px !important;
+		text-overflow: ellipsis;
+		width: 80px;
+	}
+	.match-team-name-vs{
+		width: auto;
+		@apply m-0;
+		font-size: 8px! important;
+	}
+	.form-group-match label{
+		font-size: 12px !important;
+	}
+	.form-group-match select, .form-group-match  textarea, .form-group-match  input{
+		font-size: 10px !important;
+	}
+	.container-match-points div{
+		width: 20%;
+	}
+	.container-team-points > input{
+		width: 30px;
+	}
+	.actions-row *, .btn-container-tool *{
+		@apply text-sm;
+	}
+	.actions-row div{
+		width: 80px
+	}
+	button.btn-create, a.btn-cancel{
+		width: 100px !important;
+		min-width: 100px;
+		max-width: 100px;
+		margin: 0;
+		padding: 4px;
+		@apply text-sm;
+	}
+	a.btn-create{
+		@apply w-auto;
+	}
+	button.btn-create, a.btn-cancel, a.btn-create *{
+		@apply text-sm;
+	}
+	
+	/*Modify Team Forms*/
+	.create-league-inner-container{
+		@apply w-full;
+	}
+	input[type=file] {
+		width: 250px;
+	}
+	
+	/*Teams Show*/
+	.team-img > img{
+		height: 70px;
+	}
+	.team-name{
+		@apply my-2;
+	}
+}
  

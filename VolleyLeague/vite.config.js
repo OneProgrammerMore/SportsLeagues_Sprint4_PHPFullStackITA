@@ -7,7 +7,8 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-
+				
+				
                 'resources/css/comp_formResults.css',
                 'resources/css/comp_legends.css',
                 'resources/css/legal.css',  

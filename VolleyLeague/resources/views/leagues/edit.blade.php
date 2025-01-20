@@ -49,7 +49,7 @@
 						</div>
 						<div class="form-group">
 							<label for="league_img">League Image:</label><br>
-							<input type="file" id="league_img" name="league_img" accept="image/png, image/jpeg, image/svg" />
+							<input type="file" id="league_img" class="input-image" name="league_img" accept="image/png, image/jpeg, image/svg" />
 						</div>
 						
 						

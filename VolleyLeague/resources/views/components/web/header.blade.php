@@ -1,3 +1,4 @@
+<script src="{{ asset('js/menu-responsive.js')}}"></script>
 <nav id="navBar">
 	<div id="webID" class="container-fluid">
 		<i id="webLogo">
@@ -56,3 +57,11 @@
 		
 	</div>
 </nav>
+<div id="menu-icon">
+		<a href="javascript:void(0)" class="nav-menu-icon menu-i" onclick="openNav()">
+			<span class="icon icon-league-link icon-menu"></span>		
+		</a>
+		<a href="javascript:void(0)" class="nav-side close-i nav-menu-icon" onClick="closeNav()">
+			<span class="icon icon-league-link icon-cancel"></span>
+		</a>
+</div>

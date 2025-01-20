@@ -9,19 +9,19 @@
 	@if (isset($match_results))
 		<table class="results-table" border="1">
 			<tr class="results-table-header-row" >
-				<th>Match <br> Number</th>
-				<th>Host <br> Team</th>
+				<th>Nº</th>
+				<th>H.</th>
 				<th>vs</th>
-				<th>Guest <br> Team</th>
-				<th>Date <br>  And <br>  Time</th>
-				<th>Matches <br>  Won</th>
-				<th>Matches <br>  Lost</th>
-				<th>Sets <br>  Won</th>
-				<th>Sets <br>  Lost</th>
-				<th>Points <br>  Won</th>
-				<th>Points <br> Lost</th>
-				<th>Info</th>
-				<th>Edit</th> <!-- 12 columns -->
+				<th>G.</th>
+				<th>Date</th>
+				<th>M. W.</th>
+				<th>M. L.</th>
+				<th>Sets <br>  W.</th>
+				<th>Sets <br>  L.</th>
+				<th>P. <br>  W.</th>
+				<th>P. <br> L.</th>
+				<th></th>
+				<th></th> <!-- 12 columns -->
 			</tr>
 		@foreach ($match_results as $result)
 
@@ -29,11 +29,13 @@
 				<td>{{ $result->match_number ?? ""}}</td>
 				<td class="team-name-table-data"> 
 					<img class="results-team-img" src="{{ asset('storage/public/'.$result->host_img)}}" alt="Host Team Image">
-					{{ $result->host_team_name ?? ""}}</td>
+					<p>{{ $result->host_team_name ?? ""}}</p>
+				</td>
 				<td>vs</td>
 				<td class="team-name-table-data">
 					<img class="results-team-img" src="{{ asset('storage/public/'.$result->guest_img)}}" alt="Guest Team Image">
-					{{ $result->guest_team_name ?? ""}}</td>
+					<p>{{ $result->guest_team_name ?? ""}}</p>
+				</td>
 				
 				<td>{{ $result->only_date ?? ""}} <br> {{ $result->only_time ?? ""}}</td>
 				

@@ -2,33 +2,3 @@
 @tailwind utilities;
 
 
-
-.form-results-container{
-	@apply w-full;
-}
-
-.form-results{
-	@apply w-full;
-}
-
-.results-form-section{
-	@apply flex flex-wrap flex-row justify-items-center content-center items-center justify-evenly;
-	@apply w-full;
-}
-.form-group-results{
-	@apply w-2/6;
-	@apply flex flex-wrap flex-col justify-items-center content-center items-center justify-evenly;
-}
-
-.form-group-results > h3{
-	@apply text-xl font-bold text-center;
-}
-
-.form-group-results > input, .form-group-results > textarea {
-	@apply mx-1 mb-1 px-2;
-	@apply bg-white;
-} 
-.form-group-results > label{
-	@apply mx-2;
-	@apply text-xl font-bold;
-}

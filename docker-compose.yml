@@ -12,16 +12,9 @@ services:
         volumes:
             - ./VolleyLeague/:/var/www/html
         command: >
-            bash -c "cd /var/www/html/ 
-            &&  a2enmod rewrite
-            && composer update && composer install 
-            && php artisan migrate && php artisan db:seed 
-            && php artisan key:generate
-            && chmod -R a+w /var/www/html/storage/
-            && npm install 
-            && npm run build
-            && /usr/sbin/apachectl -D FOREGROUND"
-        # && ln -rs ./storage/app/public  ./public/storage/public
+            bash -c "
+            chmod u+x /var/www/html/entrypointBE.sh &&
+            /var/www/html/entrypointBE.sh"
         networks:
             - sprint04_network
 

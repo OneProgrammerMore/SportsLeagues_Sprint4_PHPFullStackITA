@@ -82,7 +82,7 @@
 						<div class="btn-container-tool">
 							<button type="submit" class="btn-create">
 								<span class="icon icon-league-link icon-search"></span> 
-								Search weeks!</button>
+								Search!</button>
 						</div>
 						
 					</form>

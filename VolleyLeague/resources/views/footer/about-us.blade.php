@@ -15,7 +15,7 @@
 
 
 <body>
-
+	<!--
 	<nav id="navBar">
 		<div id="webID" class="container-fluid">
 			<i id="webLogo">
@@ -43,6 +43,9 @@
 
 		</div>
 	</nav>
+	-->
+
+	<x-web.header />
   
   
 	<main>

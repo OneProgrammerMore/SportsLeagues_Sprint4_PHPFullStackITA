@@ -17,35 +17,8 @@
 
 <body>
 
-	<nav id="navBar">
-		<div id="webID" class="container-fluid">
-			<i id="webLogo">
-				<img id="webLogoImg" src="{{ asset('img/cupLogo.png')}}" alt="Web Logo - The image of a Tournament Cup">
-			</i>
-			<a id="webName" href={{ route('leagues.index') }}>Cup</a>
-		</div>
+	<x-web.header />
 
-		<div id="navSections" class="flex flex-row">
-			<div class="itemNav">
-				<a class="btn btn-sm btn-success" href={{ route('leagues.index') }}>Leagues</a>
-			</div>
-			
-			<div class="itemNav">
-			<a class="btn btn-sm btn-success" href={{ route('leagues.index') }}>Matches</a>
-			</div>
-			
-			<div class="itemNav">
-			<a class="btn btn-sm btn-success" href={{ route('leagues.index') }}>Teams</a>
-			</div>
-			
-			<div class="itemNav">
-			<a class="btn btn-sm btn-success" href={{ route('leagues.index') }}>Leagues</a>
-			</div>
-
-		</div>
-	</nav>
-  
-  
 	<main>
 		
 		<div class="to-do main-section">

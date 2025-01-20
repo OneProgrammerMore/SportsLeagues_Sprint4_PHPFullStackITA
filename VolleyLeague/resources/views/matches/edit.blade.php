@@ -83,17 +83,17 @@
 						
 						<div class="container-match-results">
 							<div class="container-match-points">
-								<h3>
+								<div class="container-team-points">
 									<label for="host_points">Host Points: (Optional)</label><br>
 									<input type="number"  class="form-control" id="host_points" name="host_points" value="{{ $match->host_points }}">
-								</h3>
+								</div>
 								<h3>
 									:
 								</h3>
-								<h3>	
+								<div class="container-team-points">	
 									<label for="guest_points">Guest Points: (Optional)</label><br>
 									<input type="number"  class="form-control" id="guest_points" name="guest_points" value="{{ $match->guest_points }}">
-								</h3>
+								</div>
 							</div>
 								
 							<div class="contaier-match-status">
@@ -156,14 +156,15 @@
 					<div class="btn-container">
 					<button type="submit" class="btn-create">
 						<span class="icon icon-league-link icon-cancel"></span>
-						Modify Match</button>
+						Modify</button>
 					</div>
 					
-
+					<div class="btn-container">
 					<a href="{{ route('matches.index', [ 'league'=>$league->league_id ]) }}" class="btn-cancel">
 						<span class="icon icon-league-link icon-cancel"></span>
 					Cancel
 					</a>
+					</div>
 
 				</div>
 				
