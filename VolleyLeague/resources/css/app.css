@@ -632,7 +632,7 @@ input, textarea{
 }
 .container-match-points > h3{
 	@apply flex flex-wrap flex-row justify-center content-center items-center;
-	@apply text-3xl font-bold m-5;
+	@apply text-2xl font-bold m-5;
 }
 .container-team-logo{
 	@apply m-auto;
@@ -714,6 +714,7 @@ input, textarea{
 }
 
 .btn-create, .btn-delete, .btn-info, .btn-edit, .league-link, .btn-cancel{
+	@apply flex flex-row justify-center items-center content-center;
 	@apply rounded-full;
 	@apply text-center;
 	@apply mx-2;
@@ -1087,7 +1088,7 @@ input[type=file]{
 footer{
 	@apply bg-slate-500;
 	@apply flex flex-wrap flex-col justify-items-center content-center items-center;
-	@apply my-4 py-16;
+	@apply my-4 py-4;
 }
 
 .footer-link-container{
@@ -1702,6 +1703,12 @@ footer{
 	.team-name{
 		@apply my-2;
 	}
+
+	/*PLAYERS*/
+	.player-photo{
+		@apply w-full flex content-center justify-center items-center;
+	}
+
 }
 
 /* smartphones, portrait iPhone, portrait 480x320 phones (Android) 

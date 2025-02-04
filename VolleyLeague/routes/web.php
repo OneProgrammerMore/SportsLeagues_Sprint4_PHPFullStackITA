@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\LeagueController;
 // In order to link the post controller file with routes:
@@ -19,10 +18,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-// Route::get('/', function () {
-//    return view('welcome');
-// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -46,10 +41,6 @@ require __DIR__.'/auth.php';
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});*/
 
 /* ROUTES FOR LEAGUE */
 // returns the home page with all leagues
@@ -103,26 +94,10 @@ Route::resource('/leagues/{league}/matches', MatchController::class, [
     'except' => ['index', 'store'],
 ]);
 Route::get('/leagues/{league}/matches', MatchController::class.'@index')->name('matches.index');
-// Route::post('/leagues/{league}/matches', MatchController::class .'@index')->name('matches.index');
-// Route::post('/leagues/{league}/matches', MatchController::class .'@index')->name('matches.index');
-
-// returns the home page with all team
-// Route::get('/leagues/{league}/matches', MatchController::class .'@index')->name('matches.index');
-// In order to search in index matches
-// Route::put('/leagues/{league}/matches', MatchController::class .'@index')->name('matches.index');
-// Route::post('/leagues/{league}/matches', MatchController::class .'@indexAux')->name('matches.indexAux');
-// returns the form for adding a  team
-// Route::get('/leagues/{league}/matches/create', MatchController::class . '@create')->name('matches.create');
+//In order to search in index matches
+Route::post('/leagues/{league}/matches', MatchController::class .'@search')->name('matches.search');
 // adds a team league to the database
 Route::post('/leagues/{league}/matches/store', MatchController::class.'@store')->name('matches.store');
-// returns a page that shows a full team
-// Route::get('/leagues/{league}/matches/{match}', MatchController::class .'@show')->name('matches.show');
-// returns the form for editing a league
-// Route::get('/leagues/{league}/matches/{match}/edit', MatchController::class .'@edit')->name('matches.edit');
-// updates a team
-// Route::put('/leagues/{league}/matches/{match}', MatchController::class .'@update')->name('matches.update');
-// deletes a team
-// Route::delete('/leagues/{league}/matches/{match}', MatchController::class .'@destroy')->name('matches.destroy');
 
 // Players Routes:
 // returns the home page with all team
@@ -145,4 +120,3 @@ Route::get('/legal', FooterController::class.'@legal')->name('footer.legal');
 Route::get('/contact', FooterController::class.'@contact')->name('footer.contact');
 Route::get('/about-us', FooterController::class.'@about_us')->name('footer.about-us');
 Route::get('/home', FooterController::class.'@home')->name('footer.home');
-// Route::get('/home', LeagueController::class .'@index')->name('footer.home');

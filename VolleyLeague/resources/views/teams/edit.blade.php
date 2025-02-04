@@ -390,7 +390,7 @@
                                     <span
                                         class="icon icon-league-link icon-pencil"
                                     ></span>
-                                    Modify team
+                                    Modify
                                 </button>
                             </div>
 

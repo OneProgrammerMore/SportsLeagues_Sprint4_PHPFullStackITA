@@ -22,10 +22,10 @@ export default defineConfig({
         outDir: 'public/build',
     },
     server: {
-		host: '192.168.1.37',  // This allows external access to the Vite server
+		host: '192.168.1.38',  // This allows external access to the Vite server
 		port: 5173,        // The default port Vite uses
 		hmr: {
-		  host: '192.168.1.37',  // This ensures that HMR works correctly in Docker/Vagrant
+		  host: '192.168.1.38',  // This ensures that HMR works correctly in Docker/Vagrant
 		},
 		watch: {
             ignored: ['**/public/storage/public/**','**/storage/app/public/**'], // Ignore file changes in these paths

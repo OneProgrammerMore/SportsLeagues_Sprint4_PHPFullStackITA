@@ -9,6 +9,7 @@ services:
         ports:
             - "81:80"
             - "5173:5173"
+            - "8000:8000"
         volumes:
             - ./VolleyLeague/:/var/www/html
         command: >

@@ -136,6 +136,80 @@ class MatchController extends Controller
         return view('matches.index', compact('teams', 'league', 'matches', 'week_dates', 'week_act', 'week_start', 'week_end', 'league_type'));
     }
 
+    public function search(?Request $request, string $league_id){
+        // Index League Controller will show all leagues related with the user.
+        $teams = Team::where('league_id', $league_id)->get();
+        $league = League::find($league_id);
+
+        // Variables for week search:
+        // Fetch the weeks for the selection
+        $week_dates_values = Matchy::where('league_id', $league_id)->orderby('week_number')->groupBy('week_number')->pluck('week_number')->toArray();
+
+        $week_dates = array_combine($week_dates_values, $week_dates_values);
+
+        // Compute the actual week with the week number, matches dates and actual date
+        $week_act = 2;
+
+        if ($request->isMethod('post')) {
+            // if(isset($request)){
+            // Starting week date and end-week-date
+            if (isset($request)) {
+
+                $request->validate([
+                    'starting_week_date' => 'required|numeric',
+                    'end_week_date' => 'required|numeric',
+                ]);
+
+                // Matches list between starting-week-date and end-week-date:
+                $matches = Matchy::where('league_id', $league_id)->where('week_number', '>=', $request->starting_week_date)->where('week_number', '<=', $request->end_week_date)->orderby('week_number')->get();
+
+                foreach ($matches as $match) {
+                    $team_host = Team::find($match->host_team_id);
+                    $match['host_name'] = $team_host->team_name;
+                    $match['host_img'] = $team_host->team_img_name;
+                    // Host Points missing in database!!!
+                    $team_guest = Team::find($match->guest_team_id);
+                    $match['guest_name'] = $team_guest->team_name;
+                    $match['guest_img'] = $team_guest->team_img_name;
+                    // Guest Points Missing in database!!!
+
+                    // Match date and time only for view:
+                    // Append only date and only time to use it in the view:
+                    $match['only_date'] = date('d/m/Y', strtotime($match->match_date));
+                    $match['only_time'] = date('h:m', strtotime($match->match_date));
+
+                    // Address:
+                    $address = Addresses::find($match->match_address_id);
+                    $match['address_country'] = $address->country;
+                    $match['address_postalcode'] = $address->postalcode;
+                    $match['address_city'] = $address->city;
+                    $match['address_street'] = $address->street;
+                    $match['address_number'] = $address->number;
+                    $match['address_floor'] = $address->floor;
+                    $match['address_door'] = $address->door;
+                }
+
+                // Compute default week_start and week_end for view:
+                // Change week act from matches dates
+                $week_act = 2;
+                $week_start = $request->starting_week_date;
+                $week_end = $request->end_week_date;
+
+            }
+        }
+
+        // Define league type for view
+        if (isset($matches) and count($matches) > 0) {
+            $results = ResultsBeachVolleyball::where('match_id', $match->match_id);
+        } else {
+            $results = null;
+        }
+
+        $league_type = LeagueTypes::where('league_type_id', $league->league_type_id)->first()->league_type;
+
+        return view('matches.index', compact('teams', 'league', 'matches', 'week_dates', 'week_act', 'week_start', 'week_end', 'league_type'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -447,6 +521,9 @@ class MatchController extends Controller
 
         return view('matches.edit', compact('league', 'match', 'match_address', 'host_team', 'guest_team', 'teams_list', 'match_status_list', 'select_host_value', 'select_guest_value', 'league_type'));
     }
+
+    
+
 
     /**
      * Update the specified resource in storage.

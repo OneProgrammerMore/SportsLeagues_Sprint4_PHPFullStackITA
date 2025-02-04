@@ -152,7 +152,7 @@
                                 <span
                                     class="icon icon-league-link icon-create"
                                 ></span>
-                                Modify League
+                                Modify
                             </button>
 
                             <a

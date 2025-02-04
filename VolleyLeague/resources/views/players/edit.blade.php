@@ -238,7 +238,7 @@
                                     <span
                                         class="icon icon-league-link icon-pencil"
                                     ></span>
-                                    Edit player
+                                    Edit
                                 </button>
                             </div>
 

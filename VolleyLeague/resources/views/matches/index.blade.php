@@ -53,7 +53,7 @@
                     <div id="search-week">
                         <form
                             class="search-tool-form"
-                            action="{{ route("matches.index", $league->league_id) }}"
+                            action="{{ route("matches.search", $league->league_id) }}"
                             method="post"
                         >
                             @csrf
