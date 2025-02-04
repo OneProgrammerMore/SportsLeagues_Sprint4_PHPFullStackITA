@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link href="{{ URL::asset("css/app.css") }}" rel="stylesheet" />
         <title>CupApp</title>
+        <link rel="icon" href="{{ asset("img/cupLogo.png") }}">
         @vite("resources/css/app.css")
         <link rel="stylesheet" href="{{ asset("css/iconStyles.css") }}" />
     </head>
