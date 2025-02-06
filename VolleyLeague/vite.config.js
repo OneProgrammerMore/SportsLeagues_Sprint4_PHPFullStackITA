@@ -1,17 +1,25 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import glob from 'fast-glob';
+import FastGlob from 'fast-glob';
 
 export default defineConfig({
     plugins: [
         laravel({
             input: [
+
+                //...glob.sync('resources/js/**/*.js'),
+                //...glob.sync('resources/css/**/*.css'),
                 'resources/css/app.css',
                 'resources/js/app.js',
-				
-				
+                
+                'resources/css/iconStyles.css',
+
                 'resources/css/comp_formResults.css',
                 'resources/css/comp_legends.css',
-                'resources/css/legal.css',  
+                'resources/css/legal.css', 
+                //'resources/img/cupLogo.png',
+                ...glob.sync('resources/img/**/*'),
             ],
             refresh: true,
         }),

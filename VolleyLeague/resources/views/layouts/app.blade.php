@@ -6,36 +6,26 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <title>{{ config("app.name", "Laravel") }}</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net" />
-        <link
-            href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap"
-            rel="stylesheet"
-        />
-
-        <!-- Scripts -->
-        @vite(["resources/css/app.css", "resources/js/app.js"])
-        <script src="{{ asset("js/menu-responsive.js") }}"></script>
+        <link rel="icon" href="{{ Vite::asset("resources/img/cupLogo.png") }}">
+        <link rel="stylesheet" href="{{ Vite::asset("resources/css/app.css") }}">
+        <link rel="stylesheet" href="{{ Vite::asset("resources/css/iconStyles.css") }}" />
+    
     </head>
 
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include("layouts.navigation")
+            <!-- @include("layouts.navigation") -->
+            @php
+                $leagueId = $league->league_id;
+            @endphp
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+            <x-web.header :leagueId="$leagueId" />
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                @yield('content')
             </main>
         </div>
+        <x-footer />
     </body>
 </html>

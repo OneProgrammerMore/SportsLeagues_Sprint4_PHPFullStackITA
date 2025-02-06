@@ -1,10 +1,9 @@
-<script src="{{ asset("js/menu-responsive.js") }}"></script>
 <nav id="navBar">
     <div id="webID" class="container-fluid">
         <i id="webLogo">
             <img
                 id="webLogoImg"
-                src="{{ asset("img/cupLogo.png") }}"
+                src="{{ Vite::asset("resources/img/cupLogo.png") }}"
                 alt="Web Logo - The image of a Tournament Cup"
             />
         </i>

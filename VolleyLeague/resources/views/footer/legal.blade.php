@@ -8,6 +8,7 @@
         @vite("resources/css/app.css")
         @vite("resources/css/legal.css")
         <link rel="stylesheet" href="{{ asset("css/iconStyles.css") }}" />
+        <link rel="stylesheet" href="{{ Vite::asset("resources/css/iconStyles.css") }}" />
     </head>
 
     <body>

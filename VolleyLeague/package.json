@@ -5,6 +5,7 @@
         "dev": "vite",
         "devo": "vite --host",
         "build": "vite build",
+        "build-portfolio": "vite build --base=/cup/",
         "build2": "vite build && vite build --ssr",
         "build-css": "tailwindcss build src/styles.css -o public/styles.css",
         "format:blade": "blade-formatter --sort-html-attributes --no-multiple-empty-lines  --write \"resources/views/**/*.blade.php\"",

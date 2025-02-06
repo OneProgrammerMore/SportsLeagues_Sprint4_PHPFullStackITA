@@ -7,7 +7,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <title>{{ config("app.name", "Laravel") }}</title>
-        <link rel="icon" href="{{ asset("img/cupLogo.png") }}">
+        <link rel="icon" href="{{ Vite::asset("resources/img/cupLogo.png") }}">
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net" />
         <link

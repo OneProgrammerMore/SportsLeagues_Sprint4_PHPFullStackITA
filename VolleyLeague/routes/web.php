@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::group(['prefix' => 'cup'], function(){
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -41,6 +42,8 @@ require __DIR__.'/auth.php';
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+//
 
 /* ROUTES FOR LEAGUE */
 // returns the home page with all leagues
@@ -120,3 +123,5 @@ Route::get('/legal', FooterController::class.'@legal')->name('footer.legal');
 Route::get('/contact', FooterController::class.'@contact')->name('footer.contact');
 Route::get('/about-us', FooterController::class.'@about_us')->name('footer.about-us');
 Route::get('/home', FooterController::class.'@home')->name('footer.home');
+
+});
