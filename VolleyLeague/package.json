@@ -9,6 +9,7 @@
         "build2": "vite build && vite build --ssr",
         "build-css": "tailwindcss build src/styles.css -o public/styles.css",
         "format:blade": "blade-formatter --sort-html-attributes --no-multiple-empty-lines  --write \"resources/views/**/*.blade.php\"",
+        "format:prettier": "prettier 'resources/**/*.{js,ts,mjs,cjs,json,php}' --write",
         "prettier-format-blade": "prettier --config .prettierrc  './resources/views/**/*.blade.php' --write"
     },
     "devDependencies": {

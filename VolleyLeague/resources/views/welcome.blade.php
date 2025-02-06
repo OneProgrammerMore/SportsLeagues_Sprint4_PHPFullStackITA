@@ -294,7 +294,7 @@
                 --tw-backdrop-opacity: ;
                 --tw-backdrop-saturate: ;
                 --tw-backdrop-sepia:
-        ;
+            ;
             }
 
             ::-webkit-backdrop {
@@ -342,7 +342,7 @@
                 --tw-backdrop-opacity: ;
                 --tw-backdrop-saturate: ;
                 --tw-backdrop-sepia:
-        ;
+            ;
             }
 
             ::backdrop {
@@ -390,7 +390,7 @@
                 --tw-backdrop-opacity: ;
                 --tw-backdrop-saturate: ;
                 --tw-backdrop-sepia:
-        ;
+            ;
             }
 
             .relative {

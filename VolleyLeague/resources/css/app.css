@@ -853,7 +853,9 @@ input, textarea{
 /*Table Troubleshooting*/
 /*table, th, td { border: 1px solid gray; }*/
 
-
+.main-container{
+	@apply w-full flex flex-col content-center items-center justify-center;
+}
 
 /* TOOL BAR */
 
@@ -862,7 +864,7 @@ input, textarea{
 	@apply flex flex-wrap flex-col justify-center content-center items-center;
 	@apply bg-slate-200;
 	@apply border-black border;
-	margin-top: 74px;
+	@apply left-0 right-0;
 }
 
 #tool-bar{

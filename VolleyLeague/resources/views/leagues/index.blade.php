@@ -1,8 +1,7 @@
-@extends('layouts.app')
+@extends("layouts.app")
 
-@section('content')
+@section("content")
     <main>
-        
         <div id="leagues-container">
             <div id="leagues-inner-container">
                 @foreach ($leagues as $league)
@@ -11,7 +10,7 @@
                             <div class="league-img">
                                 <img
                                     class="league-imgs-index"
-                                    src="{{ asset($league->league_img_name ? "storage/public/" . $league->league_img_name : Vite::asset("resources/img/league.png") ) }}"
+                                    src="{{ asset($league->league_img_name ? "storage/public/" . $league->league_img_name : Vite::asset("resources/img/league.png")) }}"
                                     alt="Web Logo - The image of a Tournament Cup"
                                 />
                             </div>
@@ -39,9 +38,7 @@
 
                         <div class="league-interactions-all">
                             <div class="league-links">
-                                <div
-                                    class="league-matches-link league-link"
-                                >
+                                <div class="league-matches-link league-link">
                                     <a
                                         class="link-info"
                                         href="{{ route("matches.index", $league->league_id) }}"
@@ -105,10 +102,7 @@
                                 >
                                     @csrf
                                     @method("DELETE")
-                                    <button
-                                        type="submit"
-                                        class="btn-delete"
-                                    >
+                                    <button type="submit" class="btn-delete">
                                         <!-- <img class="btn-img" src="{{ asset("img/delete.png") }}"> -->
                                         <span
                                             class="icon icon-league-link icon-trash"
@@ -149,4 +143,3 @@
         @endif
     </main>
 @endsection
-

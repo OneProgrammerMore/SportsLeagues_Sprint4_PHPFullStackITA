@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends("layouts.app")
 
-@section('content')
-    <main>
+@section("content")
+    <div class="main-container">
         <div id="tool-bar-complete">
             <div id="tool-bar">
                 <div id="tool-bar-container">
@@ -226,4 +226,5 @@
             @elseif ($league_type == "Basketball 3vs3 Simple")
             @endif
         </main>
+    </div>
 @endsection
