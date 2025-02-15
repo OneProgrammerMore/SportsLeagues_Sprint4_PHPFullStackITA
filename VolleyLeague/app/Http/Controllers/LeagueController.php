@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Enum\LeagueStatusEnum;
 use App\Models\League;
 use App\Models\LeagueTypes;
-// use Spatie\Html\Elements\Element;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-// In order to work with files:
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Enum;
 
@@ -35,7 +33,6 @@ class LeagueController extends Controller
         $league_types = LeagueTypes::pluck('description', 'league_type_id')->toArray();
         $league_status_values = array_column(\App\Enum\LeagueStatusEnum::cases(), 'value');
         $league_status_names = array_column(\App\Enum\LeagueStatusEnum::cases(), 'name');
-        // $league_status = array_combine($league_status_names, $league_status_values);
 
         // Workaround for validate:
         $league_status = array_combine($league_status_values, $league_status_values);
@@ -59,7 +56,6 @@ class LeagueController extends Controller
             'league_finalization_date' => 'required|date',
             'league_web' => 'max:500',
             'league_channel' => 'max:500',
-
         ]);
 
         // Add the parameter 'league_type' by searching the match in the table league_types with id 'league_type_id';
@@ -72,14 +68,12 @@ class LeagueController extends Controller
 
             $nameImgToStore = $imgLeagueFile->hashName();
 
-            $pathImgStored = $request->file('league_img')->storeAs('public/league_imgs',
-                $nameImgToStore);
+            $pathImgStored = $request->file('league_img')->storeAs('public/league_imgs', $nameImgToStore);
 
             $request->request->add(['league_img_name' => $pathImgStored]);
             League::create($request->all());
 
-            return redirect()->route('leagues.index')
-                ->with('success', 'League created successfully.');
+            return redirect()->route('leagues.index')->with('success', 'League created successfully.');
 
         } else {
             $request->request->add(['league_img_name' => '']);
@@ -158,7 +152,6 @@ class LeagueController extends Controller
             // Delete the old image:
             $oldImgNamePath = public_path().'/storage/public/'.$league->league_img_name;
             if (File::exists($oldImgNamePath)) {
-                // unlink($oldImgNamePath);
                 File::delete($oldImgNamePath);
             }
 

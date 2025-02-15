@@ -21,19 +21,28 @@
     </head>
 
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="main-container">
             {{-- @include("layouts.navigation") --}}
             @php
-                $leagueId = isset($league->league_id)  && $league->league_id !== null ? $league->league_id : '';
+                $leagueId = ! isset($leagues) && isset($league->league_id) && $league->league_id !== null ? $league->league_id : "";
             @endphp
 
-            <x-web.header :leagueId="$leagueId" />
+            @if (empty($leagueId))
+                <x-web.header-home />
+            @else
+                <x-web.header :leagueId="$leagueId" />
+            @endif
+            @php
+                echo $leagueId;
+            @endphp
 
             <!-- Page Content -->
             <main>
                 @yield("content")
             </main>
+
+            <x-footer />
+
         </div>
-        <x-footer />
     </body>
 </html>

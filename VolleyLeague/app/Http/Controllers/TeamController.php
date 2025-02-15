@@ -346,7 +346,6 @@ class TeamController extends Controller
             // Delete the old image:
             $oldImgNamePath = public_path().'/storage/public/'.$teamToUpdate->team_img_name;
             if (File::exists($oldImgNamePath)) {
-                // unlink($oldImgNamePath);
                 File::delete($oldImgNamePath);
             }
 
@@ -380,7 +379,6 @@ class TeamController extends Controller
             'person_surname_2' => $request->team_responsible_surname_2,
             'person_email' => $request->team_responsible_email,
             'person_phone' => $request->team_responsible_phone,
-            // Null for the moment, add address somewhen... too lazy to do it now... I want results!!!
             'person_address_id' => $addressResponsibleToUpdate->address_id,
         ];
 

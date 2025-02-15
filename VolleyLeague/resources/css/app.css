@@ -10,13 +10,11 @@
     --edit-icon-color-hover: #C232B1
 }
 
-/*
-*/
 html, button{
 	all: unset;
 }
 html{
-	@apply flex flex-row flex-wrap justify-center items-center m-0 p-0;
+	@apply flex flex-col flex-wrap justify-center items-center m-0 p-0;
 	@apply w-full h-full;
 }
 html * {
@@ -33,9 +31,10 @@ body{
 	font-size: 24px;
 	@apply mx-0.5 my-0.5;
 }
-#navBar{
+#navBar, footer{
 	@apply flex flex-row flex-wrap bg-slate-400 w-full;
 	@apply justify-between;
+	@apply my-6;
 
 }
 .link-nav{
@@ -75,11 +74,8 @@ body{
 	
 }
 
-#navBar, main{
+main{
 	@apply w-11/12 mx-auto;
-}
-#navBar{
-	@apply my-6;
 }
 	
 main{

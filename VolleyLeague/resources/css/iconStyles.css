@@ -1,3 +1,4 @@
+/*
 @font-face {
   font-family: 'icomoon';
   src:  url('../fonts/icomoon.eot?5varzf');
@@ -5,6 +6,18 @@
     url('../fonts/icomoon.ttf?5varzf') format('truetype'),
     url('../fonts/icomoon.woff?5varzf') format('woff'),
     url('../fonts/icomoon.svg?5varzf#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}*/
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?5varzf');
+  src:  url('../fonts/icomoon.eot?5varzf#iefix'),
+    url('../fonts/icomoon.ttf?5varzf'),
+    url('../fonts/icomoon.woff?5varzf'),
+    url('../fonts/icomoon.svg?5varzf#icomoon');
   font-weight: normal;
   font-style: normal;
   font-display: block;

@@ -9,7 +9,6 @@ use App\Models\Players;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-// In order to work with files:
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Enum;
 
@@ -189,7 +188,6 @@ class PlayerController extends Controller
             // Delete the old image:
             $oldImgNamePath = public_path().'/storage/'.$player->player_img_name;
             if (File::exists($oldImgNamePath)) {
-                // unlink($oldImgNamePath);
                 File::delete($oldImgNamePath);
             }
             $playerData += ['player_img_name' => $pathImgStored];

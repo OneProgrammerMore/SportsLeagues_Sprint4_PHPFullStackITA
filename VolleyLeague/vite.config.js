@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import glob from 'fast-glob';
-import FastGlob from 'fast-glob';
+import Unfonts from 'unplugin-fonts/vite'
 
 export default defineConfig({
     plugins: [
@@ -22,6 +22,19 @@ export default defineConfig({
                 ...glob.sync('resources/img/**/*'),
             ],
             refresh: true,
+        }),
+        Unfonts({
+            custom: {
+                families: [
+                    {
+                    name: "icomoon",
+                    local: "icomoon",
+                    src: "./resources/fonts/icomoon.ttf?5varzf",
+                    },
+                ],
+                display: "auto",
+                preload: true,
+            },
         }),
     ],
     build: {
