@@ -96,7 +96,7 @@ nav{
 
 .item-nav, .item-nav-user{
     @apply flex flex-row flex-wrap justify-center items-center content-center text-center;
-    @apply mx-6 my-4;
+    @apply mx-6;
 
 }
 .link-nav-section{
@@ -633,8 +633,11 @@ footer{
     box-shadow: 4px 4px 10px rgba(40, 40, 40, 0.2);
     grid-gap: 4px;
 }
-.matches-calender *{
+.matches-calender *,
+.results-table *,
+.ranking-table *{
     font-size: 8px;
+    text-align: center;
 }
 .match-number{
     @apply flex text-center justify-center items-center;
@@ -685,25 +688,37 @@ footer{
     height: 14px;
     width: auto;
 }
-.results-table *{
-    font-size: 8px;
-}
+
 .results-row{
     @apply flex flex-row w-full justify-between items-center content-center;
     border-bottom: 1px solid var(--color-grey-300);
 }
 .matches-won, .sets-won, .points-won{
     width: 14px;
+    display: grid;
+    align-items: center;
+    height: 100%;
+}
+.match-teams{
+    display: grid;
+    align-items: center;
+    height: 100%;
+}
+.match-teams > *{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /*RANKING*/
+.ranking-table-container{
+    @apply flex flex-row justify-center items-center content-center;  
+}
+
 .ranking-table{
-    @apply items-center;
+    @apply items-center w-full;
 }
-.ranking-table *{
-    font-size: 8px;
-    text-align: center;
-}
+
 .ranking-table img{
     max-width: 14px;
     height: 14px;
@@ -931,6 +946,13 @@ input:checked + .slider:before {
     }   
     #menu-icon{
         display: none;
+    }
+
+    .matches-calender *,
+    .results-table *,
+    .ranking-table *{
+        font-size: 14px;
+        text-align: center;
     }
 
 }

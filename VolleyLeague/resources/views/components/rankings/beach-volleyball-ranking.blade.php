@@ -7,7 +7,8 @@
 
     <!-- MATCHES TABLE BY WEEK -->
     @if (isset($teams))
-        <table class="ranking-table card" border="1">
+        <div class="ranking-table-container card">
+        <table class="ranking-table" border="1">
             <tr class="ranking-table-header-row">
                 <th>Nº</th>
                 <th>Logo</th>
@@ -55,5 +56,6 @@
                 </tr>
             @endforeach
         </table>
+        </div>
     @endif
 </div>
