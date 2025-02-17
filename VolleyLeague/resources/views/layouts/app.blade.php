@@ -10,13 +10,31 @@
             rel="icon"
             href="{{ Vite::asset("resources/img/cupLogo.png") }}"
         />
+        {{--
+        <link
+            rel="stylesheet"
+            href="{{ Vite::asset("resources/css/app.css") }}"
+        /> --}}
+        <link
+            rel="stylesheet"
+            href="{{ Vite::asset("resources/css/iconStyles.css") }}"
+        />
         <link
             rel="stylesheet"
             href="{{ Vite::asset("resources/css/app.css") }}"
         />
+        {{--
+        <script src="{{ Vite::asset("resources/js/menu-responsive.js") }}"></script>
+        <script src="{{ Vite::asset("resources/js/index_matches.js") }}"></script> --}}
+        @vite("resources/js/index_matches.js")
+        @vite("resources/js/menu-responsive.js")
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
+            href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"
-            href="{{ Vite::asset("resources/css/iconStyles.css") }}"
         />
     </head>
 
@@ -32,9 +50,6 @@
             @else
                 <x-web.header :leagueId="$leagueId" />
             @endif
-            @php
-                echo $leagueId;
-            @endphp
 
             <!-- Page Content -->
             <main>
@@ -42,7 +57,6 @@
             </main>
 
             <x-footer />
-
         </div>
     </body>
 </html>

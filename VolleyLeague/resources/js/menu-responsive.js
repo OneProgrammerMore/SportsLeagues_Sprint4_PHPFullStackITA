@@ -11,3 +11,6 @@ function closeNav() {
         document.getElementsByClassName("menu-i")[0].style.display = "flex";
     }
 }
+
+window.openNav = openNav;
+window.closeNav = closeNav;

@@ -1,46 +1,52 @@
 @extends("layouts.app")
 
 @section("content")
-    <x-web.header :leagueId="$leagueId" />
-
-    <main>
-        <div class="match-main-container">
+    <div class="league-form-container">
+        <div class="league-form-inner-container">
+            <h3 class="league-form-title">Modify Match</h3>
             <form
-                class="match-edit-form"
+                class="league-form"
                 action="{{ route("matches.update", ["league" => $league->league_id, "match" => $match->match_id]) }}"
                 method="post"
                 enctype="multipart/form-data"
             >
-                <h3>Modify Match:</h3>
                 @csrf
                 @method("PUT")
 
-                <div class="form-group-hidden">
-                    <label for="league_id">League ID:</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="league_id"
-                        name="league_id"
-                        rows="1"
-                        value="{{ $league->league_id }}"
-                        required
-                    />
-                    <label for="match_id">Match ID:</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="match_id"
-                        name="match_id"
-                        rows="1"
-                        value="{{ $match->match_id }}"
-                        required
-                    />
+                <div class="form-group-main section-form-group">
+                    <h3 class="league-form-subtitle">Team Information</h3>
+
+                    <div class="form-group-hidden">
+                        <label for="league_id">League ID</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="league_id"
+                            name="league_id"
+                            rows="1"
+                            value="{{ $league->league_id }}"
+                            required
+                        />
+                    </div>
+                    <div class="form-group-hidden">
+                        <label for="match_id">Match ID</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="match_id"
+                            name="match_id"
+                            rows="1"
+                            value="{{ $match->match_id }}"
+                            required
+                        />
+                    </div>
                 </div>
 
-                <div class="form-group-match section-form-group-match">
+                <div class="form-group section-form-group">
+                    <h3 class="league-form-subtitle">Match Information</h3>
+
                     <div class="match-number-container">
-                        <label for="match_number">Match Number:</label>
+                        <label for="match_number">Match Number</label>
                         <input
                             type="text"
                             class="form-control"
@@ -54,7 +60,7 @@
                     </div>
 
                     <div class="match-number-container">
-                        <label for="week_number">Week number:</label>
+                        <label for="week_number">Week number</label>
                         <input
                             type="number"
                             class="form-control"
@@ -67,16 +73,15 @@
 
                     <div class="match-teams-names">
                         <div class="match-team-name">
-                            <label for="host_team_id">Host Team:</label>
-                            <br />
+                            <label for="host_team_id">Host Team</label>
+
                             @php
                                 echo html()->select("host_team_id", $teams_list, $select_host_value);
                             @endphp
                         </div>
-                        <div class="match-team-name-vs">VS</div>
                         <div class="match-team-name">
-                            <label for="guest_team_id">Guest Team:</label>
-                            <br />
+                            <label for="guest_team_id">Guest Team</label>
+
                             @php
                                 echo html()->select("guest_team_id", $teams_list, $select_guest_value);
                             @endphp
@@ -85,7 +90,7 @@
 
                     <div class="container-match-date">
                         <label class="match_date" for="match_date">
-                            Match Date:
+                            Match Date
                         </label>
                         <input
                             type="datetime-local"
@@ -98,21 +103,10 @@
                     </div>
 
                     <div class="container-match-info">
-                        <div class="container-team-logo">
-                            <img
-                                class="team-img-match"
-                                src="{{ asset("storage/public/" . $host_team->team_img_name) }}"
-                                alt="Host Team Image"
-                            />
-                        </div>
-
                         <div class="container-match-results">
                             <div class="container-match-points">
                                 <div class="container-team-points">
-                                    <label for="host_points">
-                                        Host Points: (Optional)
-                                    </label>
-                                    <br />
+                                    <label for="host_points">Host Points</label>
                                     <input
                                         type="number"
                                         class="form-control"
@@ -121,12 +115,10 @@
                                         value="{{ $match->host_points }}"
                                     />
                                 </div>
-                                <h3>:</h3>
                                 <div class="container-team-points">
                                     <label for="guest_points">
-                                        Guest Points: (Optional)
+                                        Guest Points
                                     </label>
-                                    <br />
                                     <input
                                         type="number"
                                         class="form-control"
@@ -140,99 +132,106 @@
                             <div class="contaier-match-status">
                                 <h3>
                                     <label for="match_status">
-                                        Match Status:
+                                        Match Status
                                     </label>
-                                    <br />
+
                                     @php
                                         echo html()->select("match_status", $match_status_list, null);
                                     @endphp
                                 </h3>
                             </div>
                         </div>
-
-                        <div class="container-team-logo">
-                            <img
-                                class="team-img-match"
-                                src="{{ asset("storage/public/" . $guest_team->team_img_name) }}"
-                                alt="Host Team Image"
-                            />
-                        </div>
                     </div>
                 </div>
 
-                <!-- MATCH ADDRESS FORM: -->
                 <!--MATCH  ADDRESS-->
                 <div class="form-group section-form-group">
-                    <h3>Match Address:</h3>
-                    <label for="match_address_country">Country:</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="match_address_country"
-                        name="match_address_country"
-                        rows="1"
-                        value="{{ $match_address->country ?? "" }}"
-                    />
+                    <h3 class="league-form-subtitle">Match Address</h3>
+                    <div class="form-group">
+                        <label for="match_address_country">Country</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="match_address_country"
+                            name="match_address_country"
+                            rows="1"
+                            value="{{ $match_address->country ?? "" }}"
+                        />
+                    </div>
 
-                    <label for="match_address_postalcode">Postal Code:</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="match_address_postalcode"
-                        name="match_address_postalcode"
-                        rows="1"
-                        value="{{ $match_address->postalcode ?? "" }}"
-                    />
+                    <div class="form-group">
+                        <label for="match_address_postalcode">
+                            Postal Code
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="match_address_postalcode"
+                            name="match_address_postalcode"
+                            rows="1"
+                            value="{{ $match_address->postalcode ?? "" }}"
+                        />
+                    </div>
 
-                    <label for="match_address_city">City:</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="match_address_city"
-                        name="match_address_city"
-                        rows="1"
-                        value="{{ $match_address->city ?? "" }}"
-                    />
+                    <div class="form-group">
+                        <label for="match_address_city">City</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="match_address_city"
+                            name="match_address_city"
+                            rows="1"
+                            value="{{ $match_address->city ?? "" }}"
+                        />
+                    </div>
 
-                    <label for="match_address_street">Street:</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="match_address_street"
-                        name="match_address_street"
-                        rows="1"
-                        value="{{ $match_address->street ?? "" }}"
-                    />
+                    <div class="form-group">
+                        <label for="match_address_street">Street</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="match_address_street"
+                            name="match_address_street"
+                            rows="1"
+                            value="{{ $match_address->street ?? "" }}"
+                        />
+                    </div>
 
-                    <label for="match_address_number">Street Number:</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="match_address_number"
-                        name="match_address_number"
-                        rows="1"
-                        value="{{ $match_address->number ?? "" }}"
-                    />
+                    <div class="form-group">
+                        <label for="match_address_number">Street Number</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="match_address_number"
+                            name="match_address_number"
+                            rows="1"
+                            value="{{ $match_address->number ?? "" }}"
+                        />
+                    </div>
 
-                    <label for="match_address_floor">Floor:</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="match_address_floor"
-                        name="match_address_floor"
-                        rows="1"
-                        value="{{ $match_address->floor ?? "" }}"
-                    />
+                    <div class="form-group">
+                        <label for="match_address_floor">Floor</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="match_address_floor"
+                            name="match_address_floor"
+                            rows="1"
+                            value="{{ $match_address->floor ?? "" }}"
+                        />
+                    </div>
 
-                    <label for="match_address_door">Door:</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="match_address_door"
-                        name="match_address_door"
-                        rows="1"
-                        value="{{ $match_address->door ?? "" }}"
-                    />
+                    <div class="form-group">
+                        <label for="match_address_door">Door</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="match_address_door"
+                            name="match_address_door"
+                            rows="1"
+                            value="{{ $match_address->door ?? "" }}"
+                        />
+                    </div>
                 </div>
 
                 @php
@@ -246,12 +245,7 @@
 
                 <div class="actions-row">
                     <div class="btn-container">
-                        <button type="submit" class="btn-create">
-                            <span
-                                class="icon icon-league-link icon-cancel"
-                            ></span>
-                            Modify
-                        </button>
+                        <button type="submit" class="btn-create">Modify</button>
                     </div>
 
                     <div class="btn-container">
@@ -259,14 +253,11 @@
                             href="{{ route("matches.index", ["league" => $league->league_id]) }}"
                             class="btn-cancel"
                         >
-                            <span
-                                class="icon icon-league-link icon-cancel"
-                            ></span>
                             Cancel
                         </a>
                     </div>
                 </div>
             </form>
         </div>
-    </main>
+    </div>
 @endsection

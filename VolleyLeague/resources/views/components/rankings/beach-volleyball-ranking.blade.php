@@ -1,11 +1,13 @@
 <div class="ranking-table-section">
     <!-- Results Table For Beach Volley -->
 
-    <div class="ranking-table-title">Beach Volleyball Ranking</div>
+    <div class="ranking-table-title card section-header">
+        Beach Volleyball Ranking
+    </div>
 
     <!-- MATCHES TABLE BY WEEK -->
     @if (isset($teams))
-        <table class="ranking-table" border="1">
+        <table class="ranking-table card" border="1">
             <tr class="ranking-table-header-row">
                 <th>Nº</th>
                 <th>Logo</th>

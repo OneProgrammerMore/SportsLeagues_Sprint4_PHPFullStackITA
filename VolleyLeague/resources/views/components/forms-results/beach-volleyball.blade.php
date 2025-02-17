@@ -5,8 +5,8 @@
     <div class="form-results">
         <div class="results-form-section section-form-group">
             <div class="form-group-results">
-                <h3>Host</h3>
-                <label for="matches_won">Matches won by host:</label>
+                <h3 class="league-form-subtitle">Host</h3>
+                <label for="matches_won">Matches won by host</label>
                 <input
                     type="number"
                     class="form-control"
@@ -15,7 +15,7 @@
                     value="{{ $match_results->matches_won ?? "" }}"
                 />
 
-                <label for="sets_won">Sets won by host:</label>
+                <label for="sets_won">Sets won by host</label>
                 <input
                     type="number"
                     class="form-control"
@@ -24,7 +24,7 @@
                     value="{{ $match_results->sets_won ?? "" }}"
                 />
 
-                <label for="points_won">Points won by host:</label>
+                <label for="points_won">Points won by host</label>
                 <input
                     type="number"
                     class="form-control"
@@ -35,8 +35,8 @@
             </div>
 
             <div class="form-group-results">
-                <h3>Guest</h3>
-                <label for="matches_lost">Matches won by guest:</label>
+                <h3 class="league-form-subtitle">Guest</h3>
+                <label for="matches_lost">Matches won by guest</label>
                 <input
                     type="number"
                     class="form-control"
@@ -45,7 +45,7 @@
                     value="{{ $match_results->matches_lost ?? "" }}"
                 />
 
-                <label for="sets_lost">Sets won by guest:</label>
+                <label for="sets_lost">Sets won by guest</label>
                 <input
                     type="number"
                     class="form-control"
@@ -54,7 +54,7 @@
                     value="{{ $match_results->sets_lost ?? "" }}"
                 />
 
-                <label for="points_lost">Points won by guest:</label>
+                <label for="points_lost">Points won by guest</label>
                 <input
                     type="number"
                     class="form-control"
@@ -67,8 +67,8 @@
 
         <div class="results-form-section section-form-group">
             <div class="form-group-results">
-                <h3>Host Other Results:</h3>
-                <label for="host_g3">Host G3:</label>
+                <h3 class="league-form-subtitle">Host Other Results</h3>
+                <label for="host_g3">Host G3</label>
                 <input
                     type="number"
                     class="form-control"
@@ -77,7 +77,7 @@
                     value="{{ $match_results->host_g3 ?? "" }}"
                 />
 
-                <label for="host_g2">Host G2:</label>
+                <label for="host_g2">Host G2</label>
                 <input
                     type="number"
                     class="form-control"
@@ -86,7 +86,7 @@
                     value="{{ $match_results->host_g2 ?? "" }}"
                 />
 
-                <label for="host_p1">Host P1:</label>
+                <label for="host_p1">Host P1</label>
                 <input
                     type="number"
                     class="form-control"
@@ -95,7 +95,7 @@
                     value="{{ $match_results->host_p1 ?? "" }}"
                 />
 
-                <label for="host_p0">Host P0:</label>
+                <label for="host_p0">Host P0</label>
                 <input
                     type="number"
                     class="form-control"
@@ -104,7 +104,7 @@
                     value="{{ $match_results->host_p0 ?? "" }}"
                 />
 
-                <label for="host_pg">Host PG:</label>
+                <label for="host_pg">Host PG</label>
                 <input
                     type="number"
                     class="form-control"
@@ -113,7 +113,7 @@
                     value="{{ $match_results->host_pg ?? "" }}"
                 />
 
-                <label for="host_sf">Host SF:</label>
+                <label for="host_sf">Host SF</label>
                 <input
                     type="number"
                     class="form-control"
@@ -122,7 +122,7 @@
                     value="{{ $match_results->host_sf ?? "" }}"
                 />
 
-                <label for="host_sc">Host SC:</label>
+                <label for="host_sc">Host SC</label>
                 <input
                     type="number"
                     class="form-control"
@@ -131,7 +131,7 @@
                     value="{{ $match_results->host_sc ?? "" }}"
                 />
 
-                <label for="host_pf">Host PF:</label>
+                <label for="host_pf">Host PF</label>
                 <input
                     type="number"
                     class="form-control"
@@ -140,7 +140,7 @@
                     value="{{ $match_results->host_pf ?? "" }}"
                 />
 
-                <label for="host_pf">Host PC:</label>
+                <label for="host_pf">Host PC</label>
                 <input
                     type="number"
                     class="form-control"
@@ -149,7 +149,7 @@
                     value="{{ $match_results->host_pc ?? "" }}"
                 />
 
-                <label for="host_sanc">Host Sanctions:</label>
+                <label for="host_sanc">Host Sanctions</label>
                 <input
                     type="number"
                     class="form-control"
@@ -160,8 +160,8 @@
             </div>
 
             <div class="form-group-results">
-                <h3>Guest Other Results:</h3>
-                <label for="guest_g3">Guest G3:</label>
+                <h3 class="league-form-subtitle">Guest Other Results</h3>
+                <label for="guest_g3">Guest G3</label>
                 <input
                     type="number"
                     class="form-control"
@@ -170,7 +170,7 @@
                     value="{{ $match_results->guest_g3 ?? "" }}"
                 />
 
-                <label for="guest_g2">Guest G2:</label>
+                <label for="guest_g2">Guest G2</label>
                 <input
                     type="number"
                     class="form-control"
@@ -179,7 +179,7 @@
                     value="{{ $match_results->guest_g2 ?? "" }}"
                 />
 
-                <label for="guest_p1">Guest P1:</label>
+                <label for="guest_p1">Guest P1</label>
                 <input
                     type="number"
                     class="form-control"
@@ -188,7 +188,7 @@
                     value="{{ $match_results->guest_p1 ?? "" }}"
                 />
 
-                <label for="guest_p0">Guest P0:</label>
+                <label for="guest_p0">Guest P0</label>
                 <input
                     type="number"
                     class="form-control"
@@ -197,7 +197,7 @@
                     value="{{ $match_results->guest_p0 ?? "" }}"
                 />
 
-                <label for="guest_pg">Guest PG:</label>
+                <label for="guest_pg">Guest PG</label>
                 <input
                     type="number"
                     class="form-control"
@@ -206,7 +206,7 @@
                     value="{{ $match_results->guest_pg ?? "" }}"
                 />
 
-                <label for="guest_sf">Guest PF:</label>
+                <label for="guest_sf">Guest PF</label>
                 <input
                     type="number"
                     class="form-control"
@@ -215,7 +215,7 @@
                     value="{{ $match_results->guest_sf ?? "" }}"
                 />
 
-                <label for="guest_sc">Guest SC:</label>
+                <label for="guest_sc">Guest SC</label>
                 <input
                     type="number"
                     class="form-control"
@@ -224,7 +224,7 @@
                     value="{{ $match_results->guest_sc ?? "" }}"
                 />
 
-                <label for="guest_pf">Guest PF:</label>
+                <label for="guest_pf">Guest PF</label>
                 <input
                     type="number"
                     class="form-control"
@@ -233,7 +233,7 @@
                     value="{{ $match_results->guest_pf ?? "" }}"
                 />
 
-                <label for="guest_pf">Guest PC:</label>
+                <label for="guest_pf">Guest PC</label>
                 <input
                     type="number"
                     class="form-control"
@@ -242,7 +242,7 @@
                     value="{{ $match_results->guest_pc ?? "" }}"
                 />
 
-                <label for="guest_sanc">Guest Sanctions:</label>
+                <label for="guest_sanc">Guest Sanctions</label>
                 <input
                     type="number"
                     class="form-control"

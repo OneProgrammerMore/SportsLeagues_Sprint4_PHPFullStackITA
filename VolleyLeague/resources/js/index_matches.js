@@ -13,19 +13,6 @@ function openSelectWeeksForm() {
     }
 }
 
-function showMoreInfoMatchesOld() {
-    coll = document.getElementsByClassName("match-table-row-address");
-
-    if (
-        document.getElementsByClassName("match-table-row-address")[0].style
-            .display == "table-row"
-    ) {
-        changeStyle(coll, "display", "none");
-    } else {
-        changeStyle(coll, "display", "table-row");
-    }
-}
-
 function showMoreInfoMatches() {
     let elements = document.querySelectorAll(".match-table-row-address"); // Select elements by class
 
@@ -37,7 +24,7 @@ function showMoreInfoMatches() {
         }
     });
 }
-
+/*
 function changeStyle(coll, styleProperty, styleChange) {
     for (var i = 0, len = coll.length; i < len; i++) {
         coll[i].style[styleProperty] = styleChange;
@@ -56,8 +43,8 @@ function addColorStyleToTableByRowClass(rowClassName) {
             coll[i].style.backgroundColor = "rgb(203 213 225)";
         }
     }
-}
-
+}*/
+/*
 document.addEventListener(
     "DOMContentLoaded",
     function () {
@@ -66,3 +53,6 @@ document.addEventListener(
     },
     false,
 );
+*/
+window.showMoreInfoMatches = showMoreInfoMatches;
+window.openSelectWeeksForm = openSelectWeeksForm;

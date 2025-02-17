@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import glob from 'fast-glob';
-import Unfonts from 'unplugin-fonts/vite'
 
 export default defineConfig({
     plugins: [
@@ -17,12 +16,15 @@ export default defineConfig({
 
                 'resources/css/comp_formResults.css',
                 'resources/css/comp_legends.css',
-                'resources/css/legal.css', 
+                'resources/css/legal.css',
+                'resources/js/menu-responsive.js',
+                'resources/js/index_matches.js',
                 //'resources/img/cupLogo.png',
                 ...glob.sync('resources/img/**/*'),
             ],
             refresh: true,
         }),
+        /*
         Unfonts({
             custom: {
                 families: [
@@ -35,7 +37,7 @@ export default defineConfig({
                 display: "auto",
                 preload: true,
             },
-        }),
+        }),*/
     ],
     build: {
         assetsInlineLimit: 0, // Prevent fonts from being inlined
@@ -43,10 +45,10 @@ export default defineConfig({
         outDir: 'public/build',
     },
     server: {
-		host: '192.168.1.38',  // This allows external access to the Vite server
+		host: '192.168.1.44',  // This allows external access to the Vite server
 		port: 5173,        // The default port Vite uses
 		hmr: {
-		  host: '192.168.1.38',  // This ensures that HMR works correctly in Docker/Vagrant
+		  host: '192.168.1.44',  // This ensures that HMR works correctly in Docker/Vagrant
 		},
 		watch: {
             ignored: ['**/public/storage/public/**','**/storage/app/public/**'], // Ignore file changes in these paths
