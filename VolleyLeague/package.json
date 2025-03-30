@@ -3,7 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "devo": "vite --host 0.0.0.0",
+        "dev-host": "vite --host",
         "dev:cup": "vite --host --base=/cup/",
         "build": "vite build",
         "build-portfolio": "vite build --base=/cup/",

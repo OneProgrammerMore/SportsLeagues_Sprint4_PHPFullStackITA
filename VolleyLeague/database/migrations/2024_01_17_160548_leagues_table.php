@@ -59,7 +59,7 @@ return new class extends Migration
             $table->id('league_id');
             // $table->integer('league_type_id');
             $table->bigInteger('league_type_id')->unsigned()->index()->nullable();
-            $table->string('league_type');
+            //$table->string('league_type');
             $table->string('league_name');
             $table->string('league_status');
             $table->bigInteger('league_admin_id')->unsigned()->index()->nullable();

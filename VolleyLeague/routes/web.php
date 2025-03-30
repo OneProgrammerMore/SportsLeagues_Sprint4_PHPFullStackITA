@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::group(['prefix' => 'cup'], function(){
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -124,4 +123,3 @@ Route::get('/contact', FooterController::class.'@contact')->name('footer.contact
 Route::get('/about-us', FooterController::class.'@about_us')->name('footer.about-us');
 Route::get('/home', FooterController::class.'@home')->name('footer.home');
 
-});

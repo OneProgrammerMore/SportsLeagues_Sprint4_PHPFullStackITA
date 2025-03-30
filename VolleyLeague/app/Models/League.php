@@ -14,7 +14,7 @@ class League extends Model
     // The strings identify the field in the database for the table "Leagues" that are going to be modified.
     protected $fillable = [
         'league_type_id',
-        'league_type',
+        //'league_type',
         'league_name',
         'league_status',
         'league_admin_id',

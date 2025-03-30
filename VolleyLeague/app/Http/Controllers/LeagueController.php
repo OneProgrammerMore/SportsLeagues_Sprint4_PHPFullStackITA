@@ -122,7 +122,7 @@ class LeagueController extends Controller
     {
         // Update League Controller will allow the user to create a League (If policy aggrees)
         $request->validate([
-            'league_type' => 'required',
+            'league_type_id' => 'required',
             'league_name' => 'required|max:255',
             'league_status' => ['required', new Enum(LeagueStatusEnum::class)],
             'league_img' => 'file|mimes:png,jpeg,svg|max:5000',
@@ -135,7 +135,7 @@ class LeagueController extends Controller
         $league = League::find($id);
 
         // Add the parameter 'league_type' by searching the match in the table league_types with id 'league_type_id';
-        $leagueTypeId = LeagueTypes::where('league_type', $request->league_type)->first()->league_type_id;
+        $leagueTypeId = LeagueTypes::where('league_type_id', $request->league_type)->first()->league_type_id;
         $request->request->add(['league_type_id' => $leagueTypeId]);
 
         // Updates Image (Deletes the old one and stores the new one)

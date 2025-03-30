@@ -5,7 +5,7 @@ RUN apt -y install nano lsof
 RUN apt -y install apache2
 RUN apt -y install php php-common 
 RUN apt -y install php-dev 
-RUN apt -y install php-cli php-pear composer php-mysql 
+RUN apt -y install php-cli php-pear composer php-mysql php-pdo-mysql
 RUN apt -y install php-curl
 RUN apt -y install npm
 
