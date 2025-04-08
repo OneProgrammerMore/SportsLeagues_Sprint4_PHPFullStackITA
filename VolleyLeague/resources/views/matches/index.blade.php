@@ -197,7 +197,7 @@
                 <!-- No Enough Teams To create a match: -->
                 <div class="creator-normal-card">
                     <h2>
-                        There are not enough teams to create a propper match.
+                        There are not enough teams to create a proper match.
                         <br />
                         Please create a minimum of 2 teams.
                     </h2>
