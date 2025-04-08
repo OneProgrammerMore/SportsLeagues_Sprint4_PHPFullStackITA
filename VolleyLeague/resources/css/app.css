@@ -632,6 +632,9 @@ footer{
 .data-field{
     @apply flex flex-row;
 }
+.data-field > *{
+    @apply flex flex-col w-auto h-auto items-center justify-center text-center;
+}
 .creator-normal{
     @apply flex flex-col w-auto h-auto items-center justify-center text-center;
     background-color: var(--color-white);

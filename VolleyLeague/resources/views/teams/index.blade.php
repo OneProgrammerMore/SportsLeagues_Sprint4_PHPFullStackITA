@@ -47,7 +47,7 @@
                                     {{ $team->team_phone }}
                                 </div>
                             </div>
-
+                            @if($team->address_country)
                             <div class="team-address data-field">
                                 <span
                                     class="icon icon-league-link icon-address team-data-img"
@@ -65,6 +65,7 @@
                                     {{ $team->address_country ?? "" }}
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

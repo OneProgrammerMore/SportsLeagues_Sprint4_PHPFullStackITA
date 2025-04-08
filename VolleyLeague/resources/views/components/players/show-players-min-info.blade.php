@@ -47,16 +47,22 @@
                     </div>
                 </div>
                 <div class="player-data player-birth-container">
+                    @if($player->birth_date)
                     <div class="player-birth">
                         {{ $player->birth_date ?? "" }}
                         ({{ $player->age ?? "" }})
                         [{{ $player->country ?? "" }}]
                     </div>
+                    @endif
                 </div>
                 <div class="player-data player-mesuraments-container">
                     <div class="player-mesuraments">
-                        <h2>{{ $player->height }} m</h2>
-                        <h2>{{ $player->weight }} kg</h2>
+                        @if($player->height)
+                            <h2>{{ $player->height }} m</h2>
+                        @endif  
+                        @if($player->weigh)  
+                            <h2>{{ $player->weight }} kg</h2>
+                        @endif
                     </div>
                 </div>
             </div>
