@@ -135,13 +135,13 @@ class DemoWebSeeder extends Seeder
     public function run(): void
     {
         $this::createLeagueXTeams('8-Teams Volleyball League RandomData', 8, 8,1);
-        //$this::createLeagueXTeams('5-Teams Volleyball League RandomData', 5, 5,1);
+        $this::createLeagueXTeams('5-Teams Volleyball League RandomData', 5, 5,1);
         //$this::createLeagueXTeams('3TeamsLeagueRandomData', 3, 6,1);
         //$this::createLeagueXTeams('2TeamsLeagueRandomData', 2, 4,1);
         $this::createLeagueXTeams('11-Teams Volleyball League RandomData', 11, 7,1);
 
         $this::createLeagueXTeams('8-Teams Basketball League RandomData', 8, 8,2);
-        //$this::createLeagueXTeams('5-Teams Basketball League RandomData', 5, 5,2);
-        //$this::createLeagueXTeams('11-Teams Basketball League RandomData', 11, 7,2);
+        $this::createLeagueXTeams('5-Teams Basketball League RandomData', 5, 5,2);
+        $this::createLeagueXTeams('11-Teams Basketball League RandomData', 11, 7,2);
     }
 }
