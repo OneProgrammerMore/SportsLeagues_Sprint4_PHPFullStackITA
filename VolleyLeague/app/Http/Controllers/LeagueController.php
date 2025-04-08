@@ -19,10 +19,20 @@ class LeagueController extends Controller
     {
         // Index League Controller will show all leagues related with the user.
         $leagues = League::all();
-
+        foreach($leagues as $league){
+            $league_type = LeagueTypes::where('league_type_id', $league->league_type_id)->first()->league_type;
+            $league['league_type'] = $league_type;
+        }
         return view('leagues.index', compact('leagues'));
-
     }
+
+    public function infinite()
+    {
+        $leagues_count = League::count();
+        return view('leagues.index-infinite')->with('leagues_count', $leagues_count);
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -53,7 +63,7 @@ class LeagueController extends Controller
             'league_img' => 'file|mimes:png,jpeg,svg|max:5000',
             'league_description' => 'max:1500',
             'league_starting_date' => 'required|date',
-            'league_finalization_date' => 'required|date',
+            'league_finalization_date' => 'required|date|after:league_starting_date',
             'league_web' => 'max:500',
             'league_channel' => 'max:500',
         ]);
@@ -68,7 +78,7 @@ class LeagueController extends Controller
 
             $nameImgToStore = $imgLeagueFile->hashName();
 
-            $pathImgStored = $request->file('league_img')->storeAs('public/league_imgs', $nameImgToStore);
+            $pathImgStored = $request->file('league_img')->storeAs('public/imgs/league_imgs', $nameImgToStore);
 
             $request->request->add(['league_img_name' => $pathImgStored]);
             League::create($request->all());
@@ -93,6 +103,9 @@ class LeagueController extends Controller
         // Show League Controller will allow the user to create a League (If policy aggrees)
         $league = League::find($id);
 
+        $leagueType = LeagueTypes::find($league->league_type_id)->league_type;
+        $league["league_type"] = $leagueType;
+
         return view('leagues.show', compact('league'));
     }
 
@@ -111,6 +124,9 @@ class LeagueController extends Controller
         $league_status = array_combine($league_status_values, $league_status_values);
 
         $league_type = $league->league_type;
+        $league_type = LeagueTypes::where('league_type_id', $league->league_type_id)->first();
+
+        $league['league_type']=$league_type;
 
         return view('leagues.edit', compact('league', 'league_types', 'league_status'));
     }
@@ -128,14 +144,14 @@ class LeagueController extends Controller
             'league_img' => 'file|mimes:png,jpeg,svg|max:5000',
             'league_description' => 'max:1500',
             'league_starting_date' => 'required|date',
-            'league_finalization_date' => 'required|date',
+            'league_finalization_date' => 'required|date|after:league_starting_date',
             'league_web' => 'max:500',
             'league_channel' => 'max:500',
         ]);
         $league = League::find($id);
 
         // Add the parameter 'league_type' by searching the match in the table league_types with id 'league_type_id';
-        $leagueTypeId = LeagueTypes::where('league_type_id', $request->league_type)->first()->league_type_id;
+        $leagueTypeId = LeagueTypes::where('league_type_id', $request->league_type_id)->first()->league_type_id;
         $request->request->add(['league_type_id' => $leagueTypeId]);
 
         // Updates Image (Deletes the old one and stores the new one)
@@ -147,7 +163,7 @@ class LeagueController extends Controller
             // Create a unique file name for the image, in order to store it
             $nameImgToStore = $imgLeagueFile->hashName();
             // Store the image in the 'league_imgs' folder with the hashed name:
-            $pathImgStored = $request->file('league_img')->storeAs('public/league_imgs',
+            $pathImgStored = $request->file('league_img')->storeAs('public/imgs/league_imgs',
                 $nameImgToStore);
             // Delete the old image:
             $oldImgNamePath = public_path().'/storage/public/'.$league->league_img_name;

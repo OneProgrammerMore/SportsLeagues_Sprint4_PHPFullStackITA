@@ -30,19 +30,18 @@ class LeagueFactory extends Factory
     {
         $examplesImagePath = '';
         $inputFilesPath = '/storage/app/examples/league_imgs/';
-        $outputPath = '/storage/app/public/';
+        $outputPath = '/storage/app/public/imgs/';
         $infix = 'league_imgs/';
 
         $leagueName = fake()->randomLetter().'League';
         $leagueTypesIDs = LeagueTypes::pluck('league_type_id')->toArray();
-        // echo "leagueTypesIDs = ". $leagueTypesIDs;
-        //$image = fake()->image($publicPath.'storage/app/public/league_imgs', 640, 480, null, false);
+
         $image = new ImageFaker($examplesImagePath, $inputFilesPath, $outputPath, $infix); 
         $imageName = $image->getImageName();
 
         $publicPath = "/var/www/html/";
         return [
-            'league_type_id' => fake()->randomElement($leagueTypesIDs),
+            'league_type_id' => 1,
             'league_name' => $leagueName,
             'league_status' => fake()->randomElement([LeagueStatusEnum::WAITING, LeagueStatusEnum::ONGOING, LeagueStatusEnum::FINISHED, LeagueStatusEnum::CANCELED]),
             'league_admin_id' => Person::factory()->create(),
@@ -54,19 +53,5 @@ class LeagueFactory extends Factory
             'league_channel' => 'wwww.'.$leagueName.'.com',
             'league_official_web' => 'wwww.youtube.com?channel='.$leagueName,
         ];
-        /*
-        'league_type_id',
-        'league_type',
-        'league_name',
-        'league_status',
-        'league_admin_id',
-        'league_admin_id_2',
-        'league_img_name',
-        'league_starting_date',
-        'league_finalization_date',
-        'league_description',
-        'league_channel',
-        'league_official_web',
-        */
     }
 }

@@ -2,6 +2,27 @@
 
 @section("content")
     <div id="leagues-container" class="cards-container">
+         @if (count($leagues) == 0)
+            <!-- Empty State League Creation: -->
+            <div class="creator-normal">
+                <h2>
+                    There are not leagues to show.
+                    <br />
+                    Try creating a new one!
+                </h2>
+                <a class="btn-create" href="{{ route("leagues.create") }}">
+                    Create League
+                </a>
+            </div>
+        @else
+            <!-- Normal Creation Div -->
+
+            <div class="creator-normal">
+                <a class="btn-create" href="{{ route("leagues.create") }}">
+                    Create League
+                </a>
+            </div>
+        @endif
         @foreach ($leagues as $league)
             <div class="league-container">
                 <div class="league-info">
@@ -17,15 +38,29 @@
                     <div class="league-img-container">
                         <img
                             class="league-imgs-index"
-                            src="{{ asset($league->league_img_name ? "storage/public/" . $league->league_img_name : Vite::asset("resources/img/league.png")) }}"
+                            src="{{ asset($league->league_img_name ? "storage/" . $league->league_img_name : Vite::asset("resources/img/league.png")) }}"
                             alt="Web Logo - The image of a Tournament Cup"
                         />
                     </div>
                     <div class="league-data">
                         <div class="league-main-data">
                             <h3 class="league-status">
-                                <span class="league-status-circle"></span>
-                                {{ $league->league_status ?? "" }}
+                                @if( $league->league_status == null  )
+                                    <span class="league-status-circle league-status-unknown"></span>
+                                    {{ $league->league_status ?? "" }}
+                                @elseif($league->league_status == "Waiting")
+                                    <span class="league-status-circle league-status-waiting"></span>
+                                    {{ $league->league_status ?? "" }}
+                                @elseif($league->league_status == "Ongoing")
+                                    <span class="league-status-circle league-status-ongoing"></span>
+                                    {{ $league->league_status ?? "" }}
+                                @elseif($league->league_status == "Finished")
+                                    <span class="league-status-circle league-status-finished"></span>
+                                    {{ $league->league_status ?? "" }}
+                                @elseif($league->league_status == "Canceled")
+                                    <span class="league-status-circle league-status-canceled"></span>
+                                    {{ $league->league_status ?? "" }}
+                                @endif
                             </h3>
                             <h3 class="league-name">
                                 {{ $league->league_name ?? "" }}
@@ -89,25 +124,5 @@
         @endforeach
     </div>
 
-    @if (count($leagues) == 0)
-        <!-- Empty State League Creation: -->
-        <div class="creator-normal">
-            <h2>
-                There are not leagues to show.
-                <br />
-                Try creating a new one!
-            </h2>
-            <a class="btn-create" href="{{ route("leagues.create") }}">
-                Create League
-            </a>
-        </div>
-    @else
-        <!-- Normal Creation Div -->
-
-        <div class="creator-normal">
-            <a class="btn-create" href="{{ route("leagues.create") }}">
-                Create League
-            </a>
-        </div>
-    @endif
+    
 @endsection

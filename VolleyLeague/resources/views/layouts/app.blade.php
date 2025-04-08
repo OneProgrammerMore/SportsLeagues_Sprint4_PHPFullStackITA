@@ -36,9 +36,11 @@
             href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"
         />
+        @livewireStyles
     </head>
 
     <body class="font-sans antialiased">
+        
         <div class="main-container">
             {{-- @include("layouts.navigation") --}}
             @php
@@ -58,5 +60,7 @@
 
             <x-footer />
         </div>
+        @livewireScripts
     </body>
+    
 </html>

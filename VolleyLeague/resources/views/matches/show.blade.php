@@ -1,13 +1,14 @@
 @extends("layouts.app")
 
 @section("content")
-    <div class="league-container-show">
+    <div class="cards-container">
+    <div class="card">
         <div class="match-show-container">
             <div class="match-team-container">
                 <div class="container-team-logo">
                     <img
                         class="team-img-match"
-                        src="{{ asset("storage/public/" . $host_team->team_img_name) }}"
+                        src="{{ asset("storage/" . $host_team->team_img_name) }}"
                         alt="Host Team Image"
                     />
                 </div>
@@ -31,14 +32,13 @@
                     <br />
                     {{ $match->only_time }}
                 </div>
-                
             </div>
 
             <div class="match-team-container">
                 <div class="container-team-logo">
                     <img
                         class="team-img-match"
-                        src="{{ asset("storage/public/" . $guest_team->team_img_name) }}"
+                        src="{{ asset("storage/" . $guest_team->team_img_name) }}"
                         alt="Host Team Image"
                     />
                 </div>
@@ -50,6 +50,26 @@
                 </div>
             </div>
         </div>
+        
+        
+        <div class="match-show-container-center">
+                
+            <div class="container-match-date">
+                    <div colspan="11">
+                        {{ $match_address->street ?? "" }}
+                        {{ $match_address->number ?? "" }}
+                        <br />
+                        {{$match_address->floor ? $match_address->floor . " Floor" : "" }}
+                        {{ $match_address->door ? $match_address->door . " Door" : "" }}
+                        <br />
+                        {{ $match_address->city ?? "" }}
+                        {{ $match_address->postalcode ?? "" }}
+                        <br />
+                        {{ $match_address->country ?? "" }}
+                    </div>
+            </div>
+        </div>
+        
         <div class="league-actions">
             <form
                 class="league-link-action"
@@ -72,4 +92,6 @@
             </form>
         </div>
     </div>
+</div>
+
 @endsection

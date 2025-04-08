@@ -32,13 +32,5 @@ class PersonFactory extends Factory
             'person_email' => fake()->email(),
             'person_address_id' => Addresses::factory()->create(),
         ];
-        /*
-        'person_name',
-        'person_surname_1',
-        'person_surname_2',
-        'person_email',
-        'person_phone',
-        'person_address_id',
-        */
     }
 }

@@ -1,11 +1,11 @@
 <?php
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\LeagueController;
-// In order to link the post controller file with routes:
 use App\Http\Controllers\MatchController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,8 +42,6 @@ require __DIR__.'/auth.php';
 |
 */
 
-//
-
 /* ROUTES FOR LEAGUE */
 // returns the home page with all leagues
 Route::get('/', LeagueController::class.'@index')->name('leagues.index');
@@ -61,18 +59,10 @@ Route::put('/leagues/{league}', LeagueController::class.'@update')->name('league
 Route::delete('/leagues/{league}', LeagueController::class.'@destroy')->name('leagues.destroy');
 
 // Infinite Leagues:
-Route::get('/infinite-leagues', App\Livewire\FetchLeagues::class)
-    ->name('leagues.infinite-leagues');
+Route::get('/infinite-leagues', LeagueController::class.'@infinite')
+    ->name('leagues.infinite');
 
-// Routes for league, teams and matches creation:
-// 1 - Route index with League /
-// 2 - Route leagues/create
-// 		- Create the league:
-// 3 - Route to create Teams /leagues/{league}/teams-create
-//		- Create the different teams
-// 4 - Route to create Matches /leagues/{league}/matches-create
-// 		- Create and configure the matches
-// 		- Depending on the league type the matches must be somwhow pre-created
+
 
 /* ROUTES FOR TEAM */
 // returns the home page with all team
@@ -91,13 +81,10 @@ Route::put('/leagues/{league}/teams/{team}', TeamController::class.'@update')->n
 Route::delete('/leagues/{league}/teams/{team}', TeamController::class.'@destroy')->name('teams.destroy');
 
 /* ROUTES FOR TEAM */
-
 Route::resource('/leagues/{league}/matches', MatchController::class, [
     'except' => ['index', 'store'],
 ]);
 Route::get('/leagues/{league}/matches', MatchController::class.'@index')->name('matches.index');
-//In order to search in index matches
-Route::post('/leagues/{league}/matches', MatchController::class .'@search')->name('matches.search');
 // adds a team league to the database
 Route::post('/leagues/{league}/matches/store', MatchController::class.'@store')->name('matches.store');
 
@@ -122,4 +109,5 @@ Route::get('/legal', FooterController::class.'@legal')->name('footer.legal');
 Route::get('/contact', FooterController::class.'@contact')->name('footer.contact');
 Route::get('/about-us', FooterController::class.'@about_us')->name('footer.about-us');
 Route::get('/home', FooterController::class.'@home')->name('footer.home');
+Route::get('/user-disclaimer', UserController::class.'@show')->name('disclaimer-user.show');
 

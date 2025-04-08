@@ -6,21 +6,44 @@
     <!-- League Classification -->
     <!-- League Results -->
     <!-- League Next Matches -->
-    <div class="league-container-show">
+    <div class="cards-container">
+    <div class="league-container-show card">
         <div class="league-info">
             <div class="league-img-container">
                 <img
                     class="league-img"
-                    src="{{ asset($league->league_img_name ? "storage/public/" . $league->league_img_name : Vite::asset("resources/img/league.png")) }}"
+                    src="{{ asset($league->league_img_name ? "storage/" . $league->league_img_name : Vite::asset("resources/img/league.png")) }}"
                     alt="Web Logo - The image of a Tournament Cup"
                 />
             </div>
             <div class="league-data">
                 <div class="league-main-data">
+                    {{-- 
                     <h3 class="league-status">
                         <span class="league-status-circle"></span>
                         {{ $league->league_status ?? "" }}
+                    </h3>--}}
+
+
+                    <h3 class="league-status">
+                        @if( $league->league_status == null  )
+                            <span class="league-status-circle league-status-unknown"></span>
+                            {{ $league->league_status ?? "" }}
+                        @elseif($league->league_status == "Waiting")
+                            <span class="league-status-circle league-status-waiting"></span>
+                            {{ $league->league_status ?? "" }}
+                        @elseif($league->league_status == "Ongoing")
+                            <span class="league-status-circle league-status-ongoing"></span>
+                            {{ $league->league_status ?? "" }}
+                        @elseif($league->league_status == "Finished")
+                            <span class="league-status-circle league-status-finished"></span>
+                            {{ $league->league_status ?? "" }}
+                        @elseif($league->league_status == "Canceled")
+                            <span class="league-status-circle league-status-canceled"></span>
+                            {{ $league->league_status ?? "" }}
+                        @endif
                     </h3>
+
                     <h3 class="league-name">
                         {{ $league->league_name ?? "" }}
                     </h3>
@@ -125,6 +148,7 @@
                 <button type="submit" class="btn-delete">Delete</button>
             </form>
         </div>
+    </div>
     </div>
     <!-- League Classification -->
     <!-- League Results -->

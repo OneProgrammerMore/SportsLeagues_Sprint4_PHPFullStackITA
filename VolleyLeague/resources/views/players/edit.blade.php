@@ -15,7 +15,7 @@
                 <!--TEAM NUMBER -->
                 <div class="section-form-group">
                     {{-- <h3 class="league-form-subtitle">Team Information</h3> --}}
-                    <div class="form-group">
+                    <div class="form-group-hidden">
                         <label for="league_id">League ID:</label>
                         <input
                             type="text"
@@ -39,7 +39,7 @@
                             readonly
                         />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group-hidden">
                         <label for="team_id">Team ID:</label>
                         <input
                             type="text"
@@ -131,7 +131,6 @@
                             class="form-control"
                             name="player_birth_date"
                             value="{{ $player->birth_date ?? "" }}"
-                            required
                         />
                     </div>
 

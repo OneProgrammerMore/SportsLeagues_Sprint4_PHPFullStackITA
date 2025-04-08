@@ -32,7 +32,6 @@ class MatchyFactory extends Factory
         $leagueName = fake()->randomLetter().'League';
         $leagueTypesIDs = LeagueTypes::pluck('league_type_id')->toArray();
 
-
         return [
             'host_team_id' => fake()->uuid(),
             'guest_team_id' => fake()->uuid(),
@@ -47,18 +46,5 @@ class MatchyFactory extends Factory
             'guest_points' => fake()->numberBetween(0,21),
             'match_status' => fake()->randomElement([MatchStatusEnum::PENDING, MatchStatusEnum::ONGOING, MatchStatusEnum::FINISHED, MatchStatusEnum::CANCELED]),
         ];
-        /*
-        'host_team_id',
-        'guest_team_id',
-        'match_address_id',
-        'league_type',
-        'match_date',
-        'league_id',
-        'match_number',
-        'week_number',
-        'host_points',
-        'guest_points',
-        'match_status',
-        */
     }
 }

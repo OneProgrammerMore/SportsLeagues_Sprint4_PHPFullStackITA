@@ -30,12 +30,11 @@ class TeamFactory extends Factory
     {
         $examplesImagePath = '';
         $inputFilesPath = '/storage/app/examples/team_imgs/';
-        $outputPath = '/storage/app/public/';
+        $outputPath = '/storage/app/public/imgs/';
         $infix = 'team_imgs/';
 
         $teamName = fake()->randomLetter().'Team';
         $leagueTypesIDs = League::pluck('league_type_id')->toArray();
-        //$image = fake()->image($publicPath.'storage/app/public/league_imgs', 640, 480, null, false);
         $image = new ImageFaker($examplesImagePath, $inputFilesPath, $outputPath, $infix); 
         $imageName = $image->getImageName();
 
@@ -49,16 +48,6 @@ class TeamFactory extends Factory
             'team_img_name' => $imageName,
             'team_email' => fake()->email(),
         ];
-        /*
-        'league_id',
-        'team_number',
-        'team_name',
-        'team_address_id',
-        'team_responsible_id',
-        'team_phone',
-        'team_img_name',
-        'team_email',
-        */
 
     }
 }

@@ -27,6 +27,14 @@ class PlayersFactory extends Factory
      */
     public function definition(): array
     {
+
+        $examplesImagePath = '';
+        $inputFilesPath = '/storage/app/examples/player_imgs/';
+        $outputPath = '/storage/app/public/imgs/';
+        $infix = 'team_imgs/';
+        $image = new ImageFaker($examplesImagePath, $inputFilesPath, $outputPath, $infix); 
+        $imageName = $image->getImageName();
+
         $birth = fake()->dateTimeBetween('-100 years', '-5 years');
         return [
             'league_id' => fake()->uuid(),
@@ -44,26 +52,8 @@ class PlayersFactory extends Factory
             'email' => fake()->email(),
             'phone' => fake()->phoneNumberWithExtension(),
             'address_id' => Addresses::factory()->create(),
+            'player_img_name' => $imageName,
         ];
-        /*
-        'team_id',
-        'league_id',
-        'name',
-        'surname_1',
-        'surname_2',
-        'sex',
-        'player_img_name',
-        'height',
-        'weight',
-        'country',
-        'age',
-        'birth_date',
-        'player_number',
-
-        'email',
-        'phone',
-        'address_id',
-        */
 
     }
 }

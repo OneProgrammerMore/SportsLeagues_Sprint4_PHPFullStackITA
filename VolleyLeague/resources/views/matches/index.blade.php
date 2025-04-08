@@ -18,7 +18,7 @@
             </form>
 
             <button onclick="openSelectWeeksForm()">
-                <span class="icon icon-league-link icon-search"></span>
+                <span class="icon icon-league-link icon-search" id="search-icon-tool"></span>
             </button>
         </div>
 
@@ -27,11 +27,11 @@
                 <div id="search-week">
                     <form
                         class="search-tool-form"
-                        action="{{ route("matches.search", $league->league_id) }}"
-                        method="post"
+                        href="{{ route("matches.index", $league->league_id) }}"
+                        method="GET"
                     >
                         @csrf
-                        @method("POST")
+                        @method("GET")
                         <div class="tool-group">
                             @if (isset($week_dates))
                                 <div class="week-selector">
@@ -39,13 +39,20 @@
                                         Starting Week:
                                     </label>
                                     @php    
-                                        echo html()->select("starting_week_date", $week_dates, $week_start);
+                                        echo html()->select("startweek", $week_dates, $week_start);
                                     @endphp
                                 </div>
                                 <div class="week-selector">
                                     <label for="end_week_date">Ending Week:</label>
                                     @php
-                                        echo html()->select("end_week_date", $week_dates, $week_end);
+                                        echo html()->select("endweek", $week_dates, $week_end);
+                                    @endphp
+                                </div>
+                                <div class="week-selector">
+                                    <label for="teamID">Team</label>
+                                    @php
+                                        $defaultValue = "0";
+                                        echo html()->select("teamID", $teams_list, $defaultValue);
                                     @endphp
                                 </div>
                             @endif
@@ -62,9 +69,9 @@
         </div>
     </div>
     <div class="cards-container">
-        <div class="calender-container">
-            <div class="card section-header">Calender</div>
-            <div class="matches-calender-container">
+        <div class="calendar-container">
+            <div class="card section-header">Calendar</div>
+            <div class="matches-calendar-container">
                 @php
                     $isNewWeek = true;
                     $lastWeekNumber = 0;
@@ -72,8 +79,8 @@
 
                 <!-- MATCHES TABLE BY WEEK -->
                 @if (isset($matches) and count($matches) > 0)
-                    <div class="matches-calender">
-                        <div class="calender-header-row calender-row">
+                    <div class="matches-calendar">
+                        <div class="calendar-header-row calendar-row">
                             <div class="match-number">Nº</div>
                             <div class="match-date">Date</div>
                             <div class="match-teams">Teams</div>
@@ -87,12 +94,12 @@
                                     $lastWeekNumber = $match->week_number;
                                 @endphp
 
-                                <div class="match-table-row-week calender-row">
+                                <div class="match-table-row-week calendar-row">
                                     Week {{ $match->week_number }}
                                 </div>
                             @endif
 
-                            <div class="calender-row calender-row">
+                            <div class="calendar-row calendar-row-data">
                                 <div class="match-number">
                                     {{ $match->match_number ?? "" }}
                                 </div>
@@ -106,11 +113,12 @@
                                         <div class="img-team-container">
                                             <img
                                                 class="team-img-matches"
-                                                src="{{ asset("storage/public/" . $match->host_img) }}"
+                                                {{-- src="{{ asset("storage/" . $match->host_img) }}"--}}
+                                                src="{{ asset( ! empty($match->host_img) ? "storage/" . $match->host_img : Vite::asset("resources/img/team.png")) }}"
                                                 alt="Host Team Image"
                                             />
                                         </div>
-                                        <div class="team-name-calender">
+                                        <div class="team-name-calendar">
                                             {{ $match->host_name ?? "" }}
                                         </div>
                                     </div>
@@ -118,11 +126,11 @@
                                         <div class="img-team-container">
                                             <img
                                                 class="team-img-matches"
-                                                src="{{ asset("storage/public/" . $match->guest_img) }}"
+                                                src="{{ asset( ! empty($match->guest_img) ? "storage/" . $match->guest_img : Vite::asset("resources/img/team.png")) }}"
                                                 alt=">Guest Team Image"
                                             />
                                         </div>
-                                        <div class="team-name-calender">
+                                        <div class="team-name-calendar">
                                             {{ $match->guest_name ?? "" }}
                                         </div>
                                     </div>
@@ -138,6 +146,7 @@
                                 <div class="match-actions">
                                     <div class="host-team">
                                         <a
+                                            class="info-team-link"
                                             href="{{ route("matches.show", ["league" => $league->league_id, "match" => $match->match_id]) }}"
                                         >
                                             <i class="infoIcon">
@@ -148,7 +157,8 @@
                                         </a>
                                     </div>
                                     <div class="host-team">
-                                        <a
+                                        <a 
+                                            class="modify-team-link"
                                             href="{{ route("matches.edit", ["league" => $league->league_id, "match" => $match->match_id]) }}"
                                         >
                                             <i class="infoIcon">
@@ -161,7 +171,7 @@
                                 </div>
                             </div>
 
-                            <div class="match-table-row-address calender-row">
+                            <div class="match-table-row-address calendar-row">
                                 <div colspan="11">
                                     {{ $match->address_street ?? "" }}
                                     {{ $match->address_number ?? "" }}
@@ -180,7 +190,23 @@
                 @endif
             </div>
 
-            @if (count($matches) == 0)
+
+            @if (count($matches) == 0 && count($teams) < 2)
+                <!-- No Enough Teams To create a match: -->
+                <div class="creator-normal-card">
+                    <h2>
+                        There are not enough teams to create a propper match.
+                        <br />
+                        Please create a minimum of 2 teams.
+                    </h2>
+                    <a
+                        class="btn-create"
+                        href="{{ route("teams.create", ["league" => $league->league_id]) }}"
+                    >
+                        Create Team
+                    </a>
+                </div>
+            @elseif (count($matches) == 0)
                 <!-- Empty State League Creation: -->
                 <div class="creator-normal-card">
                     <h2>
@@ -211,13 +237,18 @@
 
         @php
             $leagueId = $league->league_id;
+            $weekStart = $week_start;
+            $weekEnd = $week_end;
         @endphp
 
         @if (isset($league_type) and $league_type == "Beach Volleyball")
-            <x-results.beachVolleyballResults :leagueId="$leagueId" />
+            <x-results.beachVolleyballResults :matches=$matches />
             <x-rankings.beachVolleyballRanking :leagueId="$leagueId" />
             <x-legends.beachVolleyballLegend />
-        @elseif ($league_type == "Basketball 3vs3 Simple")
+        {{-- FOR OTHER LEAGUES TYPES --}}
+        @else
+            <x-results.commonResults :matches=$matches />
+            <x-rankings.commonRanking :leagueId="$leagueId" />
         @endif
     </div>
 @endsection

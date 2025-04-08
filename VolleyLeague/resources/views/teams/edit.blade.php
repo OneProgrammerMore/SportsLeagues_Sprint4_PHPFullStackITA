@@ -39,7 +39,7 @@
                             required
                         />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group-hidden">
                         <label for="team_number">Team Number:</label>
                         <input
                             type="text"
@@ -53,20 +53,19 @@
                     </div>
                     <!--TEAM NAME -->
                     <div class="form-group">
-                        <label for="team_name">Team Name:</label>
+                        <label for="team_name">Name:</label>
                         <textarea
                             class="form-control"
                             id="team_name"
                             name="team_name"
                             rows="1"
                             required
-                        >
-    {{ $team->team_name }}</textarea
+                        >{{ $team->team_name }}</textarea
                         >
                     </div>
                     <!--TEAM IMAGE -->
                     <div class="form-group">
-                        <label for="team_img">Team Image:</label>
+                        <label for="team_img">Image:</label>
                         <input
                             class="form-control"
                             type="file"
@@ -78,7 +77,7 @@
 
                     <!--TEAM PHONE -->
                     <div class="form-group">
-                        <label for="team_phone">Team Phone:</label>
+                        <label for="team_phone">Phone:</label>
                         <input
                             type="text"
                             class="form-control"
@@ -92,7 +91,7 @@
 
                     <!--TEAM EMAIL -->
                     <div class="form-group">
-                        <label for="team_email">Team E-Mail:</label>
+                        <label for="team_email">E-Mail:</label>
                         <input
                             type="email"
                             class="form-control"
@@ -195,7 +194,7 @@
                     <h3 class="league-form-subtitle">Team Responsible</h3>
                     <div class="form-group">
                         <label for="team_responsible_name">
-                            Team Responsible Name:
+                            Name:
                         </label>
                         <input
                             type="text"
@@ -208,7 +207,7 @@
                     </div>
                     <div class="form-group">
                         <label for="team_responsible_surname_1">
-                            Team Responsible 1st Surname:
+                            1st Surname:
                         </label>
                         <input
                             type="text"
@@ -221,7 +220,7 @@
                     </div>
                     <div class="form-group">
                         <label for="team_responsible_surname_2">
-                            Team Responsible 2nd Surname:
+                            2nd Surname:
                         </label>
                         <input
                             type="text"
@@ -234,7 +233,7 @@
                     </div>
                     <div class="form-group">
                         <label for="team_responsible_email">
-                            Team Responsible E-Mail:
+                            E-Mail:
                         </label>
                         <input
                             type="email"
@@ -247,7 +246,7 @@
                     </div>
                     <div class="form-group">
                         <label for="team_responsible_phone">
-                            Team Responsible Phone:
+                            Phone:
                         </label>
                         <input
                             type="text"
@@ -268,7 +267,7 @@
 
                     <div class="form-group">
                         <label for="team_responsible_address_country">
-                            Team Responsible Country:
+                            Country:
                         </label>
                         <input
                             type="text"
@@ -281,7 +280,7 @@
                     </div>
                     <div class="form-group">
                         <label for="team_responsible_address_postalcode">
-                            Team Postal Code:
+                           Postal Code:
                         </label>
                         <input
                             type="text"
@@ -294,7 +293,7 @@
                     </div>
                     <div class="form-group">
                         <label for="team_responsible_address_city">
-                            Team City:
+                            City:
                         </label>
                         <input
                             type="text"
@@ -307,7 +306,7 @@
                     </div>
                     <div class="form-group">
                         <label for="team_responsible_address_street">
-                            Team Street:
+                            Street:
                         </label>
                         <input
                             type="text"
@@ -320,7 +319,7 @@
                     </div>
                     <div class="form-group">
                         <label for="team_responsible_address_number">
-                            Team Number:
+                            Number:
                         </label>
                         <input
                             type="text"
@@ -333,7 +332,7 @@
                     </div>
                     <div class="form-group">
                         <label for="team_responsible_address_floor">
-                            Team Floor:
+                            Floor:
                         </label>
                         <input
                             type="text"
@@ -346,7 +345,7 @@
                     </div>
                     <div class="form-group">
                         <label for="team_responsible_address_door">
-                            Team Door:
+                           Door:
                         </label>
                         <input
                             type="text"

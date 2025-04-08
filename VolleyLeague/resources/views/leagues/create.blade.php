@@ -111,6 +111,14 @@
                     />
                 </div>
 
+                @if ($errors->any())
+                    <div class="form-validation-errors">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach  
+                    </div>
+                @endif
+
                 <div class="actions-row">
                     <div class="btn-container">
                         <button type="submit" class="btn-create">Create</button>

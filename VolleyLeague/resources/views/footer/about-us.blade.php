@@ -2,45 +2,22 @@
 
 @section("content")
     <div class="cards-container">
-        <div class="to-do main-section card section-header">
-            This section must be done in the future with information about the
-            web.
+        <div class="main-section card section-header">
+            About this project
         </div>
 
-        <div class="notes-todo-web main-section card">
-            <h3>
-                Some sources to check in order to do the "about us" part of the
-                web:
-            </h3>
-
-            <ul class="to-do-list">
-                <li class="to-do-list-item">
-                    <h4>About Us Page How To</h4>
-                    <a
-                        href="https://www.shopify.com/blog/how-to-write-an-about-us-page"
-                    >
-                        How to Write an About Us page - shopify.com
-                    </a>
-                </li>
-
-                <li class="to-do-list-item">
-                    <h4>
-                        30 Examples of Stellar About Us Pages for Inspiration
-                    </h4>
-                    <a href="https://kinsta.com/blog/about-us-page/">
-                        30 Examples of Stellar About Us Pages for Inspiration -
-                        Kinsta.com
-                    </a>
-                </li>
-                <li class="to-do-list-item">
-                    <h4>Best "About Us" Pages</h4>
-                    <a
-                        href="https://www.canva.com/learn/unique-inspiring-about-page/"
-                    >
-                        50 Best About Us Pages - canva.com
-                    </a>
-                </li>
-            </ul>
+        <div class="text-section card">
+            <div class="center-text-container">
+            <div class="some-text">
+            This is the "improved" version of the fourth sprint of the PHP Full Stack Development Bootcamp by IT Academy made by Mario Gómez Garcia.
+            </br>
+            This project is intended to be a league organizator mainly focused in Beach Volleyball leagues.
+            </br>
+            In the current version of this project the user is able to create leagues with several teams and players and create the various matches for the league.
+            </br>
+            Some goal features of this project are still under work as the creation of other type of leagues, e.g. 3vs3 Basketball Leagues and more.
+            </div>
+            </div>
         </div>
     </div>
 @endsection

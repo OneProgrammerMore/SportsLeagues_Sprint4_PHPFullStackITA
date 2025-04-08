@@ -6,25 +6,18 @@ use App\Models\League;
 use Illuminate\Pagination\Cursor;
 use Illuminate\Support\Collection;
 use Livewire\Component;
+use App\Models\LeagueTypes;
 
 class FetchLeagues extends Component
 {
-    /*
-    public function render()
-    {
-        return view('livewire.fetch-leagues');
-    }*/
 
-    public $posts;  // TODO - Change variable name to leagues
-
+    public $leagues;
     public $nextCursor;
-
     public $hasMorePages;
 
     public function mount()
     {
-        $this->posts = new Collection;
-
+        $this->leagues = new Collection;
         $this->loadLeagues();
     }
 
@@ -33,20 +26,22 @@ class FetchLeagues extends Component
         if ($this->hasMorePages !== null && ! $this->hasMorePages) {
             return;
         }
-
-        $posts = League::cursorPaginate(2, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));
-
-        $this->posts->push(...$posts->items());
-
-        if ($this->hasMorePages = $posts->hasMorePages()) {
-            $this->nextCursor = $posts->nextCursor()->encode();
+        $leagues = League::cursorPaginate(3, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));
+        
+        $this->leagues->push(...$leagues->items());
+        foreach($this->leagues as $league){
+            $league_type = LeagueTypes::where('league_type_id', $league->league_type_id)->first()->league_type;
+            $league['league_type'] = $league_type;
         }
+        if ($this->hasMorePages = $leagues->hasMorePages()) {
+            $this->nextCursor = $leagues->nextCursor()->encode();
+        }
+        $this->hasMorePages = $leagues->hasMorePages();
+
     }
 
     public function render()
     {
-        // return view('livewire.infinite-post-listing')->layout('layouts.base');
-        // return view('livewire.fetch-leagues')->layout('layouts.base');
-        return view('livewire.fetch-leagues')->layout('layouts.mylayout');
+        return view('livewire.fetch-leagues')->with('leagues',$this->leagues);
     }
 }

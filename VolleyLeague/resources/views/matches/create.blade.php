@@ -15,7 +15,7 @@
 
                 <!--TEAM NUMBER -->
                 <div class="form-group-main section-form-group">
-                    <h3 class="league-form-subtitle">Team Information</h3>
+                    <h3 class="league-form-subtitle form-group-hidden">Team Information</h3>
                     <div class="form-group-hidden">
                         <label for="league_id">League ID</label>
                         <input
@@ -28,7 +28,7 @@
                             required
                         />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group-hidden">
                         <label for="match_number">Match Number</label>
                         <input
                             type="text"

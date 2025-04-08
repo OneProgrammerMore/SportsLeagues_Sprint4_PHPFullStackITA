@@ -26,12 +26,12 @@
                         required
                     />
                 </div>
-                <div class="form-group">
+                <div class="form-group-hidden">
                     <label for="league_type_id">Sport Type</label>
 
                     @php
                         echo html()
-                            ->textarea("league_type", $league->league_type)
+                            ->textarea("league_type_id", $league->league_type)
                             ->isReadOnly(true)
                             ->rows(1);
                     @endphp
@@ -117,6 +117,14 @@
                         required
                     />
                 </div>
+
+                @if ($errors->any())
+                    <div class="form-validation-errors">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach  
+                    </div>
+                @endif
 
                 <div class="actions-row">
                     <button type="submit" class="btn-create">Save</button>

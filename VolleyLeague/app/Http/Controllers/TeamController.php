@@ -146,7 +146,7 @@ class TeamController extends Controller
             // Create an unique name in order to store the image using it
             $nameImgToStore = $imgLeagueFile->hashName();
             // Store the image in the public /team_imgs/ folder
-            $pathImgStored = $request->file('team_img')->storeAs('public/team_imgs',
+            $pathImgStored = $request->file('team_img')->storeAs('public/imgs/team_imgs',
                 $nameImgToStore);
 
         } else {
@@ -340,7 +340,7 @@ class TeamController extends Controller
             // Create an unique name in order to store the image using it
             $nameImgToStore = $imgLeagueFile->hashName();
             // Store the image in the public /team_imgs/ folder
-            $pathImgStored = $request->file('team_img')->storeAs('public/team_imgs',
+            $pathImgStored = $request->file('team_img')->storeAs('public/imgs/team_imgs',
                 $nameImgToStore);
             // Delete the old image from team parameter field
             // Delete the old image:

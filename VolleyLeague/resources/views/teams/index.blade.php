@@ -19,7 +19,7 @@
                         <div class="team-img-container">
                             <img
                                 class=""
-                                src="{{ asset($team->team_img_name ? "storage/public/" . $team->team_img_name : "img/team.png") }}"
+                                src="{{ asset($team->team_img_name ? "storage/" . $team->team_img_name : "img/team.png") }}"
                                 alt="Web Logo - The image of a Tournament Cup"
                             />
                         </div>
@@ -74,6 +74,7 @@
 
     @if (count($teams) == 0 and $league != null)
         <!-- Empty State team Creation: -->
+        <div class="cards-container">
         <div class="creator-normal">
             <h2>
                 There are not teams to show.
@@ -87,9 +88,10 @@
                 Create team
             </a>
         </div>
+        </div>
     @elseif ($league != null)
         <!-- Normal Creation Div -->
-
+        <div class="cards-container">
         <div class="creator-normal">
             <h2>Create a new team</h2>
             <a
@@ -98,6 +100,7 @@
             >
                 Create
             </a>
+        </div>
         </div>
     @endif
 @endsection

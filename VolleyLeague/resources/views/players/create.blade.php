@@ -14,7 +14,7 @@
                 @method("POST")
                 <!--TEAM NUMBER -->
                 <div class="section-form-group">
-                    <div class="form-group">
+                    <div class="form-group-hidden">
                         <label for="league_id">League ID:</label>
                         <input
                             type="text"
@@ -38,7 +38,7 @@
                             readonly
                         />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group-hidden">
                         <label for="team_id">Team ID:</label>
                         <input
                             type="text"
@@ -124,13 +124,11 @@
                     <div class="form-group">
                         <label for="player_birth_date">
                             Player Birth Date:
-                            <span class="required">*</span>
                         </label>
                         <input
                             type="date"
                             class="form-control"
                             name="player_birth_date"
-                            required
                         />
                     </div>
 

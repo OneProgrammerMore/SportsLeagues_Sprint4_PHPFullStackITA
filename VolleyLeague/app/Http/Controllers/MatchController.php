@@ -15,201 +15,104 @@ use Illuminate\Validation\Rules\Enum;
 
 class MatchController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function filterMatches($request, $league_id){
+            
+        $request->validate([
+            'startweek' => 'numeric',
+            'endweek' => 'numeric',
+            'teamID' => 'numeric',
+        ]);
+        
+        //1. Select Matches from league ID from starting and ending date
+        $week_start = $request->query('startweek');
+        $week_end = $request->query('endweek');
+        
+        $matches = Matchy::where('league_id', $league_id)
+        ->where('week_number', '>=', (string) $week_start)
+        ->where('week_number', '<=', (string) $week_end)
+        ->orderby('week_number')->get();
+
+        // 2. Filter by Team
+        $teamID = 0;
+        $teamID = $request->query('teamID');
+        if($teamID != 0){
+        //if(true){
+            $matches = $matches->where(function ($query) use ($teamID) {
+                return $query->where('host_team_id', '=', (string)$teamID )
+                      ->orWhere('guest_team_id', '=', (string)$teamID);
+            });
+
+
+            $matches = Matchy::where('league_id', $league_id)
+            ->where('week_number', '>=', (string) $week_start)
+            ->where('week_number', '<=', (string) $week_end)
+            ->orderby('week_number')
+            ->where(function ($query) use ($teamID) {
+                return $query->where('host_team_id', '=', (string)$teamID )
+                      ->orWhere('guest_team_id', '=', (string)$teamID);
+            })->get();
+        }
+        return $matches;
+    }
+
+
     public function index(?Request $request, string $league_id)
     {
 
         // Index League Controller will show all leagues related with the user.
         $teams = Team::where('league_id', $league_id)->get();
+        $teams_list = $teams->pluck('team_name','team_id')->toArray();//->toArray();
+        $teams_list = ['0'=>'None'] + $teams_list;
+
         $league = League::find($league_id);
+        $league_type = LeagueTypes::where('league_type_id', $league->league_type_id)->first()->league_type;
+        $week_dates_values = Matchy::where('league_id', $league_id)
+        ->orderby('week_number')->groupBy('week_number')
+        ->pluck('week_number')->toArray();
+        $week_dates = array_combine($week_dates_values, $week_dates_values);
 
-        // if($request == null){
-        if ($request->isMethod('get')) {
+        if($request->has(['startweek','endweek','teamID'])){
+            $matches = $this::filterMatches($request, $league_id);
+        }else{
+            //RETRIEVE ALL MATCHES FOR SPECIFIC LEAGUE
             $matches = Matchy::where('league_id', $league_id)->orderby('week_number')->get();
+        }
 
-            // Include some information in matches needed for the view:
-            // host_name
-            // host_img
-            // host_points
-            // guest_points
-            // guest_img
-            // guest_name
-            foreach ($matches as $match) {
-                $match['host_name'] = Team::find($match->host_team_id)->team_name;
-                $match['host_img'] = Team::find($match->host_team_id)->team_img_name;
-                // Host Points missing in database!!!
-                $match['guest_name'] = Team::find($match->guest_team_id)->team_name;
-                $match['guest_img'] = Team::find($match->guest_team_id)->team_img_name;
-                // Guest Points Missing in database!!!
+        if($matches->toArray()){
+            $week_start = min(array_column($matches->toArray(), 'week_number'));
+            $week_end = max(array_column($matches->toArray(), 'week_number'));
+        }else{
+            $week_start = 0;
+            $week_end = 0;
+        }
+        
+        foreach ($matches as $match) {
+                $team_host = Team::find($match->host_team_id);
+                $match['host_name'] = $team_host->team_name;
+                $match['host_img'] = $team_host->team_img_name;
 
-                // Match date and time only for view:
+                $team_guest = Team::find($match->guest_team_id);
+                $match['guest_name'] = $team_guest->team_name;
+                $match['guest_img'] = $team_guest->team_img_name;
                 // Append only date and only time to use it in the view:
                 $match['only_date'] = date('d/m/Y', strtotime($match->match_date));
                 $match['only_time'] = date('h:m', strtotime($match->match_date));
 
                 // Address:
-                $match['address_country'] = Addresses::find($match->match_address_id)->country;
-                $match['address_postalcode'] = Addresses::find($match->match_address_id)->postalcode;
-                $match['address_city'] = Addresses::find($match->match_address_id)->city;
-                $match['address_street'] = Addresses::find($match->match_address_id)->street;
-                $match['address_number'] = Addresses::find($match->match_address_id)->number;
-                $match['address_floor'] = Addresses::find($match->match_address_id)->floor;
-                $match['address_door'] = Addresses::find($match->match_address_id)->door;
+                $address = Addresses::find($match->match_address_id);
+                $match['address_country'] = $address->country;
+                $match['address_postalcode'] = $address->postalcode;
+                $match['address_city'] = $address->city;
+                $match['address_street'] = $address->street;
+                $match['address_number'] = $address->number;
+                $match['address_floor'] = $address->floor;
+                $match['address_door'] = $address->door;
 
-            }
-            error_log('I am at the end the get method');
-
-            // Compute default week_start and week_end for view:
-            // Change week act from matches dates
-            $week_act = 2;
-            $week_start = $week_act;
-            $week_end = $week_act;
         }
-
-        // Variables for week search:
-        // Fetch the weeks for the selection
-        $week_dates_values = Matchy::where('league_id', $league_id)->orderby('week_number')->groupBy('week_number')->pluck('week_number')->toArray();
-
-        $week_dates = array_combine($week_dates_values, $week_dates_values);
-
-        // Compute the actual week with the week number, matches dates and actual date
-        $week_act = 2;
-
-        if ($request->isMethod('post')) {
-            // if(isset($request)){
-            // Starting week date and end-week-date
-            if (isset($request)) {
-
-                error_log('I am inside the post method');
-
-                $request->validate([
-                    'starting_week_date' => 'required|numeric',
-                    'end_week_date' => 'required|numeric',
-                ]);
-
-                // Matches list between starting-week-date and end-week-date:
-                $matches = Matchy::where('league_id', $league_id)->where('week_number', '>=', $request->starting_week_date)->where('week_number', '<=', $request->end_week_date)->orderby('week_number')->get();
-
-                foreach ($matches as $match) {
-                    $match['host_name'] = Team::find($match->host_team_id)->team_name;
-                    $match['host_img'] = Team::find($match->host_team_id)->team_img_name;
-                    // Host Points missing in database!!!
-                    $match['guest_name'] = Team::find($match->guest_team_id)->team_name;
-                    $match['guest_img'] = Team::find($match->guest_team_id)->team_img_name;
-                    // Guest Points Missing in database!!!
-
-                    // Match date and time only for view:
-                    // Append only date and only time to use it in the view:
-                    $match['only_date'] = date('d/m/Y', strtotime($match->match_date));
-                    $match['only_time'] = date('h:m', strtotime($match->match_date));
-
-                    // Address:
-                    $match['address_country'] = Addresses::find($match->match_address_id)->country;
-                    $match['address_postalcode'] = Addresses::find($match->match_address_id)->postalcode;
-                    $match['address_city'] = Addresses::find($match->match_address_id)->city;
-                    $match['address_street'] = Addresses::find($match->match_address_id)->street;
-                    $match['address_number'] = Addresses::find($match->match_address_id)->number;
-                    $match['address_floor'] = Addresses::find($match->match_address_id)->floor;
-                    $match['address_door'] = Addresses::find($match->match_address_id)->door;
-                }
-
-                // Compute default week_start and week_end for view:
-                // Change week act from matches dates
-                $week_act = 2;
-                $week_start = $request->starting_week_date;
-                $week_end = $request->end_week_date;
-
-            }
-        }
-
-        // Define league type for view
-        if (isset($matches) and count($matches) > 0) {
-            $results = ResultsBeachVolleyball::where('match_id', $match->match_id);
-        } else {
-            $results = null;
-        }
-
-        $league_type = LeagueTypes::where('league_type_id', $league->league_type_id)->first()->league_type;
-
-        return view('matches.index', compact('teams', 'league', 'matches', 'week_dates', 'week_act', 'week_start', 'week_end', 'league_type'));
+        return view('matches.index', compact('teams','teams_list', 'league', 'matches', 'week_dates', 'week_start', 'week_end', 'league_type'));
+        
     }
-
-    public function search(?Request $request, string $league_id){
-        // Index League Controller will show all leagues related with the user.
-        $teams = Team::where('league_id', $league_id)->get();
-        $league = League::find($league_id);
-
-        // Variables for week search:
-        // Fetch the weeks for the selection
-        $week_dates_values = Matchy::where('league_id', $league_id)->orderby('week_number')->groupBy('week_number')->pluck('week_number')->toArray();
-
-        $week_dates = array_combine($week_dates_values, $week_dates_values);
-
-        // Compute the actual week with the week number, matches dates and actual date
-        $week_act = 2;
-
-        if ($request->isMethod('post')) {
-            // if(isset($request)){
-            // Starting week date and end-week-date
-            if (isset($request)) {
-
-                $request->validate([
-                    'starting_week_date' => 'required|numeric',
-                    'end_week_date' => 'required|numeric',
-                ]);
-
-                // Matches list between starting-week-date and end-week-date:
-                $matches = Matchy::where('league_id', $league_id)->where('week_number', '>=', $request->starting_week_date)->where('week_number', '<=', $request->end_week_date)->orderby('week_number')->get();
-
-                foreach ($matches as $match) {
-                    $team_host = Team::find($match->host_team_id);
-                    $match['host_name'] = $team_host->team_name;
-                    $match['host_img'] = $team_host->team_img_name;
-                    // Host Points missing in database!!!
-                    $team_guest = Team::find($match->guest_team_id);
-                    $match['guest_name'] = $team_guest->team_name;
-                    $match['guest_img'] = $team_guest->team_img_name;
-                    // Guest Points Missing in database!!!
-
-                    // Match date and time only for view:
-                    // Append only date and only time to use it in the view:
-                    $match['only_date'] = date('d/m/Y', strtotime($match->match_date));
-                    $match['only_time'] = date('h:m', strtotime($match->match_date));
-
-                    // Address:
-                    $address = Addresses::find($match->match_address_id);
-                    $match['address_country'] = $address->country;
-                    $match['address_postalcode'] = $address->postalcode;
-                    $match['address_city'] = $address->city;
-                    $match['address_street'] = $address->street;
-                    $match['address_number'] = $address->number;
-                    $match['address_floor'] = $address->floor;
-                    $match['address_door'] = $address->door;
-                }
-
-                // Compute default week_start and week_end for view:
-                // Change week act from matches dates
-                $week_act = 2;
-                $week_start = $request->starting_week_date;
-                $week_end = $request->end_week_date;
-
-            }
-        }
-
-        // Define league type for view
-        if (isset($matches) and count($matches) > 0) {
-            $results = ResultsBeachVolleyball::where('match_id', $match->match_id);
-        } else {
-            $results = null;
-        }
-
-        $league_type = LeagueTypes::where('league_type_id', $league->league_type_id)->first()->league_type;
-
-        return view('matches.index', compact('teams', 'league', 'matches', 'week_dates', 'week_act', 'week_start', 'week_end', 'league_type'));
-    }
-
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -474,7 +377,7 @@ class MatchController extends Controller
 
         $league = League::find($league_id);
         $match = Matchy::find($match_id);
-        $match_address = Addresses::find($match->address_id);
+        $match_address = Addresses::find($match->match_address_id);
         $host_team = Team::find($match->host_team_id);
         $guest_team = Team::find($match->guest_team_id);
         $results = ResultsBeachVolleyball::where('match_id', $match->match_id);

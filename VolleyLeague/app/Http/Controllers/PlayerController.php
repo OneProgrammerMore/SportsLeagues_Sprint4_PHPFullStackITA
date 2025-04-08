@@ -50,11 +50,11 @@ class PlayerController extends Controller
             'league_id' => 'required',
             'team_id' => 'required',
             'player_name' => 'required',
-            'player_number' => 'required|numeric',
+            'player_number' => 'nullable|numeric',
             'player_surname_1' => 'required',
             'player_surname_2' => 'nullable|max:255',
             'player_sex' => ['required', new Enum(SexEnum::class)],
-            'player_birth_date' => 'required|date',
+            'player_birth_date' => 'nullable|date',
             'player_country' => 'nullable|max:255',
             'player_height' => 'nullable|numeric',
             'player_weight' => 'nullable|numeric',
@@ -71,7 +71,7 @@ class PlayerController extends Controller
             // Create an unique name in order to store the image using it
             $nameImgToStore = $imgPlayerFile->hashName();
             // Store the image in the public /team_imgs/ folder
-            $pathImgStored = $request->file('player_img')->storeAs('public/player_imgs',
+            $pathImgStored = $request->file('player_img')->storeAs('public/imgs/player_imgs',
                 $nameImgToStore);
             // Add the final name of the image to the request (the name within it has been stored)
         } else {
@@ -183,7 +183,7 @@ class PlayerController extends Controller
             // Create a unique file name for the image, in order to store it
             $nameImgToStore = $imgPlayerFile->hashName();
             // Store the image in the 'league_imgs' folder with the hashed name:
-            $pathImgStored = $request->file('player_img')->storeAs('public/player_imgs',
+            $pathImgStored = $request->file('player_img')->storeAs('public/imgs/player_imgs',
                 $nameImgToStore);
             // Delete the old image:
             $oldImgNamePath = public_path().'/storage/'.$player->player_img_name;

@@ -13,8 +13,8 @@
                 @csrf
                 @method("PUT")
 
-                <div class="form-group-main section-form-group">
-                    <h3 class="league-form-subtitle">Team Information</h3>
+                <div class="form-group-main section-form-group ">
+                    <h3 class="league-form-subtitle form-group-hidden">Team Information</h3>
 
                     <div class="form-group-hidden">
                         <label for="league_id">League ID</label>
@@ -45,7 +45,7 @@
                 <div class="form-group section-form-group">
                     <h3 class="league-form-subtitle">Match Information</h3>
 
-                    <div class="match-number-container">
+                    <div class="match-number-container form-group-hidden">
                         <label for="match_number">Match Number</label>
                         <input
                             type="text"

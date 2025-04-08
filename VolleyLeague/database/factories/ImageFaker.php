@@ -18,8 +18,7 @@ class ImageFaker{
 
         # List Items in Path with available extension
         $files = glob($this->inputFilesPath.'*.png');
-        print($this->inputFilesPath);
-        # dd($files);
+
         # Select a random image
         $key = array_rand($files);
         $file = $files[$key];
@@ -29,13 +28,11 @@ class ImageFaker{
         
         # Store the image in the outputPath
         $image = file_get_contents($this->fileName);
-        file_put_contents(base_path().$this->outputPath.basename($this->fileName), $image);
+        file_put_contents(base_path().$this->outputPath.$this->infix.basename($this->fileName), $image);
     }
 
     public function getImageName() {
-        
-
-        return $this->fileName;
+        return 'public/imgs/'.$this->infix . basename($this->fileName);
     }
 
 

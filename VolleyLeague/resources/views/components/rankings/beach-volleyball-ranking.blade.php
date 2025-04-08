@@ -2,11 +2,11 @@
     <!-- Results Table For Beach Volley -->
 
     <div class="ranking-table-title card section-header">
-        Beach Volleyball Ranking
+        Ranking
     </div>
 
     <!-- MATCHES TABLE BY WEEK -->
-    @if (isset($teams))
+    @if (isset($teams) && count($teams)>0)
         <div class="ranking-table-container card">
         <table class="ranking-table" border="1">
             <tr class="ranking-table-header-row">
@@ -33,7 +33,7 @@
                     <td>
                         <img
                             class="ranking-team-img"
-                            src="{{ asset("storage/public/" . $team->team_img_name) }}"
+                            src="{{ asset( ! empty($team->team_img_name) ? "storage/" . $team->team_img_name : Vite::asset("resources/img/team.png")) }}"
                             alt="Team Logo Image"
                         />
                     </td>
@@ -57,5 +57,9 @@
             @endforeach
         </table>
         </div>
+    @else
+    <div class="creator-normal-card">
+        No ranking to show... try creating some matches.
+    </div>
     @endif
 </div>

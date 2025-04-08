@@ -15,21 +15,25 @@ done
 
 php artisan key:generate
 npm install
+
+npm run build
+
 php artisan cache:clear
 php artisan view:clear
 php artisan view:cache 
-#npm run build
 
-# DEMO SEEDER:
-php artisan db:seed --class=DemoSeeder
-
+# Create Links For Images If Not There
+mkdir -p ./storage/app/public/imgs/league_imgs
+mkdir -p ./storage/app/public/imgs/team_imgs
+mkdir -p ./storage/app/public/imgs/player_imgs
 
 
 #Create symlink if needed
 chmod -R a+w /var/www/html/storage/
 # mkdir -p ./storage/public/public/league_imgs
 mkdir -p ./storage/app/public/league_imgs
-my_link=./
+my_link="./public/storage/public"
+mkdir -p ./public/storage
 if [ -L ${my_link} ] ; then
    if [ -e ${my_link} ] ; then
       echo "Good link"
@@ -46,6 +50,13 @@ else
    echo "Missing"
    ln -rs ./storage/app/public  ./public/storage/public
 fi
+
+
+# DEMO SEEDER:
+php artisan db:seed --class=DemoWebSeeder
+
+
+
 
 #Start server
 /usr/sbin/apachectl -D FOREGROUND &

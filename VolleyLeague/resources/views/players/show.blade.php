@@ -1,12 +1,13 @@
 @extends("layouts.app")
 
 @section("content")
-    <div class="league-container-show">
+    <div class="cards-container">
+    <div class="league-container-show card">
         <div class="player-info">
             <div class="player-img-container">
                 <img
                     class="player-img"
-                    src="{{ asset($player->player_img_name ? "storage/public/" . $player->player_img_name : "img/player.png") }}"
+                    src="{{ asset($player->player_img_name ? "storage/" . $player->player_img_name : "img/player.png") }}"
                     alt="Player Photo"
                 />
             </div>
@@ -78,5 +79,6 @@
                 <button type="submit" class="btn-delete">Delete</button>
             </form>
         </div>
+    </div>
     </div>
 @endsection

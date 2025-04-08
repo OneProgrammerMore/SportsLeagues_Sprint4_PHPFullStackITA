@@ -18,46 +18,27 @@
                     href="{{ route("leagues.index") }}"
                 >
                     <span class="icon icon-league-link icon-cup"></span>
-                    Home - Leagues
+                    Leagues
                 </a>
             </div>
         </div>
         <div class="user-nav">
-            @if (Route::has("login"))
+        @if (Route::has("login"))
                 @auth
-                    <div class="item-nav-user">
-                        <a href="{{ url("/dashboard") }}" class="link-nav">
+                    <div class="item-nav">
+                        <a href="{{ url("/dashboard") }}" class="link-nav link-nav-section link-nav link-nav-section">
                             Dashboard
                         </a>
                     </div>
-                @else
-                    <div class="item-nav-user">
+            @else
+                    <div class="item-nav">
                         <a
-                            class="link-nav link-nav-section"
-                            href="{{ route("login") }}"
-                            class="link-nav"
+                            class="link-nav link-nav-section link-nav link-nav-section"
+                            href="{{route("disclaimer-user.show")}}"
                         >
-                            <span
-                                class="icon icon-league-link icon-login"
-                            ></span>
-                            Log in
+                        <span class="icon icon-login"></span>
                         </a>
                     </div>
-
-                    @if (Route::has("register"))
-                        <div class="item-nav-user">
-                            <a
-                                class="link-nav link-nav-section"
-                                href="{{ route("register") }}"
-                                class="link-nav"
-                            >
-                                <span
-                                    class="icon icon-league-link icon-register"
-                                ></span>
-                                Register
-                            </a>
-                        </div>
-                    @endif
                 @endauth
             @endif
         </div>

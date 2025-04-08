@@ -33,14 +33,5 @@ class AddressesFactory extends Factory
             'floor' => fake()->randomElement(['ground floor', '1st', '2nd', '3rd', '4th', '5th', '6th']),
             'door' => fake()->randomElement(['ground floor', '1st', '2nd', '3rd', '4th', '5th', '6th']),
         ];
-        /*
-        'country',
-        'postalcode',
-        'city',
-        'street',
-        'number',
-        'floor',
-        'door',
-        */
     }
 }

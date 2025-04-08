@@ -1,21 +1,67 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2
-            class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"
-        >
-            {{ __("Dashboard") }}
-        </h2>
-    </x-slot>
+@extends("layouts.app")
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div
-                class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg"
-            >
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
+@section("content")
+    <div class="cards-container">
+        <div class="main-section card section-header">
+            Dashboard
+        </div>
+
+        <div class="text-section card">
+            <div class="center-text-container">
+            <div class="some-text">
+                Welcome to Cup! </br>A sports league organizator.
+            </div>
             </div>
         </div>
+        <div class="card">
+            @if (Route::has("login"))
+                @auth
+                    <div class="item-nav">
+                        <form
+                            class="link-nav link-disclaimer link-login"
+                            action="{{ route("logout") }}"
+                            method="POST"
+                        >   
+                            @csrf
+                            <button type="submit">
+                                <span
+                                    class="icon icon-league-link icon-login"
+                                ></span>
+                                Log Out
+                            </button>
+                        </form>
+                    </div>
+                @else
+                    <div class="item-nav">
+                        <a
+                            class="link-nav link-disclaimer link-login"
+                            href="{{ route("login") }}"
+                            class="link-nav"
+                        >
+                            <span
+                                class="icon icon-league-link icon-login"
+                            ></span>
+                            Log in
+                        </a>
+                    </div>
+
+                    @if (Route::has("register"))
+                        <div class="item-nav">
+                            <a
+                                class="link-nav link-disclaimer link-register"
+                                href="{{ route("register") }}"
+                                class="link-nav"
+                            >
+                                <span
+                                    class="icon icon-league-link icon-register"
+                                ></span>
+                                Register
+                            </a>
+                        </div>
+                    @endif
+                @endauth
+            @endif
+
+        </div>
     </div>
-</x-app-layout>
+@endsection
