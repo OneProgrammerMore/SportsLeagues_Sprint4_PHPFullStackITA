@@ -1,4 +1,3 @@
-@vite("resources/css/comp_legends.css")
 <div class="legend-container">
     <!-- Results Table For Beach Volley -->
 
