@@ -1,4 +1,3 @@
-@vite("resources/css/comp_formResults.css")
 <div class="form-results-container">
     <!-- This is a part of the form that MUST be inside a form (for starting and ending clauses) -->
 

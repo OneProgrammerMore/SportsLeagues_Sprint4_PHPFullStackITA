@@ -7,7 +7,7 @@
             <div class="player-img-container">
                 <img
                     class="player-img"
-                    src="{{ asset($player->player_img_name ? "storage/" . $player->player_img_name : "img/player.png") }}"
+                    src="{{ asset( $player->player_img_name ? "storage/" . $player->player_img_name : "img/player.png") }}"
                     alt="Player Photo"
                 />
             </div>

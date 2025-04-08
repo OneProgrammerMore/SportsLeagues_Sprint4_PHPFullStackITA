@@ -37,7 +37,7 @@
                             {{ $team->team_phone }}
                         </div>
                     </div>
-
+                    @if($team_address->country || $team_address->postalcode || $team_address->city)
                     <div class="team-address data-field">
                         <span
                             class="icon icon-league-link icon-address team-data-img"
@@ -55,9 +55,11 @@
                             {{ $team_address->country ?? "" }}
                         </div>
                     </div>
+                    @endif
                 </div>
 
                 <div class="team-data">
+                    @if($team_responsible->person_name || $team_responsible->person_surname_1)
                     <div class="responsible-data">
                         <div class="title-container">
                             <h3 class="title-section">Responsible:</h3>
@@ -74,7 +76,7 @@
                         <h3 class="team-responsible-mail team-data-field">
                             {{ $team_responsible->person_phone ?? "" }}
                         </h3>
-
+                        
                         <h3 class="team-responsible-address team-data-field">
                             
                             {{ $team_responsible_address->street ?? "" }}
@@ -89,6 +91,7 @@
                             {{ $team_responsible_address->country ?? "" }}
                         </h3>
                     </div>
+                    @endif
                 </div>
             </div>
             @auth
