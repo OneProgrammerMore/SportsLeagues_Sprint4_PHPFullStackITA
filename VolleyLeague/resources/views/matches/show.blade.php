@@ -69,7 +69,7 @@
                     </div>
             </div>
         </div>
-        
+        @auth
         <div class="league-actions">
             <form
                 class="league-link-action"
@@ -91,6 +91,7 @@
                 <button type="submit" class="btn-delete">Delete</button>
             </form>
         </div>
+        @endauth
     </div>
 </div>
 

@@ -60,7 +60,7 @@
                     </div>
                 </div>
             </div>
-
+            @auth
             <div class="actions-player">
                 <div class="player-action">
                     <form
@@ -86,6 +86,7 @@
                     </form>
                 </div>
             </div>
+            @endauth
         </div>
     @endforeach
 </div>

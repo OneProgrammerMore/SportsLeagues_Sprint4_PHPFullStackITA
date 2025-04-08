@@ -57,28 +57,29 @@
                 <h2>{{ $player->phone ?? "" }}</h2>
             </div>
         </div>
+        @auth
+            <div class="league-actions">
+                <form
+                    class="league-link-action"
+                    action="{{ route("players.edit", ["league" => $league->league_id, "team" => $team->team_id, "player" => $player->player_id]) }}"
+                    method="post"
+                >
+                    @csrf
+                    @method("GET")
+                    <button type="submit" class="btn-edit">Edit</button>
+                </form>
 
-        <div class="league-actions">
-            <form
-                class="league-link-action"
-                action="{{ route("players.edit", ["league" => $league->league_id, "team" => $team->team_id, "player" => $player->player_id]) }}"
-                method="post"
-            >
-                @csrf
-                @method("GET")
-                <button type="submit" class="btn-edit">Edit</button>
-            </form>
-
-            <form
-                class="league-link-action"
-                action="{{ route("players.destroy", ["league" => $league->league_id, "team" => $team->team_id, "player" => $player->player_id]) }}"
-                method="post"
-            >
-                @csrf
-                @method("DELETE")
-                <button type="submit" class="btn-delete">Delete</button>
-            </form>
-        </div>
+                <form
+                    class="league-link-action"
+                    action="{{ route("players.destroy", ["league" => $league->league_id, "team" => $team->team_id, "player" => $player->player_id]) }}"
+                    method="post"
+                >
+                    @csrf
+                    @method("DELETE")
+                    <button type="submit" class="btn-delete">Delete</button>
+                </form>
+            </div>  
+        @endauth
     </div>
     </div>
 @endsection

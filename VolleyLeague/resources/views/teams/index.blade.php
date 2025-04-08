@@ -71,36 +71,37 @@
             @endforeach
         @endif
     </div>
-
-    @if (count($teams) == 0 and $league != null)
-        <!-- Empty State team Creation: -->
-        <div class="cards-container">
-        <div class="creator-normal">
-            <h2>
-                There are not teams to show.
-                <br />
-                Try creating a new team!
-            </h2>
-            <a
-                class="btn-create"
-                href="{{ route("teams.create", $league->league_id) }}"
-            >
-                Create team
-            </a>
-        </div>
-        </div>
-    @elseif ($league != null)
-        <!-- Normal Creation Div -->
-        <div class="cards-container">
-        <div class="creator-normal">
-            <h2>Create a new team</h2>
-            <a
-                class="btn-create"
-                href="{{ route("teams.create", $league->league_id) }}"
-            >
-                Create
-            </a>
-        </div>
-        </div>
-    @endif
+    @auth
+        @if (count($teams) == 0 and $league != null)
+            <!-- Empty State team Creation: -->
+            <div class="cards-container">
+            <div class="creator-normal">
+                <h2>
+                    There are not teams to show.
+                    <br />
+                    Try creating a new team!
+                </h2>
+                <a
+                    class="btn-create"
+                    href="{{ route("teams.create", $league->league_id) }}"
+                >
+                    Create team
+                </a>
+            </div>
+            </div>
+        @elseif ($league != null)
+            <!-- Normal Creation Div -->
+            <div class="cards-container">
+            <div class="creator-normal">
+                <h2>Create a new team</h2>
+                <a
+                    class="btn-create"
+                    href="{{ route("teams.create", $league->league_id) }}"
+                >
+                    Create
+                </a>
+            </div>
+            </div>
+        @endif
+    @endauth
 @endsection

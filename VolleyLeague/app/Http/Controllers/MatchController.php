@@ -118,10 +118,7 @@ class MatchController extends Controller
      */
     public function create($league_id)
     {
-        //
         $league = League::find($league_id);
-        // Find the maximum number of a team to add the following
-        // $maxTeamNumber = Team::where('league_id',$id)->sortDesc('team_number')->first();
 
         $firstElementMatch = Matchy::where('league_id', $league_id)->orderby('match_number', 'DESC')->first();
         if (! $firstElementMatch) {
@@ -145,7 +142,6 @@ class MatchController extends Controller
         // Match Possible Status From ENUM:
         $match_status_values = array_column(\App\Enum\MatchStatusEnum::cases(), 'value');
         $match_status_names = array_column(\App\Enum\MatchStatusEnum::cases(), 'name');
-        // $league_status = array_combine($league_status_names, $league_status_values);
 
         // Workaround for validate:
         $match_status_list = array_combine($match_status_values, $match_status_values);
@@ -155,7 +151,6 @@ class MatchController extends Controller
         $league_type = LeagueTypes::find($league->league_type_id)->league_type;
 
         return view('matches.create', compact('league', 'teams_list', 'next_match_number', 'match_status_list', 'league_type'));
-
     }
 
     /**
@@ -262,23 +257,13 @@ class MatchController extends Controller
                 case 'Other Sport':
                     // Temporal results empty array:
                     $results = [];
-
                     break;
 
                 default:
                     $results = [];
-
                     break;
             }
         }
-
-        // Procedure
-        // 0 - Validate request
-        // 1 - Create Address for match
-        // 2 - Check for existing Teams and the team must not be the same!
-        // 3 - Validate the match_number again!!!
-        // 4 - Store Address
-        // 5 -  Store Match in Database
 
         // VALIDATE THE MATCH NUMBER:
         $firstElementMatch = Matchy::where('league_id', $request->league_id)->orderby('match_number', 'DESC')->first();
@@ -288,7 +273,6 @@ class MatchController extends Controller
             $maxMatchNumber = $firstElementMatch->match_number;
         }
 
-        // $maxTeamNumber = Team::where('league_id',$id)->orderby('team_number', 'DESC')->first()->team_number;
         if (! $maxMatchNumber) {
             $next_match_number = 1;
         } else {
@@ -303,12 +287,10 @@ class MatchController extends Controller
             return redirect()->route('matches.index', ['league' => $league_id]);
         }
 
-        // ToDo - Check behaviour
         if ($request->host_team_id == $request->guest_team_id) {
             // A match of a team against itself is not allowed in this app...
             // We consider it as cheating
-            // Cheaters must be desqualified!!!
-
+            // Cheaters must be disqualified!!!
             $league_id = $request->league_id;
 
             return redirect()->route('matches.create', ['league' => $league_id]);
@@ -342,8 +324,6 @@ class MatchController extends Controller
 
         $newMatch = Matchy::create($match);
 
-        // Create Match Results:
-        // Add the common data to $results:
         $results += [
             'league_id' => $newMatch->league_id,
             'match_id' => $newMatch->match_id,
@@ -352,9 +332,7 @@ class MatchController extends Controller
         ];
 
         if (isset($league_type)) {
-
             switch ($league_type) {
-
                 case 'Beach Volleyball':
                     $newResults = ResultsBeachVolleyball::create($results);
                     break;
@@ -370,11 +348,6 @@ class MatchController extends Controller
      */
     public function show(string $league_id, string $match_id)
     {
-        // Shows information for one match:
-        // Match information (Same as index view)
-        // Teams information
-        // Results information
-
         $league = League::find($league_id);
         $match = Matchy::find($match_id);
         $match_address = Addresses::find($match->match_address_id);
@@ -424,9 +397,6 @@ class MatchController extends Controller
 
         return view('matches.edit', compact('league', 'match', 'match_address', 'host_team', 'guest_team', 'teams_list', 'match_status_list', 'select_host_value', 'select_guest_value', 'league_type'));
     }
-
-    
-
 
     /**
      * Update the specified resource in storage.
@@ -526,7 +496,6 @@ class MatchController extends Controller
                         'guest_pc' => $request->guest_pc,
                         'guest_sanc' => $request->guest_sanc,
                     ];
-
                     break;
             }
         }
@@ -580,7 +549,6 @@ class MatchController extends Controller
         if (isset($league_type)) {
 
             switch ($league_type) {
-
                 case 'Beach Volleyball':
                     $resultsToModify = ResultsBeachVolleyball::where('match_id', $matchToModify->match_id);
                     $resultsToModify->update($results);
@@ -600,13 +568,11 @@ class MatchController extends Controller
         // Destroy the match and address corresponding to it:
         $matchToDestroy = Matchy::find($match_id);
         $addressToDestroy = Addresses::find($matchToDestroy->match_address_id);
-
         // Validate that the match is part of the given league:
         // If not something went wrong... Login into the web log:
         if ($matchToDestroy->league_id != $league_id) {
             // Log in the server logs!!!
             // ToDo!!! - Warning!!! Security!!
-
             // Return without doing any deletion!!
             return redirect()->route('leagues.index');
         }

@@ -85,7 +85,7 @@
                                     </i>
                                 </a>
                             </div>
-
+                            @auth
                             <div class="host-team">
                                 <a
                                     class="modify-team-link"
@@ -98,6 +98,7 @@
                                     </i>
                                 </a>
                             </div>
+                            @endauth
                         </div>
                     </div>
                 @endforeach

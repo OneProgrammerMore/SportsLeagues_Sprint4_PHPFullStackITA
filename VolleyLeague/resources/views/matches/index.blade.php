@@ -156,6 +156,7 @@
                                             </i>
                                         </a>
                                     </div>
+                                    @auth
                                     <div class="host-team">
                                         <a 
                                             class="modify-team-link"
@@ -168,6 +169,7 @@
                                             </i>
                                         </a>
                                     </div>
+                                    @endauth
                                 </div>
                             </div>
 
@@ -190,7 +192,7 @@
                 @endif
             </div>
 
-
+            @auth
             @if (count($matches) == 0 && count($teams) < 2)
                 <!-- No Enough Teams To create a match: -->
                 <div class="creator-normal-card">
@@ -233,6 +235,7 @@
                     </a>
                 </div>
             @endif
+            @endauth
         </div>
 
         @php

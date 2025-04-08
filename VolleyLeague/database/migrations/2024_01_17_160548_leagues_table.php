@@ -48,7 +48,7 @@ return new class extends Migration
             $table->bigInteger('person_address_id')->unsigned()->index()->nullable();
             $table->timestamps();
 
-            $table->foreign('person_address_id')->references('address_id')->on('addresses');
+            $table->foreign('person_address_id')->references('address_id')->on('addresses')->nullOnDelete();
 
         });
 
@@ -75,9 +75,9 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreing Keys:
-            $table->foreign('league_type_id')->references('league_type_id')->on('league_types');
-            $table->foreign('league_admin_id')->references('person_id')->on('person');
-            $table->foreign('league_admin_id_2')->references('person_id')->on('person');
+            $table->foreign('league_type_id')->references('league_type_id')->on('league_types')->nullOnDelete();
+            $table->foreign('league_admin_id')->references('person_id')->on('person')->nullOnDelete();
+            $table->foreign('league_admin_id_2')->references('person_id')->on('person')->nullOnDelete();
             // $table->foreign('league_type')->references('league_type')->on('league_types');
 
         });
@@ -119,9 +119,9 @@ return new class extends Migration
 
             $table->timestamps();
             // Foreign keys:
-            $table->foreign('league_id')->references('league_id')->on('leagues');
-            $table->foreign('team_address_id')->references('address_id')->on('addresses');
-            $table->foreign('team_responsible_id')->references('person_id')->on('person');
+            $table->foreign('league_id')->references('league_id')->on('leagues')->onDelete('cascade');
+            $table->foreign('team_address_id')->references('address_id')->on('addresses')->onDelete('cascade');
+            $table->foreign('team_responsible_id')->references('person_id')->on('person')->onDelete('cascade');
         });
 
         // Matches Table:
@@ -172,20 +172,6 @@ return new class extends Migration
         /***************************************************************/
         //	INSERT DATA IN LEAGUES TYPES:
         /***************************************************************/
-
-        /*
-        //Beach volleyball
-        $client = new Client($post['league_type']);
-        $client->league_type = "Beach Volleyball";
-        $client->description = "Beach Volleyball League";
-        $client->save();
-
-        //Simple 3vs3 Basketball
-        $client = new Client($post['league_type']);
-        $client->league_type = "Simple 3vs3 Basketball";
-        $client->description = "Simple 3vs3 Basketball";
-        $client->save();
-        */
         DB::table('league_types')->insert(
             [
                 'league_type' => 'Beach Volleyball',

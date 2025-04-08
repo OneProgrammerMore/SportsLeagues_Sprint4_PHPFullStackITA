@@ -125,8 +125,9 @@
                 </h3>
             </div>
         </div>
-
+        @auth
         <div class="league-actions">
+            
             <form
                 class="league-link-action"
                 action="{{ route("leagues.edit", $league->league_id) }}"
@@ -147,7 +148,9 @@
 
                 <button type="submit" class="btn-delete">Delete</button>
             </form>
+            
         </div>
+        @endauth
     </div>
     </div>
     <!-- League Classification -->

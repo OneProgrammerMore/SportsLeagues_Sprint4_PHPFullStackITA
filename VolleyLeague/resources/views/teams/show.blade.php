@@ -91,28 +91,30 @@
                     </div>
                 </div>
             </div>
-
-            <div class="league-actions">
-                <form
-                    class="league-link-action"
-                    action="{{ route("teams.edit", ["league" => $league->league_id, "team" => $team->team_id]) }}"
-                    method="post"
-                >
-                    @csrf
-                    @method("GET")
-                    <button type="submit" class="btn-edit">Edit</button>
-                </form>
-
-                <form
-                    class="league-link-action"
-                    action="{{ route("teams.destroy", ["league" => $league->league_id, "team" => $team->team_id]) }}"
-                    method="post"
-                >
-                    @csrf
-                    @method("DELETE")
-                    <button type="submit" class="btn-delete">Delete</button>
-                </form>
-            </div>
+            @auth
+                <div class="league-actions">
+                    <form
+                        class="league-link-action"
+                        action="{{ route("teams.edit", ["league" => $league->league_id, "team" => $team->team_id]) }}"
+                        method="post"
+                    >
+                        @csrf
+                        @method("GET")
+                        <button type="submit" class="btn-edit">Edit</button>
+                    </form>
+                    
+                        <form   
+                            class="league-link-action"
+                            action="{{ route("teams.destroy", ["league" => $league->league_id, "team" => $team->team_id]) }}"
+                            method="post"
+                        >
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit" class="btn-delete">Delete</button>
+                        </form>
+                    
+                </div>
+            @endauth
         </div>
 
         <!-- League Classification -->
@@ -126,7 +128,7 @@
         @endphp
 
         <x-players.showPlayersMinInfo :leagueId="$leagueId" :teamId="$teamId" />
-
+        @auth
         @if (count($players) == 0)
             <!-- Empty State team Creation: -->
             
@@ -154,5 +156,6 @@
                 </a>
             </div>
         @endif
+        @endauth
     </div>
 @endsection
