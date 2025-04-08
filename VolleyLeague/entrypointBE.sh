@@ -58,6 +58,6 @@ php artisan db:seed --class=DemoWebSeeder
 
 
 #Start server
-/usr/sbin/apachectl -D FOREGROUND &
+/usr/sbin/apachectl -D FOREGROUND #&
 #Start dev mode
-npm run dev-host
+#npm run dev-host
