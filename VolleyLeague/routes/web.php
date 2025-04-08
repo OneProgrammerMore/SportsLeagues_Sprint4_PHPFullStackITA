@@ -44,12 +44,15 @@ require __DIR__.'/auth.php';
 
 /* [ LEAGUES ] */
 // returns the home page with all leagues
-Route::get('/', LeagueController::class.'@index')->name('leagues.index');
+//Route::get('/', LeagueController::class.'@index')->name('leagues.index');
 // returns a page that shows a full league
 Route::get('/leagues/{league}', LeagueController::class.'@show')->name('leagues.show')->where('league', '[0-9]+');
 // Infinite Leagues:
+/*
 Route::get('/infinite-leagues', LeagueController::class.'@infinite')
-    ->name('leagues.infinite');
+    ->name('leagues.infinite');*/
+Route::get('/', LeagueController::class.'@infinite')
+    ->name('leagues.index');
 
 /* [ TEAMS ] */
 // returns the home page with all team

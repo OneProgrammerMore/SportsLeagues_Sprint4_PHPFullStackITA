@@ -30,7 +30,6 @@ mkdir -p ./storage/app/public/imgs/player_imgs
 
 #Create symlink if needed
 chmod -R a+w /var/www/html/storage/
-# mkdir -p ./storage/public/public/league_imgs
 mkdir -p ./storage/app/public/league_imgs
 my_link="./public/storage/public"
 mkdir -p ./public/storage
@@ -39,16 +38,16 @@ if [ -L ${my_link} ] ; then
       echo "Good link"
    else
       echo "Broken link"
-      rm ./public/storage/public
-      ln -rs ./storage/app/public  ./public/storage/public
+      rm ${my_link}
+      ln -rs ./storage/app/public ${my_link}
    fi
 elif [ -e ${my_link} ] ; then
    echo "Not a link"
-   rm ./public/storage/public
-   ln -rs ./storage/app/public  ./public/storage/public
+   rm ${my_link}
+   ln -rs ./storage/app/public  ${my_link}
 else
    echo "Missing"
-   ln -rs ./storage/app/public  ./public/storage/public
+   ln -rs ./storage/app/public ${my_link}
 fi
 
 
@@ -59,6 +58,6 @@ php artisan db:seed --class=DemoWebSeeder
 
 
 #Start server
-/usr/sbin/apachectl -D FOREGROUND &
+/usr/sbin/apachectl -D FOREGROUND 
 #Start dev mode
-npm run dev-host
+#npm run dev-host
