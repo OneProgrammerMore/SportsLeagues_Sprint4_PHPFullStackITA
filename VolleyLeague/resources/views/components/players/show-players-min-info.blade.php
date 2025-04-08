@@ -6,7 +6,7 @@
                 <div class="league-info-link">
                     <a
                         class="link-info"
-                        href="{{ route("players.show", ["league" => $league->league_id, "team" => $team->team_id, "player" => $player->player_id]) }}"
+                        href="{{ route('players.show', ['league' => $league->league_id, 'team' => $team->team_id, 'player' => $player->player_id]) }}"
                     >
                         <span class="icon icon-league-link icon-info"></span>
                     </a>
@@ -15,7 +15,7 @@
                 <div class="player-img-container">
                     <img
                         class="player-img"
-                        src="{{ asset($player->player_img_name ? "storage/" . $player->player_img_name : "img/player.png") }}"
+                        src="{{ asset($player->player_img_name ? 'storage/' . $player->player_img_name : 'img/player.png') }}"
                         alt="Player Photo"
                     />
                 </div>
@@ -65,7 +65,7 @@
                 <div class="player-action">
                     <form
                         class="league-link-action"
-                        action="{{ route("players.edit", ["league" => $league->league_id, "team" => $team->team_id, "player" => $player->player_id]) }}"
+                        action="{{ route('players.edit', ['league' => $league->league_id, 'team' => $team->team_id, 'player' => $player->player_id]) }}"
                         method="post"
                     >
                         @csrf
@@ -77,7 +77,7 @@
                 <div class="player-action">
                     <form
                         class="league-link-action"
-                        action="{{ route("players.destroy", ["league" => $league->league_id, "team" => $team->team_id, "player" => $player->player_id]) }}"
+                        action="{{ route('players.destroy', ['league' => $league->league_id, 'team' => $team->team_id, 'player' => $player->player_id]) }}"
                         method="post"
                     >
                         @csrf

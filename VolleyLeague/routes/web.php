@@ -58,20 +58,25 @@ Route::get('/', LeagueController::class.'@infinite')
 // returns the home page with all team
 Route::get('/leagues/{league}/teams', TeamController::class.'@index')->name('teams.index')->where('league', '[0-9]+');;
 // returns a page that shows a full team
-Route::get('/leagues/{league}/teams/{team}', TeamController::class.'@show')->name('teams.show')->where('league', '[0-9]+')->where('team', '[0-9]+');
+Route::get('/leagues/{league}/teams/{team}', TeamController::class.'@show')->name('teams.show')
+    ->where('league', '[0-9]+')->where('team', '[0-9]+');
 
 /* [ MATCHES ] */
-Route::resource('/leagues/{league}/matches', MatchController::class, [
+/*Route::resource('/leagues/{league}/matches', MatchController::class, [
     'except' => ['index', 'store'],
-]);
-Route::get('/leagues/{league}/matches', MatchController::class.'@index')->name('matches.index')->where('league', '[0-9]+');
+]);*/
+Route::get('/leagues/{league}/matches', MatchController::class.'@index')->name('matches.index')
+    ->where('league', '[0-9]+');
+Route::get('/leagues/{league}/matches/{match}', MatchController::class.'@show')->name('matches.show')
+    ->where('league', '[0-9]+')->where('match', '[0-9]+');
+
 
 /* [ PLAYERS ] */
 // returns the home page with all team
 Route::get('/leagues/{league}/teams/{team}/players', PlayerController::class.'@index')->name('players.index')->where('league', '[0-9]+')->where('team', '[0-9]+');
 // returns a page that shows a full player
 Route::get('/leagues/{league}/teams/{team}/players/{player}', PlayerController::class.'@show')->name('players.show')
-    ->where('league', '[0-9]+')->where('team', '[0-9]+');
+    ->where('league', '[0-9]+')->where('team', '[0-9]+')->where('player', '[0-9]+');
 
 // Footer Routes
 Route::get('/legal', FooterController::class.'@legal')->name('footer.legal');
@@ -81,7 +86,7 @@ Route::get('/home', FooterController::class.'@home')->name('footer.home');
 Route::get('/user-disclaimer', UserController::class.'@show')->name('disclaimer-user.show');
 
 
-//Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     // [ LEAGUE ]
     // returns the form for editing a league
     Route::get('/leagues/{league}/edit', LeagueController::class.'@edit')->name('leagues.edit')
@@ -117,14 +122,24 @@ Route::get('/user-disclaimer', UserController::class.'@show')->name('disclaimer-
 
     // [ MATCHES ]
     // adds a team league to the database
-    Route::post('/leagues/{league}/matches/store', MatchController::class.'@store')->name('matches.store');
+    Route::post('/leagues/{league}/matches/store', MatchController::class.'@store')->name('matches.store')
+        ->where('league', '[0-9]+');
+    Route::get('/leagues/{league}/matches/{match}/edit', MatchController::class.'@edit')->name('matches.edit')
+        ->where('league', '[0-9]+')->where('match', '[0-9]+');
+    Route::put('/leagues/{league}/matches/{match}', MatchController::class.'@update')->name('matches.update')
+        ->where('league', '[0-9]+')->where('match', '[0-9]+');
+    Route::delete('/leagues/{league}/matches/{match}', MatchController::class.'@destroy')->name('matches.destroy')
+        ->where('league', '[0-9]+')->where('match', '[0-9]+');
+    Route::get('/leagues/{league}/matches/create', MatchController::class.'@create')->name('matches.create')
+        ->where('league', '[0-9]+');
+
 
     // [ PLAYERS ]
-    // adds a team league to the database
-    Route::post('/leagues/{league}/teams/{team}/players/store', PlayerController::class.'@store')->name('players.store')
-        ->where('league', '[0-9]+')->where('team', '[0-9]+');
     // returns the form for adding a player
     Route::get('/leagues/{league}/teams/{team}/players/create', PlayerController::class.'@create')->name('players.create')
+        ->where('league', '[0-9]+')->where('team', '[0-9]+');
+    // adds a team league to the database
+    Route::post('/leagues/{league}/teams/{team}/players/store', PlayerController::class.'@store')->name('players.store')
         ->where('league', '[0-9]+')->where('team', '[0-9]+');
     // returns the form for editing a player
     Route::get('/leagues/{league}/teams/{team}/players/{player}/edit', PlayerController::class.'@edit')->name('players.edit')
@@ -136,4 +151,4 @@ Route::get('/user-disclaimer', UserController::class.'@show')->name('disclaimer-
     Route::delete('/leagues/{league}/teams/{team}/players/{player}', PlayerController::class.'@destroy')->name('players.destroy')
         ->where('league', '[0-9]+')->where('team', '[0-9]+')->where('player', '[0-9]+');
 
-//});
+});

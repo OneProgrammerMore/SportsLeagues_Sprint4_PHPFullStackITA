@@ -6,7 +6,7 @@
             <h3 class="league-form-title">Create a new player</h3>
             <form
                 class="league-form"
-                action="{{ route("players.store", ["league" => $league->league_id, "team" => $team->team_id]) }}"
+                action="{{ route('players.store', ['league' => $league->league_id, 'team' => $team->team_id]) }}"
                 method="post"
                 enctype="multipart/form-data"
             >
@@ -210,7 +210,7 @@
                     </div>
 
                     <a
-                        href="{{ route("matches.index", ["league" => $league->league_id]) }}"
+                        href="{{ route('matches.index', ['league' => $league->league_id]) }}"
                         class="btn-cancel"
                     >
                         Cancel

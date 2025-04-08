@@ -2,12 +2,14 @@
 
 @section("content")
     <div class="cards-container">
+    @if($player)
     <div class="league-container-show card">
+        
         <div class="player-info">
             <div class="player-img-container">
                 <img
                     class="player-img"
-                    src="{{ asset( $player->player_img_name ? "storage/" . $player->player_img_name : "img/player.png") }}"
+                    src="{{ asset( $player?->player_img_name ? 'storage/' . $player->player_img_name : 'img/player.png') }}"
                     alt="Player Photo"
                 />
             </div>
@@ -57,6 +59,7 @@
                 <h2>{{ $player->phone ?? "" }}</h2>
             </div>
         </div>
+        
         @auth
             <div class="league-actions">
                 <form
@@ -80,6 +83,8 @@
                 </form>
             </div>  
         @endauth
+        
     </div>
+    @endif
     </div>
 @endsection
