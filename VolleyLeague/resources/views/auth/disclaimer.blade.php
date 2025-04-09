@@ -22,7 +22,7 @@
             @if (Route::has("login"))
                 @auth
                     <div class="item-nav">
-                        <a href="{{ route("/dashboard") }}" class="link-nav">
+                        <a href="{{ route("dashboard") }}" class="link-nav">
                             Dashboard
                         </a>
                     </div>
