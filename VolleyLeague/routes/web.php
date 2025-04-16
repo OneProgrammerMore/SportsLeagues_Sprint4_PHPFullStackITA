@@ -6,8 +6,8 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\AltchaController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -152,3 +152,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->where('league', '[0-9]+')->where('team', '[0-9]+')->where('player', '[0-9]+');
 
 });
+
+//ALTCHA
+Route::get('/altcha-challenge', AltchaController::class. '@challenge')->name('altcha.challenge');

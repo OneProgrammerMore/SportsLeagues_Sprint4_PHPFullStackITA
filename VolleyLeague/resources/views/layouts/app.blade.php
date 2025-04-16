@@ -37,6 +37,7 @@
             rel="stylesheet"
         />
         @livewireStyles
+        <script async defer src="https://cdn.jsdelivr.net/npm/altcha/dist/altcha.min.js" type="module"></script>
     </head>
 
     <body class="font-sans antialiased">

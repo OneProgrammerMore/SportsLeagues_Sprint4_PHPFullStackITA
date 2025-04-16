@@ -179,6 +179,12 @@ nav{
     padding: 8px 16px 8px 16px;
     width: 150px;
 }
+.link-altcha{
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    margin: 12px;
+}
 .link-login{
     color: black;
     background-color: white;

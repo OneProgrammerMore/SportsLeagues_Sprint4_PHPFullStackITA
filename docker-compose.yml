@@ -33,6 +33,5 @@ services:
             - ./docker/config/mysql/my.cnf:/etc/my.cnf
         networks:
             - cup-dev-network
-
 networks:
     cup-dev-network:

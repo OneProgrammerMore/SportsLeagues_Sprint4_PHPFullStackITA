@@ -54,9 +54,6 @@ fi
 # DEMO SEEDER:
 php artisan db:seed --class=DemoWebSeeder
 
-
-
-
 #Start server
 /usr/sbin/apachectl -D FOREGROUND #&
 #Start dev mode

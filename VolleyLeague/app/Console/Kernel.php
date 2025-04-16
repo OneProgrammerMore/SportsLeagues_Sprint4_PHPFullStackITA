@@ -7,12 +7,21 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+
+
+    protected $commands = [
+        Commands\ResetData::class
+    ];
+
     /**
      * Define the application's command schedule.
      */
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->command('reset-data')->days([3,6])
+        ->between('1:00', '5:00');;
+        
     }
 
     /**
@@ -23,5 +32,6 @@ class Kernel extends ConsoleKernel
         $this->load(__DIR__.'/Commands');
 
         require base_path('routes/console.php');
+        
     }
 }
