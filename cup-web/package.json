@@ -1,0 +1,32 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "dev-host": "vite --host",
+        "dev:cup": "vite --host --base=/projects/cup/",
+        "build": "vite  build",
+        "build-portfolio": "vite  build --base=/projects/cup/",
+        "build2": "vite build && vite build --ssr",
+        "build-css": "tailwindcss build src/styles.css -o public/styles.css",
+        "format:blade": "blade-formatter --sort-html-attributes --no-multiple-empty-lines  --write \"resources/views/**/*.blade.php\"",
+        "format:prettier": "prettier 'resources/**/*.{js,ts,mjs,cjs,json,php}' --write",
+        "prettier-format-blade": "prettier --config .prettierrc  './resources/views/**/*.blade.php' --write"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.2",
+        "alpinejs": "^3.4.2",
+        "axios": "^1.6.4",
+        "blade-formatter": "^1.42.0",
+        "laravel-vite-plugin": "^1.0.0",
+        "postcss": "^8.4.38",
+        "postcss-preset-env": "^10.1.3",
+        "purgecss": "^7.0.2",
+        "tailwindcss": "^3.4.3",
+        "unplugin-fonts": "^1.3.1",
+        "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "prettier-plugin-blade": "^2.1.19"
+    }
+}

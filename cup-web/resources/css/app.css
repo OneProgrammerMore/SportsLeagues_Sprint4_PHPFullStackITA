@@ -1,0 +1,1154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root{
+    --color-black: black;
+    --color-black-grey: #353131;
+    --color-grey: #ebebeb;
+    --color-orange: #e7a900;
+    --color-white: rgb(255, 255, 255);
+    --color-purple: #ae00ff;
+    --color-blue: #4d00ff;
+    --color-grey-100: #ebebeb;
+    --color-grey-200: #cbcbcb;
+    --color-grey-300: #737373;
+    --color-grey-400: #a6a6a6;
+    --color-red: red;
+
+    --color-league-status-unknown: rgb(105, 98, 98);
+    --color-league-status-waiting: rgb(78, 172, 90);
+    --color-league-status-ongoing: rgb(236, 104, 104);
+    --color-league-status-finished: rgb(179, 63, 63);
+    --color-league-status-canceled: rgb(29, 12, 12);
+
+    --bg-color-week-row: rgb(192, 189, 189);
+    --color-hover-nav-link: rgb(182, 167, 209);
+
+    --errors-bg-color:  rgb(216, 153, 153);
+    --errors-color:  rgb(12, 11, 11);
+    --errors-border-color:  rgb(99, 31, 31);
+    --border-radius: 5px;
+
+    /*
+    --text-league: {
+        font-size: 32px;
+        font-weight: 900;
+        letter-spacing: 0%;
+    };
+    --text-status: {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0%;
+    };
+    --text-tag: {
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0%;
+    };
+    --text-medium-14: {
+        font-size: 14px;
+        font-weight: medium;
+        letter-spacing: 0%;
+    };
+    --text-semibold-14: {
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0%;
+    };
+    --text-date: {
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0%;
+    };
+    --text-date-description: {
+        font-size: 14px;
+        font-weight: medium;
+        letter-spacing: 0%;
+    };
+    */
+
+
+}
+html, button, a{
+	all: unset;
+}
+html *{
+    font-family: 'Work Sans', sans-serif;
+}
+body{
+       background-color: var(--color-grey-100);
+}
+
+main{
+    @apply w-full;
+    padding: 8px 0px 8px 0px;
+    margin: 16px 0px 16px 0px;
+    background-color: var(--color-grey-100);
+}
+p{
+    margin-top: 12px;
+}
+
+/*Buttons / Links Cursor and Hover*/
+.link-nav, .league-info-link, .league-link, #web-name, .btn-create, .btn-cancel, .btn-edit, .btn-delete, .link-footer, .modify-team-link, .info-team-link{
+    cursor:pointer;
+}
+.link-nav:hover *, .link-nav:hover,
+.league-info-link:hover *, 
+.league-link:hover *,
+#web-name:hover,
+.btn-create:hover,
+.btn-cancel:hover,
+.btn-edit:hover,
+.btn-delete:hover,
+.link-footer:hover,
+.modify-team-link:hover, .info-team-link:hover{
+    color: var(--color-hover-nav-link)
+}
+
+
+/*Header - Nav*/
+nav{
+    @apply fixed flex flex-row w-full justify-between;
+    top: 0px;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-black);
+    height: 40px;
+    z-index: 3;
+}
+
+#webID, #navSections{
+	@apply flex flex-row flex-wrap;
+	@apply justify-center items-center content-center;
+	@apply p-2;
+}
+.nav-user{
+    @apply flex flex-col flex-wrap;
+}
+
+.item-nav, .item-nav-user{
+    @apply flex flex-row flex-wrap justify-center items-center content-center text-center;
+    @apply mx-6;
+
+}
+.link-nav-section{
+    @apply flex flex-row items-center justify-center;
+    color: var(--color-white);
+    font-size: 22px;
+    gap: 8px;
+    margin: 12px;
+}
+#web-logo{
+    margin: 7px;
+}
+#webLogoImg{
+	height: 20px;
+	width: auto;
+}
+
+#web-name{
+    color: var(--color-white);
+    text-transform: uppercase;
+    font-weight: 900;
+}
+#menu-icon{
+    @apply flex w-auto h-auto justify-center items-center;
+    z-index: 3;
+    margin-right: 26px;
+}
+.icon-menu, .icon-cancel{
+    color: var(--color-white);
+    font-size: 24px;
+}
+#navSections{
+    z-index: 2;
+}
+.close-i{
+    display: none;
+}
+
+
+/*Disclaimer*/
+
+.link-disclaimer{
+    @apply flex flex-row content-center justify-center font-extrabold;
+    text-transform: uppercase;
+    padding: 8px 16px 8px 16px;
+    width: 150px;
+}
+.link-altcha{
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    margin: 12px;
+}
+.link-login{
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+}
+.link-register{
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+}
+.link-disclaimer > a{
+    @apply flex flex-row content-center justify-center font-extrabold items-center;
+}
+.link-disclaimer > span{
+    margin-right: 12px;
+}
+.center-text-container{
+    @apply flex flex-col content-center justify-center items-center;
+}
+.some-text{
+    max-width: 550px;
+    text-align: center;
+}
+/*Footer*/
+footer{
+    @apply fixed flex flex-row w-full justify-center items-center ;
+    bottom: 0px;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-black);
+    height: 40px;
+    z-index: 1;
+    gap: 24px;
+}
+.footer-link-container{
+    @apply relative flex flex-row w-full justify-center;
+    gap: 24px;
+}
+.link-footer{
+    color: var(--color-white);
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+/* League - Card */
+.cards-container{
+    @apply flex flex-col justify-center;
+    gap: 4px;
+    margin: 0px 8px 0px 8px;
+    margin-top: 12px;
+}
+.cards-container-cont{
+    @apply flex flex-col justify-center;
+    gap: 16px;
+    margin: 0px 8px 0px 8px;
+    padding-top: 16px;
+}
+.league-container,
+.team-container,
+.player-container,
+.card{
+    @apply flex flex-col w-auto h-auto items-center justify-center;
+    background-color: var(--color-white);
+    padding: 24px 8px 24px 8px;
+    position: relative;
+    margin: 8px 0px 8px 0px;
+    border-radius: 4px;
+    box-shadow: 4px 4px 10px rgba(40, 40, 40, 0.2);
+    gap: 26px;
+}
+.user-form{
+    max-width: 700px;
+}
+.player-container{
+    @apply items-center;
+
+}
+
+.legend-card{
+    @apply flex flex-col w-auto h-auto justify-center items-center;
+    background-color: var(--color-white);
+    padding: 24px 8px 24px 8px;
+    position: relative;
+    margin: 8px 0px 8px 0px;
+    border-radius: 4px;
+    box-shadow: 4px 4px 10px rgba(40, 40, 40, 0.2);
+    gap: 26px;
+}
+
+.legend-list{
+    width: 100%;
+    font-size: 12px;
+}
+.legend-item-name, .legend-item-description{
+    @apply py-2;
+}
+.legend-item-name{
+    font-weight: 900;
+    padding-right: 8px;
+}
+.legend-item-description{
+    font-weight: 500;
+}
+/*
+.card:last-of-type{
+    margin-bottom: 32px;
+}*/
+.cards-container:last-of-type{
+    margin-bottom: 32px;
+}
+.league-info-link{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8px;
+    background-color: var(--color-black);
+    border-radius: 100%;
+    height: 32px;
+    width: 32px;
+}
+.link-info, .league-info-link{
+    @apply flex justify-center items-center;
+}
+
+.league-info-link span{
+    color: var(--color-white);
+    font-size: 18px;
+}
+
+.league-info,
+.team-info,
+.player-info{
+    @apply flex flex-col w-full h-auto content-center items-center;
+    gap: 26px;
+}
+.league-img-container,
+.team-img-container,
+.player-img-container{
+    @apply flex flex-row justify-center content-center items-center;
+    height: 160px;
+    width: 160px;
+    border-radius: 100%;
+    background-color: var(--color-black);
+}
+.league-img-container > img,
+.team-img-container > img,
+.player-img-container > img{
+    height: auto;
+    width: auto;
+    max-width: 70%;
+    object-fit:cover;
+}
+.league-data{
+    @apply flex flex-col justify-center content-center items-center w-full h-auto;
+    gap: 28px;
+}
+.league-main-data{
+    @apply flex flex-col justify-center content-center items-center w-full h-auto;
+    gap: 4px;
+}
+.league-status{
+    @apply flex flex-row text-base items-center;
+    gap: 4px;
+    text-transform: lowercase;
+}
+.league-name,
+.team-name,
+.players-container-title{
+    @apply w-5/6;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 0%;
+    @apply text-center;
+    word-wrap: break-word
+}
+.league-status-circle{
+    display: block;
+    width: 11px;
+    height: 11px;
+    border-radius: 100%;
+}
+.league-status-unknown{
+    background-color: var(--color-league-status-unknown);
+}
+.league-status-waiting{
+    background-color: var(--color-league-status-waiting);
+}
+.league-status-ongoing{
+    background-color: var(--color-league-status-ongoing);
+}
+.league-status-finished{
+    background-color: var(--color-league-status-finished);
+}
+.league-status-canceled{
+    background-color: var(--color-league-status-canceled);
+}
+
+
+
+
+.league-type{
+    @apply w-auto h-auto;
+    background-color: var(--color-orange);
+    border-radius: 8px;
+    padding: 4px 8px 4px 8px;
+    color: var(--color-white);
+
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0%;
+}
+.league-dates{
+    @apply flex flex-col justify-between;
+    width: auto;
+    gap: 8px;
+}
+.league-date{
+    @apply flex flex-row w-full h-auto justify-between;
+}
+.date-description{
+    @apply font-normal;
+    width: 100px;
+}
+.league-date > .date{
+    @apply font-semibold;
+}
+
+.date{
+    @apply flex flex-row justify-start;
+}
+.date-time, .date-day{
+    @apply mx-2;
+}
+
+.league-links{
+    gap: 16px;
+}
+.league-interactions-all, .league-links{
+    @apply flex flex-row w-full h-auto justify-center;
+}
+.league-link{
+    @apply flex flex-row content-center justify-center font-extrabold;
+    text-transform: uppercase;
+    padding: 8px 16px 8px 16px;
+}
+
+.league-link > a{
+    @apply flex flex-row content-center justify-center font-extrabold;
+}
+.link-matches{
+    color: var(--color-white);
+    background-color: var(--color-blue);
+    letter-spacing: 5%;
+}
+.link-teams{
+    background-color: var(--color-white);
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+}
+
+/*League Show/Info*/
+.league-container-show{
+    @apply flex flex-col w-full justify-center items-center;
+    background-color: var(--color-white);
+    padding-top: 32px;
+    padding-bottom: 40px;
+    gap: 28px;
+}
+.league-header,
+.league-header *{
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0%;
+}
+.league-data-field,
+.league-data-field *{
+    @apply flex flex-col justify-start items-center;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0%;
+}
+.league-show-group{
+    @apply flex flex-col w-full justify-center mx-auto;
+}
+.league-info-group{
+    @apply flex flex-col w-5/6 justify-center mx-auto;
+    gap: 16px;
+    max-width: 400px;
+}
+.league-link-action{
+    @apply flex flex-row flex-wrap justify-center content-center;
+    width: 130px;
+    gap: 10px;
+    background-color: var(--color-grey-100);
+    height: 32px;
+    
+}
+.btn-create,
+.btn-cancel{
+    @apply flex flex-row flex-wrap justify-center items-center;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px 4px 5px 4px;
+    width: 122px;
+    height: 22px;
+    color: var(--color-white);
+}
+.league-link-action > button{
+    @apply flex flex-row flex-wrap w-full justify-center items-center;
+    font-weight: 600;
+    font-size: 14px;
+}
+.league-actions,
+.actions-player{
+    @apply flex flex-row justify-center w-full;
+    background-color: var(--color-grey-100);
+    gap: 16px;
+    padding: 16px 0px 16px 0px;
+}
+.btn-edit, .btn-delete{
+    @apply flex flex-row w-full h-full;
+    font-size: 14px;
+    color: var(--color-white);
+}
+.btn-edit, .btn-create{
+    background-color: var(--color-blue);
+}
+.btn-delete, .btn-cancel{
+    background-color: var(--color-red);
+}
+
+
+/*League Form EDIT*/
+.form-validation-errors{
+    background-color: var(--errors-bg-color);
+    color: var(--errors-color);
+    border: 1px solid var(--errors-border-color);
+    border-radius: var(--border-radius);
+    padding: 8px;
+}
+.league-form-container{
+    @apply flex flex-col h-auto w-full items-center;
+    background-color: var(--color-grey-100);
+    margin-top: 32px;
+}
+.league-form-inner-container{
+    @apply flex flex-col h-auto w-5/6 justify-center content-center items-center;
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+.league-form{
+    @apply flex flex-col w-full h-auto;
+    gap: 16px;
+    max-width: 560px;
+}
+.form-group{
+    @apply flex flex-col w-full h-auto;
+    gap: 4px;
+}
+.form-group-hidden{
+    display: none;
+}
+.league-form-title{
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 0%;
+    margin-bottom: 24px;
+}
+.league-form input,
+.league-form textarea,
+.league-form select{
+    @apply w-full h-auto;
+    font-size: 16px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--color-grey-200);
+    resize: none;
+    background-color: white;
+    padding: 8px;
+    appearance: none; 
+}
+.league-form label{
+    font-size: 14px;
+}
+.league-form  select,
+.tool-group select{
+    background-image:
+      linear-gradient(45deg, transparent 50%, gray 50%),
+      linear-gradient(135deg, gray 50%, transparent 50%),
+      linear-gradient(to right, #ccc, #ccc);
+    background-position:
+      calc(100% - 20px) calc(1em + 2px),
+      calc(100% - 15px) calc(1em + 2px),
+      calc(100% - 2.5em) 0.5em;
+    background-size:
+      5px 5px,
+      5px 5px,
+      1px 1.5em;
+    background-repeat: no-repeat;
+}
+
+.league-form select:focus,
+.tool-group select:focus{
+    background-image:
+      linear-gradient(45deg, green 50%, transparent 50%),
+      linear-gradient(135deg, transparent 50%, green 50%),
+      linear-gradient(to right, #ccc, #ccc);
+    background-position:
+      calc(100% - 15px) 1em,
+      calc(100% - 20px) 1em,
+      calc(100% - 2.5em) 0.5em;
+    background-size:
+      5px 5px,
+      5px 5px,
+      1px 1.5em;
+    background-repeat: no-repeat;
+    border-color: green;
+    outline: 0;
+}
+
+
+
+
+.actions-row{
+    @apply flex flex-row justify-center;
+    background-color: var(--color-grey-100);
+    gap: 16px;
+    padding: 16px 0px 16px 0px;
+}
+
+
+
+/*TEAMS*/
+.team-header{
+    @apply flex flex-col w-full justify-center items-center;
+}
+.team-data{
+    @apply flex flex-col items-start;
+    width: 220px;
+}
+.team-data > .data-field,
+.team-data-field{
+    margin: 4px 8px 4px 8px;
+}
+.team-data > .data-field > span{
+    @apply mr-4;
+}
+.data-field{
+    @apply flex flex-row;
+}
+.data-field > *{
+    @apply flex flex-col w-auto h-auto items-center justify-center text-center;
+}
+.creator-normal{
+    @apply flex flex-col w-auto h-auto items-center justify-center text-center;
+    background-color: var(--color-white);
+    padding: 24px 8px 24px 8px;
+    position: relative;
+    margin: 16px 0px 6px 0px;
+    border-radius: 4px;
+    box-shadow: 4px 4px 10px rgba(40, 40, 40, 0.2);
+    gap: 16px;
+}
+
+.creator-normal-card{
+    @apply flex flex-col w-auto h-auto items-center justify-center text-center;
+    background-color: var(--color-white);
+    padding: 24px 8px 24px 8px;
+    position: relative;
+    margin: 4px 0px 4px 0px;
+    border-radius: 4px;
+
+    box-shadow: 4px 4px 10px rgba(40, 40, 40, 0.2);
+    gap: 16px;
+}
+/*SHOW TEAM*/
+
+.responsible-data{
+    @apply flex flex-col w-full;
+    margin: 4px 8px 4px 8px;
+}
+.responsible-data > *{
+
+}
+.team-data .title-section{
+    font-size: 16px;
+    font-weight: 500;
+}
+.team-data .team-data-field{
+    font-size: 14px;
+    font-weight: 300;
+}
+.section-header{
+    @apply flex flex-row flex-wrap justify-center items-center text-center;
+    font-size: 32px;
+    font-weight: 900;
+}
+/*FORM TEAMS*/
+.league-form-subtitle{
+    font-weight: 600;
+}
+
+
+/*PLAYERS*/
+.player-info{
+    gap: 16px;
+}
+.player-name,
+
+.player-number{
+    font-size: 32px;
+    font-weight: 900;
+    @apply text-center;
+}
+.player-team{
+    font-size: 16px;
+    font-weight: 400;
+    @apply text-center;
+}
+
+
+.player-sex,
+.player-league,
+.player-birth{
+    font-size: 14px;
+    font-weight: 300;
+    @apply text-center;
+}
+.player-mesuraments{
+    @apply flex flex-row w-full justify-center items-center;
+}
+.player-mesuraments > h2 {
+    @apply mx-2;
+}
+
+.section-form-group{
+    @apply flex flex-col justify-center content-start;
+    gap: 16px;
+}
+
+/*RESPONSIVE*/
+#navSections{
+    display: inline;
+    position: fixed;
+    @apply flex flex-wrap flex-col justify-items-center content-center items-center;
+    @apply w-full h-full p-0 m-0;
+    left: -100%;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: grey;
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+/*RESULTS*/
+.form-group-results{
+    @apply w-2/6;
+}
+.results-form-section{
+    @apply flex flex-row flex-wrap w-full justify-between;
+}
+/*
+.legends-title{
+    font-size: 24px;
+    font-weight: 600;
+}*/
+
+
+/*calendar*/
+.calendar-row{
+    @apply flex flex-row w-full justify-between items-center content-center;
+    border-bottom: 1px solid var(--color-grey-300);
+}
+.match-table-row-week{
+    @apply flex flex-row w-full justify-center items-center content-center;
+    background-color: var(--bg-color-week-row);
+}
+.team-img-matches{
+    max-width: 14px;
+    height: 14px;
+    width: auto;
+}
+.matches-calendar,
+.matches-results-container{
+    display: grid;
+    background-color: var(--color-white);
+    padding: 24px 8px 24px 8px;
+    position: relative;
+    border-radius: 4px;
+
+    box-shadow: 4px 4px 10px rgba(40, 40, 40, 0.2);
+    grid-gap: 4px;
+}
+.matches-calendar *,
+.results-table *,
+.ranking-table *{
+    font-size: 8px;
+    text-align: center;
+}
+.match-number{
+    @apply flex text-center justify-center items-center;
+    width: 21px;
+}
+.match-date{
+    @apply flex text-center justify-center items-center;
+    width: 48px;
+}
+.match-teams{
+    @apply grid;
+    @apply text-center;
+    width: 72px;
+    grid-gap: 5px;
+}
+.match-points{
+    @apply grid h-full flex-col text-center justify-center items-center;
+    @apply text-center;
+    width: 24px;
+}
+.guest-team, .host-team,
+.guest-points, .host-points{
+    display: grid;
+    grid-template-columns: auto auto;
+}   
+.team-name-calendar{
+    text-align: center;
+}
+.match-actions,
+.results-actions{
+    /*@apply grid h-full text-center justify-center items-center;*/
+    @apply flex flex-row h-full text-center justify-center items-center;
+    @apply text-center;
+    width: 50px;
+}
+.match-actions > div,
+.results-actions > div{
+    @apply m-2;
+}
+.img-team-container{
+    @apply flex items-center;
+}
+.match-table-row-address{
+	@apply  flex-wrap flex-row justify-items-center content-center text-center;
+	display: none;
+}
+
+
+.results-table{
+    display: grid;
+    grid-gap: 4px;
+    width: 100%;
+}
+.results-team-img{
+    max-width: 14px;
+    height: 14px;
+    width: auto;
+}
+
+.results-row{
+    @apply flex flex-row w-full justify-between items-center content-center;
+    border-bottom: 1px solid var(--color-grey-300);
+}
+.matches-won, .sets-won, .points-won{
+    width: 42px;
+    display: grid;
+    align-items: center;
+    height: 100%;
+    text-align:center;
+}
+.match-teams{
+    display: grid;
+    align-items: center;
+    height: 100%;
+}
+.match-teams > *{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*RANKING*/
+.ranking-table-container{
+    @apply flex flex-row justify-center items-center content-center;  
+}
+
+.ranking-table{
+    @apply items-center w-full;
+}
+
+.ranking-table img{
+    max-width: 14px;
+    height: 14px;
+    width: auto;
+}
+.ranking-table-header-row,
+.ranking-table-row{
+    @apply w-full;
+    border-bottom: 1px solid var(--color-grey-300);
+
+}
+.ranking-table-row td{
+    text-align: center; 
+}
+.ranking-table-row td img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Matches SHOW*/
+.match-show-container{
+    @apply w-full justify-center;
+    display: grid;
+    grid-template-columns: 120px 100px 120px;
+}
+.match-show-container-center{
+    @apply flex flex-col justify-center items-center;
+}
+.match-show-container * {
+    @apply flex flex-col justify-center items-center;
+    text-align: center;
+}
+.container-team-logo{
+    @apply flex justify-center items-center;
+    background-color: var(--color-black);
+    border-radius: 100%;
+    height: 70px;
+    width: 70px;
+}
+.container-team-logo > img {
+    height: 50px;
+    max-width: 50px;
+    width: auto;
+}
+.match-team-name{
+    min-height: 56px;
+}
+.container-match-date{
+    text-align: center;
+    font-size: 12px;
+}
+.vs-container{
+    font-size: 32px;
+    font-weight: 900;
+}
+.container-match-status *{
+    font-size: 12px;
+}
+
+
+
+
+/* TOOL BAR */
+
+.tool-bar > * {
+    @apply mx-4;
+    color: var(--color-white);
+}
+.toolbar-switch > * {
+    @apply mx-2;
+}
+.tool-bar-complete{
+    @apply flex flex-row flex-wrap w-full justify-center content-center items-center;
+	@apply left-0 right-0;
+    position: fixed;
+    top: 40px;
+    z-index: 1;
+    padding: 4px;
+    background-color: var(--color-grey-300);
+}
+
+.tool-bar-complete + div{
+    margin-top: 56px;
+}
+
+.tool-bar{
+	@apply flex flex-row flex-wrap w-full justify-end content-center items-center;
+}
+.toolbar-switch{
+	@apply flex flex-wrap flex-row justify-center content-center items-center;
+}
+
+#search-tool-hidden-form, .search-tool, #search-week, .search-tool-form{
+	@apply w-full;
+}
+.search-tool-form{
+    @apply flex flex-wrap flex-col justify-center content-center items-center;
+}
+#search-tool-hidden-form{
+	display: none;
+}
+
+.btn-container-tool{
+	@apply flex flex-wrap flex-row justify-center content-center items-center;
+    margin-bottom: 8px;
+}
+.tool-group{
+    @apply flex flex-wrap flex-col justify-center content-center items-center;
+	@apply m-4;
+    max-width: 500px;
+}
+.week-selector{
+    @apply flex flex-wrap flex-row justify-between content-center items-center w-full;
+	@apply my-2;
+}
+.week-selector > *{
+    @apply mx-4;
+    color: var(--color-white);
+    font-size: 14px
+}
+.week-selector > label{
+    font-weight: 600;
+}
+.tool-group select{
+    @apply h-auto;
+    width: auto;
+    min-width: 120px;
+    font-size: 14px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--color-grey-200);
+    resize: none;
+    background-color: white;
+    padding: 8px;
+    appearance: none; 
+    color: var(--color-black);
+}
+
+.tool-bar-img{
+	height: 35px;
+	width: auto;
+	@apply px-3;
+
+}
+
+
+/* Tool Bar Switch CSS*/
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--color-blue);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--color-blue);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+.responsive-hidden{
+    display: none;
+}
+
+
+.text-section{
+    text-align: justify;
+}
+
+
+/*RESPONSIVE DESKTOP*/
+@media only screen and (min-width: 800px) {
+
+    /*NAV*/
+    #navSections{
+        @apply flex flex-row justify-between items-center mx-6;
+        position: relative;
+        width: auto;
+        left: auto;
+        background-color: inherit;
+        flex-grow: 1;
+    }
+    .link-nav-section{
+        font-size: 14px;
+    }
+    .user-nav, .web-nav{
+        @apply flex flex-row justify-around;
+    }
+    .item-nav, .item-nav-user{
+        @apply mx-6;
+    }
+    .item-nav{
+        right: 0;
+    }
+    .item-nav-user{
+        right: 0;
+    }
+    .nav-user{
+        @apply flex flex-row flex-wrap;
+    }   
+    #menu-icon{
+        display: none;
+    }
+
+    .matches-calendar *,
+    .results-table *,
+    .ranking-table *{
+        font-size: 14px;
+        text-align: center;
+    }
+    .legend-list{
+        max-width: 500px;
+    }
+
+}
+
+.results-team-img,
+.team-img-matches,
+.ranking-team-img{
+    font-size: 0;
+}

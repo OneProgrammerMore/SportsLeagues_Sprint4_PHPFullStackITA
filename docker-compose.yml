@@ -11,27 +11,36 @@ services:
             - "5173:5173"
             - "8000:8000"
         volumes:
-            - ./VolleyLeague/:/var/www/html
+            - ./cup-web/:/var/www/html
+            - ./docker/config/apache2/apache2.conf:/etc/apache2/apache2.conf
         command: >
             bash -c "
             chmod u+x /var/www/html/entrypointBE.sh &&
             /var/www/html/entrypointBE.sh"
         networks:
             - cup-dev-network
+        depends_on:
+          cup-dev-db:
+            condition: service_healthy
 
     cup-dev-db:
         container_name: cup-dev-db
-        image: mysql:8.0.37-debian
+        image: mariadb:12.1.1-ubi-rc
         environment:
-            MYSQL_DATABASE: cup-dev-database
-            MYSQL_USER: user
-            MYSQL_PASSWORD: password
-            MYSQL_ROOT_PASSWORD: root_password
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
         volumes:
-            - ./docker/mysql-data:/var/lib/mysql
-            - ./docker/config/mysql_ini:/docker-entrypoint-initdb.d
-            - ./docker/config/mysql/my.cnf:/etc/my.cnf
+            - ./docker/cup-mariadb:/var/lib/mysql
         networks:
             - cup-dev-network
+        healthcheck:
+          test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+          # test: ["CMD", "healthcheck.sh", "--connect"]
+          start_period: 20s
+          interval: 15s
+          timeout: 5s
+          retries: 5
 networks:
     cup-dev-network:

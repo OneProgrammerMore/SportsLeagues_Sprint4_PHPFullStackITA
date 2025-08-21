@@ -1,0 +1,13 @@
+services:
+    cup-web-build:
+        container_name: cup-web-laravel
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./cup-web/:/var/www/html
+        command: >
+            bash -c "
+            chmod u+x /var/www/html/entrypointBELaravel.sh &&
+            /var/www/html/entrypointBELaravel.sh"
+            

@@ -1,0 +1,2 @@
+2025/02/06 09:26:21 [error] 30#30: *1 open() "/var/www/html/public/contact" failed (2: No such file or directory), client: 172.20.0.2, server: localhost, request: "GET /contact HTTP/1.0", host: "localhost", referrer: "http://localhost/cup"
+2025/02/06 09:26:25 [error] 31#31: *2 open() "/var/www/html/public/cup" failed (2: No such file or directory), client: 172.20.0.2, server: localhost, request: "GET /cup HTTP/1.0", host: "localhost"
